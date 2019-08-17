@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ControlManager.cs" />
+    <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\SceneManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
