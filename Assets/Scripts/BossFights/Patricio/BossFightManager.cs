@@ -10,6 +10,7 @@ public class BossFightManager : MonoBehaviour
 
     [Header("BOSS MANAGER STATS")]
     [SerializeField] BOSS_FIGHT_STATE fightState;
+
     void Start()
     {
         
