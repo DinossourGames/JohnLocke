@@ -21,7 +21,7 @@ public class InputActions : IInputActionCollection
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""1c8549c5-fc20-4ecb-bad5-6b1f7c9f9d8b"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -199,7 +199,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""a8eb2db9-779d-43d3-b9de-2d64d16c5dd3"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""path"": ""<XInputController>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -275,11 +275,11 @@ public class InputActions : IInputActionCollection
                 },
                 {
                     ""name"": """",
-                    ""id"": ""af56e7e4-223c-482f-82c8-5a3045cb1aac"",
+                    ""id"": ""01cc6ddb-b165-4cb5-94f9-fdc8821c64cf"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Special"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -294,13 +294,13 @@ public class InputActions : IInputActionCollection
             ""bindingGroup"": ""Gamepad"",
             ""devices"": [
                 {
-                    ""devicePath"": ""<Gamepad>"",
-                    ""isOptional"": false,
+                    ""devicePath"": ""<DualShockGamepad>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<DualShockGamepad>"",
-                    ""isOptional"": false,
+                    ""devicePath"": ""<XInputController>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]

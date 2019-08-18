@@ -5,18 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/a.unity
-    guid: e21c93b43a3ecda48ad1baf1bcdb6139
-  - enabled: 1
-    path: Assets/Scenes/b.unity
-    guid: 901b0abc238917747a40002b49efef44
-  - enabled: 1
-    path: Assets/Scenes/LoadingScreen.unity
-    guid: 720410d793c25b44394c14259b7fff95
+    path: Assets/Scenes/BossFights/Patricio/001.unity
+    guid: 9bef890257f55114999a634e9ae00668
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 0ed49eebcc3941e41bf1221ae1cda26c,
+    com.unity.input.settings: {fileID: 11400000, guid: 9c588fc92a5674d43b1af437f7fbd069,
       type: 2}

@@ -1,16 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class Patricio : MonoBehaviour
 {
+
     Rigidbody2D rbd;
     Gamepad gamepad;
-    private float speed = 500;
+    [SerializeField, Header("ATRIBUTES")]
+    private float speed = 300;
+    [SerializeField]
     private Vector2 movement;
+    [SerializeField]
     private bool jump;
-    private bool canShoot;
+    [SerializeField]
+    private float jumpForce;
+    [SerializeField]
+    private bool shoot;
+
+    [SerializeField]
+    private bool isGrounded;
+    [SerializeField]
+    private Transform groundCheck;
+    [SerializeField]
+    private float checkRadius;
+    [SerializeField]
+    private LayerMask ground;
+    private bool staring;
+    private bool invunerable;
+    private bool special;
 
 
 
@@ -24,27 +45,30 @@ public class Patricio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+        Jump();
+    }
 
+    private void Jump()
+    {
+        if (isGrounded && jump)
+        {
+            rbd.velocity = Vector2.up * jumpForce;
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
 
     }
 
     private void Move()
     {
         rbd.velocity = new Vector2(movement.x * speed * Time.deltaTime, rbd.velocity.y);
-
-        if (movement.x > 0)
-            gamepad.SetMotorSpeeds(0f, 1f);
-        else if (movement.x < 0)
-            gamepad.SetMotorSpeeds(1f, 0f);
-        else
-            gamepad.SetMotorSpeeds(0f, 0f);
     }
 
+    #region Input Action Receivers
     public void MoveInput(InputAction.CallbackContext context)
     {
         switch (context.phase)
@@ -53,11 +77,11 @@ public class Patricio : MonoBehaviour
                 movement = context.ReadValue<Vector2>();
                 break;
             case InputActionPhase.Canceled:
-                movement =  Vector2.zero;
+                movement = Vector2.zero;
                 break;
         }
     }
-    
+
     public void JumpInput(InputAction.CallbackContext context)
     {
         switch (context.phase)
@@ -71,21 +95,80 @@ public class Patricio : MonoBehaviour
         }
     }
 
-    public void Shoot(InputAction.CallbackContext ctx)
+    public void ShootInput(InputAction.CallbackContext ctx)
     {
         switch (ctx.phase)
         {
             case InputActionPhase.Started: //Verify the type of input ieg Press or Hold
                 break;
             case InputActionPhase.Performed: //Read input here
-                canShoot = true; 
+                shoot = true;
                 break;
             case InputActionPhase.Canceled: //Reset values 
-                canShoot = false;
+                shoot = false;
                 break;
         }
     }
 
+    public void StartInput(InputAction.CallbackContext ctx)
+    {
+        switch (ctx.phase)
+        {
+            case InputActionPhase.Started: //Verify the type of input ieg Press or Hold
+                break;
+            case InputActionPhase.Performed: //Read input here
+                print("Paused");
+                break;
+            case InputActionPhase.Canceled: //Reset values 
+                break;
+        }
+    }
 
+    public void StareInput(InputAction.CallbackContext ctx)
+    {
+        switch (ctx.phase)
+        {
+            case InputActionPhase.Started: //Verify the type of input ieg Press or Hold
+                break;
+            case InputActionPhase.Performed: //Read input here
+                staring = true;
 
+                break;
+            case InputActionPhase.Canceled: //Reset values 
+                staring = false;
+                break;
+        }
+    }
+
+    public void InvunerableInput(InputAction.CallbackContext ctx)
+    {
+        switch (ctx.phase)
+        {
+            case InputActionPhase.Started: //Verify the type of input ieg Press or Hold
+                break;
+            case InputActionPhase.Performed: //Read input here
+                invunerable = true;
+
+                break;
+            case InputActionPhase.Canceled: //Reset values 
+                invunerable = false;
+                break;
+        }
+    }
+
+    public void SpecialInput(InputAction.CallbackContext ctx)
+    {
+        switch (ctx.phase)
+        {
+            case InputActionPhase.Started: //Verify the type of input ieg Press or Hold
+                break;
+            case InputActionPhase.Performed: //Read input here
+                special = true;
+                break;
+            case InputActionPhase.Canceled: //Reset values 
+                special = false;
+                break;
+        }
+    }
+    #endregion
 }
