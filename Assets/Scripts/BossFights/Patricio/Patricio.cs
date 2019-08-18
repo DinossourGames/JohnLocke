@@ -10,14 +10,8 @@ public class Patricio : MonoBehaviour
     private float speed = 500;
     private Vector2 movement;
     private bool jump;
+    private bool canShoot;
 
-
-    private void Awake()
-    {
-        var a = GetComponent<PlayerInput>();
-        a.onActionTriggered += MoveInput;
-        
-    }
 
 
     // Start is called before the first frame update
@@ -73,6 +67,21 @@ public class Patricio : MonoBehaviour
                 break;
             case InputActionPhase.Canceled:
                 jump = false;
+                break;
+        }
+    }
+
+    public void Shoot(InputAction.CallbackContext ctx)
+    {
+        switch (ctx.phase)
+        {
+            case InputActionPhase.Started: //Verify the type of input ieg Press or Hold
+                break;
+            case InputActionPhase.Performed: //Read input here
+                canShoot = true; 
+                break;
+            case InputActionPhase.Canceled: //Reset values 
+                canShoot = false;
                 break;
         }
     }

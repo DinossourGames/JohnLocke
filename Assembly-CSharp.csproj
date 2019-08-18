@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Common\Boundaries.cs" />
     <Compile Include="Assets\Common\InputActions.cs" />
     <Compile Include="Assets\Scripts\BossFights\Patricio\BossFightManager.cs" />
     <Compile Include="Assets\Scripts\BossFights\Patricio\Patricio.cs" />
