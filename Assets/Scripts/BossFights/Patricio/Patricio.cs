@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DS4_Wrapper;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,8 +30,13 @@ public class Patricio : MonoBehaviour
     private float checkRadius;
     [SerializeField]
     private LayerMask ground;
+    [SerializeField]
     private bool staring;
+    [SerializeField]
     private bool invunerable;
+    [SerializeField]
+    private bool invunerableLocker;
+    [SerializeField]
     private bool special;
 
 
@@ -40,13 +46,49 @@ public class Patricio : MonoBehaviour
     {
         rbd = GetComponent<Rigidbody2D>();
         gamepad = Gamepad.current;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        GamepadCheck();
         Move();
         Jump();
+        Invunerable();
+    }
+
+    private void GamepadCheck()
+    {
+        if (gamepad != null)
+        {
+            print(GetComponent<PlayerInput>().controlScheme);
+        }
+    }
+
+    private void Invunerable()
+    {
+        if (invunerable && !invunerableLocker)
+        {
+            invunerableLocker = true;
+            StartCoroutine(SetLight());
+        }
+    }
+
+    IEnumerator SetLight()
+    {
+        DS4Manager.Instancia.SetRightRumble(50, 0);
+        DS4Manager.Instancia.SetLights(255, 0, 0);
+        yield return new WaitForSeconds(3);
+        DS4Manager.Instancia.SetLights(0, 255, 0);
+        invunerableLocker = false;
+        DS4Manager.Instancia.SetRumble(false);
+    }
+
+    private void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
+
     }
 
     private void Jump()
@@ -55,12 +97,6 @@ public class Patricio : MonoBehaviour
         {
             rbd.velocity = Vector2.up * jumpForce;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
-
     }
 
     private void Move()
@@ -148,7 +184,6 @@ public class Patricio : MonoBehaviour
                 break;
             case InputActionPhase.Performed: //Read input here
                 invunerable = true;
-
                 break;
             case InputActionPhase.Canceled: //Reset values 
                 invunerable = false;
