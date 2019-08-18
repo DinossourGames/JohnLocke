@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/BossFights/Patricio/001.unity
     guid: 9bef890257f55114999a634e9ae00668
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 9c588fc92a5674d43b1af437f7fbd069,
+    com.unity.input.settings: {fileID: 11400000, guid: d4199ca9a362b464c8452efa999705c3,
       type: 2}

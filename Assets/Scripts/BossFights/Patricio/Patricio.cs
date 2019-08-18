@@ -52,7 +52,7 @@ public class Patricio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GamepadCheck();
+        //GamepadCheck();
         Move();
         Jump();
         Invunerable();
@@ -209,7 +209,7 @@ public class Patricio : MonoBehaviour
 
     public void OnDeviceLost(PlayerInput input)
     {
-
+        print(input.devices[0]);
     }
 
     public void OnDeviceRegain(PlayerInput input)
