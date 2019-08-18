@@ -205,5 +205,17 @@ public class Patricio : MonoBehaviour
                 break;
         }
     }
+
+
+    public void OnDeviceLost(PlayerInput input)
+    {
+
+    }
+
+    public void OnDeviceRegain(PlayerInput input)
+    {
+
+    }
+
     #endregion
 }
