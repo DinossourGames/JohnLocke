@@ -208,6 +208,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b43cd257-afbe-43c6-b009-2c125710735c",
+                    "path": "<HID::Microntek              USB Joystick           Joystick>/button10",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "32cb899b-63ee-4ca8-8cb7-af152dcdbfa8",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
