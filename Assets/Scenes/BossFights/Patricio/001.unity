@@ -295,7 +295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289695102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.364, y: 0.144, z: 0}
+  m_LocalPosition: {x: 0.87, y: 0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1556233440}
@@ -439,11 +439,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26807125a04ec8741b96ae1cfc6ddb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 360
+  speed: 300
   movement: {x: 0, y: 0}
   jump: 0
   jumpForce: 10
-  shoot: 0
+  isFacingRight: 1
+  freezeMovement: 0
   isGrounded: 0
   groundCheck: {fileID: 1724545880}
   checkRadius: 0.5
@@ -454,6 +455,11 @@ MonoBehaviour:
   invunerable: 0
   invunerableLocker: 0
   special: 0
+  shoot: 0
+  shootOrigin: {fileID: 1289695103}
+  vectorOffset: {x: 0, y: 0}
+  offset: 0.6
+  deadZone: 0.155
 --- !u!212 &1556233439
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -713,6 +719,23 @@ MonoBehaviour:
       Version=0.9.3.0, Culture=neutral, PublicKeyToken=null
     m_ActionId: 78fb56c4-081c-4b9f-9805-0e7a2f03538d
     m_ActionName: PatricioBossFight/Special[/Keyboard/e,/DualShock4GamepadHID/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1556233438}
+        m_MethodName: FreezeInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
+      Version=0.9.3.0, Culture=neutral, PublicKeyToken=null
+    m_ActionId: fef95e2a-b084-4ba7-aacd-7815b82f14ea
+    m_ActionName: PatricioBossFight/Freeze[/Keyboard/capsLock,/DualShock4GamepadHID/rightShoulder]
   m_AutoSwitchControlScheme: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: 9450f14f-03f0-4f98-902f-29e84bd5cdad

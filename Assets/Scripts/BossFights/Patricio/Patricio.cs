@@ -11,7 +11,7 @@ public class Patricio : MonoBehaviour
 
     Rigidbody2D rbd;
     Gamepad gamepad;
-    [SerializeField, Header("ATRIBUTES")]
+    [SerializeField, Header("MOVEMENT")]
     private float speed = 300;
     [SerializeField]
     private Vector2 movement;
@@ -20,9 +20,12 @@ public class Patricio : MonoBehaviour
     [SerializeField]
     private float jumpForce;
     [SerializeField]
-    private bool shoot;
-
+    private bool isFacingRight;
     [SerializeField]
+    private bool freezeMovement;
+
+
+    [SerializeField, Header("GROUND CHECKING"), Space]
     private bool isGrounded;
     [SerializeField]
     private Transform groundCheck;
@@ -30,16 +33,26 @@ public class Patricio : MonoBehaviour
     private float checkRadius;
     [SerializeField]
     private LayerMask ground;
-    [SerializeField]
+
+    [SerializeField, Space, Header("ABILITIES")]
     private bool staring;
     [SerializeField]
     private bool invunerable;
     [SerializeField]
     private bool invunerableLocker;
-    [SerializeField]
+
+    [SerializeField, Space, Header("SHOOTS")]
     private bool special;
-
-
+    [SerializeField]
+    private bool shoot;
+    [SerializeField]
+    private Transform shootOrigin;
+    [SerializeField]
+    private Vector2 vectorOffset;
+    [SerializeField]
+    private float offset;
+    [SerializeField,Range(0f,.24f)]
+    private float deadZone;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +69,39 @@ public class Patricio : MonoBehaviour
         Move();
         Jump();
         Invunerable();
+        Shoot();
+    }
+
+    [Obsolete]
+    private void Shoot()
+    {
+        Aim();
+    }
+
+    private void Aim()
+    {
+        var movementNormalized = Vector2.zero;
+
+ 
+
+        if (movement.x > deadZone)
+            movementNormalized.x = 1;
+        else if (movement.x < -deadZone)
+            movementNormalized.x = -1;
+
+
+        if (movement.y > deadZone)
+            movementNormalized.y = 1;
+        else if (movement.y < -deadZone)
+            movementNormalized.y = -1;
+
+
+        var dir = (movement.x > -deadZone && movement.x < deadZone) ? (isFacingRight ? Vector2.right : Vector2.left) : movementNormalized;
+
+        vectorOffset.x = dir.x * offset;
+        vectorOffset.y = dir.y * offset;
+
+        shootOrigin.position = transform.position + new Vector3(vectorOffset.x, vectorOffset.y);
     }
 
     private void GamepadCheck()
@@ -101,7 +147,24 @@ public class Patricio : MonoBehaviour
 
     private void Move()
     {
-        rbd.velocity = new Vector2(movement.x * speed * Time.deltaTime, rbd.velocity.y);
+        Flip();
+        if (!freezeMovement)
+            rbd.velocity = new Vector2(movement.x * speed * Time.deltaTime, rbd.velocity.y);
+
+    }
+
+    private void Flip()
+    {
+        if (movement.x > 0 && !isFacingRight)
+        {
+            isFacingRight = true;
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+        if (movement.x < 0 && isFacingRight)
+        {
+            isFacingRight = false;
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
     }
 
     #region Input Action Receivers
@@ -127,6 +190,19 @@ public class Patricio : MonoBehaviour
                 break;
             case InputActionPhase.Canceled:
                 jump = false;
+                break;
+        }
+    }
+
+    public void FreezeInput(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Performed:
+                freezeMovement = true;
+                break;
+            case InputActionPhase.Canceled:
+                freezeMovement = false;
                 break;
         }
     }

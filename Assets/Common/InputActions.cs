@@ -72,6 +72,14 @@ public class InputActions : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Freeze"",
+                    ""type"": ""Button"",
+                    ""id"": ""fef95e2a-b084-4ba7-aacd-7815b82f14ea"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -220,17 +228,6 @@ public class InputActions : IInputActionCollection
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b43cd257-afbe-43c6-b009-2c125710735c"",
-                    ""path"": ""<HID::Microntek              USB Joystick           Joystick>/button10"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Start"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""32cb899b-63ee-4ca8-8cb7-af152dcdbfa8"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
@@ -265,7 +262,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""bcb39f95-0894-43a7-8f36-c27ab33065bf"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -292,6 +289,28 @@ public class InputActions : IInputActionCollection
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87fd7dd9-b6ce-4b9c-847a-bbbaa80521d4"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Freeze"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e89cd98-4737-4cea-bdc3-9083d64320d3"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Freeze"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -325,11 +344,6 @@ public class InputActions : IInputActionCollection
                     ""devicePath"": ""<Keyboard>"",
                     ""isOptional"": false,
                     ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<Mouse>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
                 }
             ]
         }
@@ -344,6 +358,7 @@ public class InputActions : IInputActionCollection
         m_PatricioBossFight_Invulnerability = m_PatricioBossFight.GetAction("Invulnerability");
         m_PatricioBossFight_Stare = m_PatricioBossFight.GetAction("Stare");
         m_PatricioBossFight_Special = m_PatricioBossFight.GetAction("Special");
+        m_PatricioBossFight_Freeze = m_PatricioBossFight.GetAction("Freeze");
     }
 
     ~InputActions()
@@ -400,6 +415,7 @@ public class InputActions : IInputActionCollection
     private readonly InputAction m_PatricioBossFight_Invulnerability;
     private readonly InputAction m_PatricioBossFight_Stare;
     private readonly InputAction m_PatricioBossFight_Special;
+    private readonly InputAction m_PatricioBossFight_Freeze;
     public struct PatricioBossFightActions
     {
         private InputActions m_Wrapper;
@@ -411,6 +427,7 @@ public class InputActions : IInputActionCollection
         public InputAction @Invulnerability => m_Wrapper.m_PatricioBossFight_Invulnerability;
         public InputAction @Stare => m_Wrapper.m_PatricioBossFight_Stare;
         public InputAction @Special => m_Wrapper.m_PatricioBossFight_Special;
+        public InputAction @Freeze => m_Wrapper.m_PatricioBossFight_Freeze;
         public InputActionMap Get() { return m_Wrapper.m_PatricioBossFight; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -441,6 +458,9 @@ public class InputActions : IInputActionCollection
                 Special.started -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnSpecial;
                 Special.performed -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnSpecial;
                 Special.canceled -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnSpecial;
+                Freeze.started -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnFreeze;
+                Freeze.performed -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnFreeze;
+                Freeze.canceled -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnFreeze;
             }
             m_Wrapper.m_PatricioBossFightActionsCallbackInterface = instance;
             if (instance != null)
@@ -466,6 +486,9 @@ public class InputActions : IInputActionCollection
                 Special.started += instance.OnSpecial;
                 Special.performed += instance.OnSpecial;
                 Special.canceled += instance.OnSpecial;
+                Freeze.started += instance.OnFreeze;
+                Freeze.performed += instance.OnFreeze;
+                Freeze.canceled += instance.OnFreeze;
             }
         }
     }
@@ -497,5 +520,6 @@ public class InputActions : IInputActionCollection
         void OnInvulnerability(InputAction.CallbackContext context);
         void OnStare(InputAction.CallbackContext context);
         void OnSpecial(InputAction.CallbackContext context);
+        void OnFreeze(InputAction.CallbackContext context);
     }
 }
