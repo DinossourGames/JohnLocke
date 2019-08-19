@@ -306,7 +306,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""2e89cd98-4737-4cea-bdc3-9083d64320d3"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<DualShockGamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",

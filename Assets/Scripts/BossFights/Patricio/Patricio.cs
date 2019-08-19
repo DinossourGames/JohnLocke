@@ -33,11 +33,18 @@ public class Patricio : MonoBehaviour
     private float checkRadius;
     [SerializeField]
     private LayerMask ground;
+    [SerializeField]
+    private Vector2 lastPostition;
+    [SerializeField]
+    private float distance;
+
 
     [SerializeField, Space, Header("ABILITIES")]
     private bool staring;
     [SerializeField]
     private bool invunerable;
+    [SerializeField]
+    private bool isInv;
     [SerializeField]
     private bool invunerableLocker;
 
@@ -46,13 +53,22 @@ public class Patricio : MonoBehaviour
     [SerializeField]
     private bool shoot;
     [SerializeField]
+    private float shootTime;
+    [SerializeField]
+    private float shootDelay;
+    [SerializeField]
+    private Bullet bulletPrefab;
+    [SerializeField]
     private Transform shootOrigin;
     [SerializeField]
     private Vector2 vectorOffset;
     [SerializeField]
     private float offset;
-    [SerializeField,Range(0f,.24f)]
+    [SerializeField, Range(0f, .24f)]
     private float deadZone;
+
+    [SerializeField, Space]
+    private Vector2 movementNormalized;
 
     // Start is called before the first frame update
     void Start()
@@ -70,55 +86,67 @@ public class Patricio : MonoBehaviour
         Jump();
         Invunerable();
         Shoot();
+
+        lastPostition = transform.position;
     }
 
     [Obsolete]
     private void Shoot()
     {
         Aim();
+
+        if (shoot && Time.time > shootTime)
+        {
+            shootTime = Time.time + shootDelay;
+            bulletPrefab.Parent = gameObject;
+            bulletPrefab.Direction = movementNormalized;
+            Instantiate(bulletPrefab, shootOrigin.position, shootOrigin.rotation);
+        }
     }
 
     private void Aim()
     {
-        var movementNormalized = Vector2.zero;
-
- 
+        movementNormalized = Vector2.zero;
 
         if (movement.x > deadZone)
             movementNormalized.x = 1;
         else if (movement.x < -deadZone)
             movementNormalized.x = -1;
 
-
         if (movement.y > deadZone)
             movementNormalized.y = 1;
         else if (movement.y < -deadZone)
             movementNormalized.y = -1;
 
+        if (movementNormalized != Vector2.zero && isGrounded)
+            invunerableLocker = false;
 
-        var dir = (movement.x > -deadZone && movement.x < deadZone) ? (isFacingRight ? Vector2.right : Vector2.left) : movementNormalized;
+        movementNormalized = movementNormalized == Vector2.zero ? (isFacingRight ? Vector2.right : Vector2.left) : movementNormalized;
 
-        vectorOffset.x = dir.x * offset;
-        vectorOffset.y = dir.y * offset;
+        vectorOffset.x = movementNormalized.x * offset;
+        vectorOffset.y = movementNormalized.y * offset;
 
         shootOrigin.position = transform.position + new Vector3(vectorOffset.x, vectorOffset.y);
-    }
 
-    private void GamepadCheck()
-    {
-        if (gamepad != null)
-        {
-            print(GetComponent<PlayerInput>().controlScheme);
-        }
     }
 
     private void Invunerable()
     {
-        if (invunerable && !invunerableLocker)
+        if (!invunerableLocker)
         {
+            isInv = false;
+            StopAllCoroutines();
+            DS4Manager.Instancia.SetLights(0, 255, 0);
+            DS4Manager.Instancia.SetRumble(false);
+        }
+
+        if (invunerable && !isInv && invunerableLocker)
+        {
+            isInv = true;
             invunerableLocker = true;
             StartCoroutine(SetLight());
         }
+
     }
 
     IEnumerator SetLight()
@@ -140,9 +168,20 @@ public class Patricio : MonoBehaviour
     private void Jump()
     {
         if (isGrounded && jump)
-        {
             rbd.velocity = Vector2.up * jumpForce;
+
+        if (isGrounded)
+            invunerableLocker = false;
+
+        distance = transform.position.y - lastPostition.y;
+
+        if (!isGrounded && distance < 0)
+        {
+            invunerableLocker = true;
+            rbd.velocity += Vector2.down;
         }
+        else
+            invunerableLocker = false;
     }
 
     private void Move()

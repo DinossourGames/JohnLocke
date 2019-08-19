@@ -65,6 +65,7 @@
     <Compile Include="Assets\Common\Boundaries.cs" />
     <Compile Include="Assets\Common\InputActions.cs" />
     <Compile Include="Assets\Scripts\BossFights\Patricio\BossFightManager.cs" />
+    <Compile Include="Assets\Scripts\BossFights\Patricio\Bullet.cs" />
     <Compile Include="Assets\Scripts\BossFights\Patricio\Patricio.cs" />
     <Compile Include="Assets\Scripts\ControlManager.cs" />
     <Compile Include="Assets\Scripts\SceneManager.cs" />
