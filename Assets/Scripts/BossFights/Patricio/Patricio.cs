@@ -2,8 +2,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class Patricio : MonoBehaviour
 {
     Rigidbody2D rbd;
@@ -46,6 +48,8 @@ public class Patricio : MonoBehaviour
     [SerializeField, Range(0f, .24f)] private float deadZone;
 
     [SerializeField, Space] private Vector2 movementNormalized;
+    [SerializeField] private bool parry;
+    [SerializeField] private List<GameObject> parryed;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +68,13 @@ public class Patricio : MonoBehaviour
 
         lastPostition = transform.position;
     }
+
+    private void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
+    }
+
+    #region Methods
 
     private void Shoot()
     {
@@ -129,9 +140,25 @@ public class Patricio : MonoBehaviour
         DS4Manager.Instancia.SetRumble(false);
     }
 
-    private void FixedUpdate()
+
+
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
+        if (other.CompareTag("ParryObject"))
+        {
+            if (parryed.Contains(other.gameObject)) return;
+            parry = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("ParryObject"))
+        {
+            parry = false;
+            Destroy(other.gameObject);
+        }
     }
 
     private void Jump()
@@ -148,6 +175,10 @@ public class Patricio : MonoBehaviour
         {
             invunerableLocker = true;
             rbd.velocity += Vector2.down;
+
+            if (!parry || !jump) return;
+            rbd.velocity = Vector2.up * jumpForce;
+            parry = false;
         }
         else
             invunerableLocker = false;
@@ -175,9 +206,10 @@ public class Patricio : MonoBehaviour
         var scale = transform.localScale;
         // ReSharper disable once Unity.InefficientPropertyAccess
         transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
-        
     }
 
+    #endregion
+    
     #region Input Action Receivers
 
     public void MoveInput(InputAction.CallbackContext context)
