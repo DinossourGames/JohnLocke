@@ -19,9 +19,9 @@ public class InputActions : IInputActionCollection
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""1c8549c5-fc20-4ecb-bad5-6b1f7c9f9d8b"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -69,6 +69,14 @@ public class InputActions : IInputActionCollection
                     ""name"": ""Special"",
                     ""type"": ""Button"",
                     ""id"": ""78fb56c4-081c-4b9f-9805-0e7a2f03538d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Freeze"",
+                    ""type"": ""Button"",
+                    ""id"": ""fef95e2a-b084-4ba7-aacd-7815b82f14ea"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -131,59 +139,15 @@ public class InputActions : IInputActionCollection
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Gamepad"",
-                    ""id"": ""bfa4ce96-4012-4f87-ad26-593f356a1ffb"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""4ed455d5-241e-44ae-b56d-384b965b3d57"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Move"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""72a610f3-3098-442e-9278-555224bd56af"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""ab7e466f-0b8c-41ee-a64f-9a1d1ec72ebe"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""b62d03c0-1705-4826-b1c8-f1886fcda934"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""0fa1bcac-2633-4540-9068-49dca62f9819"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -243,7 +207,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""a8eb2db9-779d-43d3-b9de-2d64d16c5dd3"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""path"": ""<XInputController>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -298,7 +262,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""bcb39f95-0894-43a7-8f36-c27ab33065bf"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -319,12 +283,34 @@ public class InputActions : IInputActionCollection
                 },
                 {
                     ""name"": """",
-                    ""id"": ""af56e7e4-223c-482f-82c8-5a3045cb1aac"",
+                    ""id"": ""01cc6ddb-b165-4cb5-94f9-fdc8821c64cf"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87fd7dd9-b6ce-4b9c-847a-bbbaa80521d4"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Freeze"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e89cd98-4737-4cea-bdc3-9083d64320d3"",
+                    ""path"": ""<DualShockGamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Freeze"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -338,13 +324,13 @@ public class InputActions : IInputActionCollection
             ""bindingGroup"": ""Gamepad"",
             ""devices"": [
                 {
-                    ""devicePath"": ""<Gamepad>"",
-                    ""isOptional"": false,
+                    ""devicePath"": ""<DualShockGamepad>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<DualShockGamepad>"",
-                    ""isOptional"": false,
+                    ""devicePath"": ""<XInputController>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
@@ -356,11 +342,6 @@ public class InputActions : IInputActionCollection
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<Mouse>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -377,6 +358,7 @@ public class InputActions : IInputActionCollection
         m_PatricioBossFight_Invulnerability = m_PatricioBossFight.GetAction("Invulnerability");
         m_PatricioBossFight_Stare = m_PatricioBossFight.GetAction("Stare");
         m_PatricioBossFight_Special = m_PatricioBossFight.GetAction("Special");
+        m_PatricioBossFight_Freeze = m_PatricioBossFight.GetAction("Freeze");
     }
 
     ~InputActions()
@@ -433,6 +415,7 @@ public class InputActions : IInputActionCollection
     private readonly InputAction m_PatricioBossFight_Invulnerability;
     private readonly InputAction m_PatricioBossFight_Stare;
     private readonly InputAction m_PatricioBossFight_Special;
+    private readonly InputAction m_PatricioBossFight_Freeze;
     public struct PatricioBossFightActions
     {
         private InputActions m_Wrapper;
@@ -444,6 +427,7 @@ public class InputActions : IInputActionCollection
         public InputAction @Invulnerability => m_Wrapper.m_PatricioBossFight_Invulnerability;
         public InputAction @Stare => m_Wrapper.m_PatricioBossFight_Stare;
         public InputAction @Special => m_Wrapper.m_PatricioBossFight_Special;
+        public InputAction @Freeze => m_Wrapper.m_PatricioBossFight_Freeze;
         public InputActionMap Get() { return m_Wrapper.m_PatricioBossFight; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -474,6 +458,9 @@ public class InputActions : IInputActionCollection
                 Special.started -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnSpecial;
                 Special.performed -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnSpecial;
                 Special.canceled -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnSpecial;
+                Freeze.started -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnFreeze;
+                Freeze.performed -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnFreeze;
+                Freeze.canceled -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnFreeze;
             }
             m_Wrapper.m_PatricioBossFightActionsCallbackInterface = instance;
             if (instance != null)
@@ -499,6 +486,9 @@ public class InputActions : IInputActionCollection
                 Special.started += instance.OnSpecial;
                 Special.performed += instance.OnSpecial;
                 Special.canceled += instance.OnSpecial;
+                Freeze.started += instance.OnFreeze;
+                Freeze.performed += instance.OnFreeze;
+                Freeze.canceled += instance.OnFreeze;
             }
         }
     }
@@ -530,5 +520,6 @@ public class InputActions : IInputActionCollection
         void OnInvulnerability(InputAction.CallbackContext context);
         void OnStare(InputAction.CallbackContext context);
         void OnSpecial(InputAction.CallbackContext context);
+        void OnFreeze(InputAction.CallbackContext context);
     }
 }
