@@ -4,104 +4,76 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-
 public class Patricio : MonoBehaviour
 {
-
     Rigidbody2D rbd;
     Gamepad gamepad;
-    [SerializeField, Header("MOVEMENT")]
-    private float speed = 300;
-    [SerializeField]
-    private Vector2 movement;
-    [SerializeField]
-    private bool jump;
-    [SerializeField]
-    private float jumpForce;
-    [SerializeField]
-    private bool isFacingRight;
-    [SerializeField]
-    private bool freezeMovement;
+    [SerializeField, Header("MOVEMENT")] private float speed = 300;
+    [SerializeField] private Vector2 movement;
+    [SerializeField] private bool jump;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private bool isFacingRight;
+    [SerializeField] private bool freezeMovement;
 
 
     [SerializeField, Header("GROUND CHECKING"), Space]
     private bool isGrounded;
-    [SerializeField]
-    private Transform groundCheck;
-    [SerializeField]
-    private float checkRadius;
-    [SerializeField]
-    private LayerMask ground;
-    [SerializeField]
-    private Vector2 lastPostition;
-    [SerializeField]
-    private float distance;
+
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float checkRadius;
+    [SerializeField] private LayerMask ground;
+    [SerializeField] private Vector2 lastPostition;
+    [SerializeField] private float distance;
 
 
     [SerializeField, Space, Header("ABILITIES")]
     private bool staring;
-    [SerializeField]
-    private bool invunerable;
-    [SerializeField]
-    private bool isInv;
-    [SerializeField]
-    private bool invunerableLocker;
+
+    [SerializeField] private bool invunerable;
+    [SerializeField] private bool isInv;
+    [SerializeField] private bool invunerableLocker;
 
     [SerializeField, Space, Header("SHOOTS")]
     private bool special;
-    [SerializeField]
-    private bool shoot;
-    [SerializeField]
-    private float shootTime;
-    [SerializeField]
-    private float shootDelay;
-    [SerializeField]
-    private Bullet bulletPrefab;
-    [SerializeField]
-    private Transform shootOrigin;
-    [SerializeField]
-    private Vector2 vectorOffset;
-    [SerializeField]
-    private float offset;
-    [SerializeField, Range(0f, .24f)]
-    private float deadZone;
 
-    [SerializeField, Space]
-    private Vector2 movementNormalized;
+    [SerializeField] private bool shoot;
+    [SerializeField] private float shootTime;
+    [SerializeField] private float shootDelay;
+    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private Transform shootOrigin;
+    [SerializeField] private Vector2 vectorOffset;
+    [SerializeField] private float offset;
+    [SerializeField, Range(0f, .24f)] private float deadZone;
+
+    [SerializeField, Space] private Vector2 movementNormalized;
 
     // Start is called before the first frame update
     void Start()
     {
         rbd = GetComponent<Rigidbody2D>();
         gamepad = Gamepad.current;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //GamepadCheck();
         Move();
         Jump();
-        Invunerable();
+        Invulnerable();
         Shoot();
 
         lastPostition = transform.position;
     }
 
-    [Obsolete]
     private void Shoot()
     {
         Aim();
 
-        if (shoot && Time.time > shootTime)
-        {
-            shootTime = Time.time + shootDelay;
-            bulletPrefab.Parent = gameObject;
-            bulletPrefab.Direction = movementNormalized;
-            Instantiate(bulletPrefab, shootOrigin.position, shootOrigin.rotation);
-        }
+        if (!shoot || !(Time.time > shootTime)) return;
+        shootTime = Time.time + shootDelay;
+        bulletPrefab.Parent = gameObject;
+        bulletPrefab.Direction = movementNormalized;
+        Instantiate(bulletPrefab, shootOrigin.position, shootOrigin.rotation);
     }
 
     private void Aim()
@@ -121,16 +93,17 @@ public class Patricio : MonoBehaviour
         if (movementNormalized != Vector2.zero && isGrounded)
             invunerableLocker = false;
 
-        movementNormalized = movementNormalized == Vector2.zero ? (isFacingRight ? Vector2.right : Vector2.left) : movementNormalized;
+        movementNormalized = movementNormalized == Vector2.zero
+            ? (isFacingRight ? Vector2.right : Vector2.left)
+            : movementNormalized;
 
         vectorOffset.x = movementNormalized.x * offset;
         vectorOffset.y = movementNormalized.y * offset;
 
         shootOrigin.position = transform.position + new Vector3(vectorOffset.x, vectorOffset.y);
-
     }
 
-    private void Invunerable()
+    private void Invulnerable()
     {
         if (!invunerableLocker)
         {
@@ -140,16 +113,13 @@ public class Patricio : MonoBehaviour
             DS4Manager.Instancia.SetRumble(false);
         }
 
-        if (invunerable && !isInv && invunerableLocker)
-        {
-            isInv = true;
-            invunerableLocker = true;
-            StartCoroutine(SetLight());
-        }
-
+        if (!invunerable || isInv || !invunerableLocker) return;
+        isInv = true;
+        invunerableLocker = true;
+        StartCoroutine(SetLight());
     }
 
-    IEnumerator SetLight()
+    private IEnumerator SetLight()
     {
         DS4Manager.Instancia.SetRightRumble(50, 0);
         DS4Manager.Instancia.SetLights(255, 0, 0);
@@ -162,7 +132,6 @@ public class Patricio : MonoBehaviour
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
-
     }
 
     private void Jump()
@@ -189,7 +158,6 @@ public class Patricio : MonoBehaviour
         Flip();
         if (!freezeMovement)
             rbd.velocity = new Vector2(movement.x * speed * Time.deltaTime, rbd.velocity.y);
-
     }
 
     private void Flip()
@@ -197,16 +165,21 @@ public class Patricio : MonoBehaviour
         if (movement.x > 0 && !isFacingRight)
         {
             isFacingRight = true;
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            var localScale = transform.localScale;
+            // ReSharper disable once Unity.InefficientPropertyAccess
+            transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
         }
-        if (movement.x < 0 && isFacingRight)
-        {
-            isFacingRight = false;
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-        }
+
+        if (!(movement.x < 0) || !isFacingRight) return;
+        isFacingRight = false;
+        var scale = transform.localScale;
+        // ReSharper disable once Unity.InefficientPropertyAccess
+        transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
+        
     }
 
     #region Input Action Receivers
+
     public void MoveInput(InputAction.CallbackContext context)
     {
         switch (context.phase)
@@ -329,7 +302,6 @@ public class Patricio : MonoBehaviour
 
     public void OnDeviceRegain(PlayerInput input)
     {
-
     }
 
     #endregion
