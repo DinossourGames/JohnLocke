@@ -1,24 +1,30 @@
-﻿using DS4_Wrapper;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿using System.Collections;
+using DS4_Wrapper;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Patricio : MonoBehaviour
 {
-    Rigidbody2D rbd;
-    Gamepad gamepad;
-    [SerializeField, Header("MOVEMENT")] private float speed = 300;
+    private Rigidbody2D rbd;
+
+    [SerializeField] [Header("MOVEMENT")] private float speed = 300;
     [SerializeField] private Vector2 movement;
-    [SerializeField] private bool jump;
-    [SerializeField] private float jumpForce;
     [SerializeField] private bool isFacingRight;
     [SerializeField] private bool freezeMovement;
+    [SerializeField] [Space] private Vector2 movementNormalized;
 
+    [SerializeField] [Space] [Header("Jump")]
+    private bool jump;
 
-    [SerializeField, Header("GROUND CHECKING"), Space]
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpTime;
+    [SerializeField] private float jumpTimeCounter;
+    [SerializeField] private bool isJumping;
+    [SerializeField] private int framCount;
+    [SerializeField] private bool parry;
+    [SerializeField] private bool goFurther;
+
+    [SerializeField] [Header("GROUND CHECKING")] [Space]
     private bool isGrounded;
 
     [SerializeField] private Transform groundCheck;
@@ -27,15 +33,14 @@ public class Patricio : MonoBehaviour
     [SerializeField] private Vector2 lastPostition;
     [SerializeField] private float distance;
 
-
-    [SerializeField, Space, Header("ABILITIES")]
+    [SerializeField] [Space] [Header("ABILITIES")]
     private bool staring;
 
     [SerializeField] private bool invunerable;
     [SerializeField] private bool isInv;
     [SerializeField] private bool invunerableLocker;
 
-    [SerializeField, Space, Header("SHOOTS")]
+    [SerializeField] [Space] [Header("SHOOTS")]
     private bool special;
 
     [SerializeField] private bool shoot;
@@ -45,21 +50,17 @@ public class Patricio : MonoBehaviour
     [SerializeField] private Transform shootOrigin;
     [SerializeField] private Vector2 vectorOffset;
     [SerializeField] private float offset;
-    [SerializeField, Range(0f, .24f)] private float deadZone;
-
-    [SerializeField, Space] private Vector2 movementNormalized;
-    [SerializeField] private bool parry;
-    [SerializeField] private List<GameObject> parryed;
+    [SerializeField] [Range(0f, .24f)] private float deadZone;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rbd = GetComponent<Rigidbody2D>();
-        gamepad = Gamepad.current;
+        parry = false;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Move();
         Jump();
@@ -79,6 +80,9 @@ public class Patricio : MonoBehaviour
     private void Shoot()
     {
         Aim();
+        if (shoot)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene()
+                .buildIndex);
 
         if (!shoot || !(Time.time > shootTime)) return;
         shootTime = Time.time + shootDelay;
@@ -93,19 +97,16 @@ public class Patricio : MonoBehaviour
 
         if (movement.x > deadZone)
             movementNormalized.x = 1;
-        else if (movement.x < -deadZone)
-            movementNormalized.x = -1;
+        else if (movement.x < -deadZone) movementNormalized.x = -1;
 
         if (movement.y > deadZone)
             movementNormalized.y = 1;
-        else if (movement.y < -deadZone)
-            movementNormalized.y = -1;
+        else if (movement.y < -deadZone) movementNormalized.y = -1;
 
-        if (movementNormalized != Vector2.zero && isGrounded)
-            invunerableLocker = false;
+        if (movementNormalized != Vector2.zero && isGrounded) invunerableLocker = false;
 
         movementNormalized = movementNormalized == Vector2.zero
-            ? (isFacingRight ? Vector2.right : Vector2.left)
+            ? isFacingRight ? Vector2.right : Vector2.left
             : movementNormalized;
 
         vectorOffset.x = movementNormalized.x * offset;
@@ -140,16 +141,9 @@ public class Patricio : MonoBehaviour
         DS4Manager.Instancia.SetRumble(false);
     }
 
-
-
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("ParryObject"))
-        {
-            if (parryed.Contains(other.gameObject)) return;
-            parry = true;
-        }
+        if (other.CompareTag("ParryObject")) parry = jump && !isGrounded && framCount <= 12;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -163,32 +157,54 @@ public class Patricio : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded && jump)
-            rbd.velocity = Vector2.up * jumpForce;
+        if (jump) framCount++;
 
-        if (isGrounded)
-            invunerableLocker = false;
+        if (isGrounded && jump)
+        {
+            rbd.velocity = Vector2.up * jumpForce;
+            jumpTimeCounter = jumpTime;
+            isJumping = true;
+        }
+
+        if (goFurther)
+        {
+            if (jump && isJumping)
+            {
+                if (jumpTimeCounter > 0)
+                {
+                    rbd.velocity = Vector2.up * (jumpForce * .8f);
+                    jumpTimeCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    isJumping = false;
+                }
+            }
+        }    
+
+        if (isGrounded) invunerableLocker = false;
 
         distance = transform.position.y - lastPostition.y;
 
         if (!isGrounded && distance < 0)
         {
             invunerableLocker = true;
-            rbd.velocity += Vector2.down;
-
-            if (!parry || !jump) return;
-            rbd.velocity = Vector2.up * jumpForce;
-            parry = false;
+            rbd.velocity += Vector2.down * 1.2f;
         }
         else
+        {
             invunerableLocker = false;
+        }
+
+        if (!parry || !jump) return;
+        rbd.velocity = 1.4f * jumpForce * Vector2.up;
+        parry = false;
     }
 
     private void Move()
     {
         Flip();
-        if (!freezeMovement)
-            rbd.velocity = new Vector2(movement.x * speed * Time.deltaTime, rbd.velocity.y);
+        if (!freezeMovement) rbd.velocity = new Vector2(movement.x * speed * Time.deltaTime, rbd.velocity.y);
     }
 
     private void Flip()
@@ -209,7 +225,7 @@ public class Patricio : MonoBehaviour
     }
 
     #endregion
-    
+
     #region Input Action Receivers
 
     public void MoveInput(InputAction.CallbackContext context)
@@ -234,6 +250,8 @@ public class Patricio : MonoBehaviour
                 break;
             case InputActionPhase.Canceled:
                 jump = false;
+                isJumping = false;
+                framCount = 0;
                 break;
         }
     }
@@ -324,16 +342,6 @@ public class Patricio : MonoBehaviour
                 special = false;
                 break;
         }
-    }
-
-
-    public void OnDeviceLost(PlayerInput input)
-    {
-        print(input.devices[0]);
-    }
-
-    public void OnDeviceRegain(PlayerInput input)
-    {
     }
 
     #endregion
