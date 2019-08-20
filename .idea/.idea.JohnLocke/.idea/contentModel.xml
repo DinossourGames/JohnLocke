@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\felip\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\felip\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_JohnLocke.-2069097786.00" t="ExcludeRecursive" />
+    <e p="C:\Users\felip\Documents\CasaAberta\JohnLocke" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Common" t="Include">
+          <e p="Boundaries.cs" t="Include" />
+          <e p="InputActions.cs" t="Include" />
+        </e>
+        <e p="Editor" t="Include">
+          <e p="DeletePrefs.cs" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="BossFights" t="Include">
+            <e p="Patricio" t="Include">
+              <e p="BossFightManager.cs" t="Include" />
+              <e p="Bullet.cs" t="Include" />
+              <e p="Patricio.cs" t="Include" />
+            </e>
+          </e>
+          <e p="ControlManager.cs" t="Include" />
+          <e p="SceneManager.cs" t="Include" />
+        </e>
+      </e>
+      <e p="JohnLocke.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

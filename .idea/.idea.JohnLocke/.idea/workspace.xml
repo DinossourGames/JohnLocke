@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Test/Platform.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/0.physicsMaterial2D" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/basi.physicsMaterial2D" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/basi.physicsMaterial2D" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Images/Test/Platform.prefab" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1PfLMwLjnnL1kfYtIEHizBXiZJ5" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="19568">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="19568" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="" />
+      <created>1566260161761</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1566260161761</updated>
+      <workItem from="1566260165542" duration="26000" />
+      <workItem from="1566260214643" duration="1043000" />
+      <workItem from="1566261744255" duration="108000" />
+      <workItem from="1566262058913" duration="232000" />
+      <workItem from="1566262353568" duration="670000" />
+      <workItem from="1566263058406" duration="158000" />
+      <workItem from="1566263241438" duration="11812000" />
+    </task>
+    <task id="LOCAL-00001" summary="Some code clean up">
+      <created>1566264010803</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566264010803</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+    <MESSAGE value="Some code clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some code clean up" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="872" y="183" key="#Plugins" />
+    <state x="872" y="183" key="#Plugins/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.0.bottom" />
+    <state width="2517" height="2" key="GridCell.Tab.0.bottom/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.0.center" />
+    <state width="2517" height="2" key="GridCell.Tab.0.center/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.0.left" />
+    <state width="2517" height="2" key="GridCell.Tab.0.left/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.0.right" />
+    <state width="2517" height="2" key="GridCell.Tab.0.right/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.1.bottom" />
+    <state width="2517" height="2" key="GridCell.Tab.1.bottom/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.1.center" />
+    <state width="2517" height="2" key="GridCell.Tab.1.center/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.1.left" />
+    <state width="2517" height="2" key="GridCell.Tab.1.left/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.1.right" />
+    <state width="2517" height="2" key="GridCell.Tab.1.right/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.2.bottom" />
+    <state width="2517" height="2" key="GridCell.Tab.2.bottom/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.2.center" />
+    <state width="2517" height="2" key="GridCell.Tab.2.center/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.2.left" />
+    <state width="2517" height="2" key="GridCell.Tab.2.left/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.2.right" />
+    <state width="2517" height="2" key="GridCell.Tab.2.right/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.3.bottom" />
+    <state width="2517" height="2" key="GridCell.Tab.3.bottom/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.3.center" />
+    <state width="2517" height="2" key="GridCell.Tab.3.center/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.3.left" />
+    <state width="2517" height="2" key="GridCell.Tab.3.left/2560.1080/1600.900" />
+    <state width="2517" height="2" key="GridCell.Tab.3.right" />
+    <state width="2517" height="2" key="GridCell.Tab.3.right/2560.1080/1600.900" />
+    <state x="1011" y="249" key="RiderGenerateDialog" />
+    <state x="1011" y="249" key="RiderGenerateDialog/2560.1080/1600.900" />
+    <state x="765" y="167" key="SettingsEditor" />
+    <state x="765" y="167" key="SettingsEditor/2560.1080/1600.900" />
+    <state x="943" y="227" width="1344" height="678" key="search.everywhere.popup" />
+    <state x="943" y="227" width="1344" height="678" key="search.everywhere.popup/2560.1080/1600.900" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
