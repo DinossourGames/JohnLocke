@@ -68,34 +68,37 @@
     <Compile Include="Assets\Scripts\ControlManager.cs" />
     <Compile Include="Assets\Scripts\SceneManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InputSystem">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -274,8 +277,20 @@
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook.Unity">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/PlaybackEngines/Facebook/SDK/7.9.4/Facebook.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Arcade">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/PlaybackEngines/Facebook/SDK/7.9.4/Facebook.Unity.Arcade.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/PlaybackEngines/Facebook/SDK/7.9.4/Facebook.Unity.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="FacebookNamedPipeClient">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/PlaybackEngines/Facebook/SDK/7.9.4/FacebookNamedPipeClient.dll</HintPath>
+    </Reference>
     <Reference Include="DS4 Wrapper Dinossour">
-      <HintPath>C:/Users/felip/Documents/CasaAberta/JohnLocke/Assets/Plugins/DS4 Wrapper Dinossour.dll</HintPath>
+      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Assets/Plugins/DS4 Wrapper Dinossour.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

@@ -2,6 +2,7 @@
 using DS4_Wrapper;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class Patricio : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class Patricio : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+
         rbd = GetComponent<Rigidbody2D>();
         parry = false;
     }
@@ -62,11 +64,11 @@ public class Patricio : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        DS4Manager.Instancia.PoolUpdate();
         Move();
         Jump();
         Invulnerable();
         Shoot();
-
         lastPostition = transform.position;
     }
 
@@ -157,6 +159,7 @@ public class Patricio : MonoBehaviour
 
     private void Jump()
     {
+
         if (jump) framCount++;
 
         if (isGrounded && jump)

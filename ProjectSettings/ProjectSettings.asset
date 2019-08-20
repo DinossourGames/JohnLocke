@@ -123,6 +123,7 @@ PlayerSettings:
   bundleVersion: 1.0
   preloadedAssets:
   - {fileID: 0}
+  - {fileID: 11400000, guid: d4199ca9a362b464c8452efa999705c3, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -600,7 +601,7 @@ PlayerSettings:
   luminVersion:
     m_VersionCode: 1
     m_VersionName: 
-  facebookSdkVersion: 
+  facebookSdkVersion: 7.10.1
   facebookAppId: 
   facebookCookies: 1
   facebookLogging: 1
