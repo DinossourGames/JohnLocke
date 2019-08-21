@@ -310,9 +310,6 @@
     <Reference Include="UnityEditor.Facebook.Extensions">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/PlaybackEngines/Facebook/UnityEditor.Facebook.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
     <Reference Include="DS4 Wrapper Dinossour">
       <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Assets/Plugins/DS4 Wrapper Dinossour.dll</HintPath>
     </Reference>

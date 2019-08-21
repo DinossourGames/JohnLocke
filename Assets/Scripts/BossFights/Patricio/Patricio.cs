@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using DS4_Wrapper;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 using UnityEngine.Serialization;
 
 public class Patricio : MonoBehaviour
@@ -53,18 +53,23 @@ public class Patricio : MonoBehaviour
     [SerializeField] private float offset;
     [SerializeField] [Range(0f, .24f)] private float deadZone;
 
+
+    private DualShock4GamepadHID _gamepad;
+
     // Start is called before the first frame update
+
+    // Update is called once per frame
     private void Start()
     {
-
+        _gamepad = (DualShock4GamepadHID) DualShockGamepad.current;
+        _gamepad.SetLightBarColor(new Color(0, 255, 0));
         rbd = GetComponent<Rigidbody2D>();
         parry = false;
     }
 
-    // Update is called once per frame
+
     private void Update()
     {
-        DS4Manager.Instancia.PoolUpdate();
         Move();
         Jump();
         Invulnerable();
@@ -119,28 +124,36 @@ public class Patricio : MonoBehaviour
 
     private void Invulnerable()
     {
+        if (isInv)
+        {
+            _gamepad.SetMotorSpeeds(.5f, 0);
+            _gamepad.SetLightBarColor(new Color(255, 0, 0));
+
+        }
+        else
+        {
+            _gamepad.SetMotorSpeeds(0, 0);
+            _gamepad.SetLightBarColor(new Color(0, 255, 0));
+        }
+
+
         if (!invunerableLocker)
         {
             isInv = false;
-            StopAllCoroutines();
-            DS4Manager.Instancia.SetLights(0, 255, 0);
-            DS4Manager.Instancia.SetRumble(false);
+            _gamepad.SetLightBarColor(new Color(0, 255, 0));
         }
 
         if (!invunerable || isInv || !invunerableLocker) return;
         isInv = true;
         invunerableLocker = true;
-        StartCoroutine(SetLight());
     }
 
     private IEnumerator SetLight()
     {
-        DS4Manager.Instancia.SetRightRumble(50, 0);
-        DS4Manager.Instancia.SetLights(255, 0, 0);
+        _gamepad.SetLightBarColor(new Color(255, 0, 0));
         yield return new WaitForSeconds(3);
-        DS4Manager.Instancia.SetLights(0, 255, 0);
+        _gamepad.SetLightBarColor(new Color(0, 255, 0));
         invunerableLocker = false;
-        DS4Manager.Instancia.SetRumble(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -159,7 +172,6 @@ public class Patricio : MonoBehaviour
 
     private void Jump()
     {
-
         if (jump) framCount++;
 
         if (isGrounded && jump)
@@ -183,7 +195,7 @@ public class Patricio : MonoBehaviour
                     isJumping = false;
                 }
             }
-        }    
+        }
 
         if (isGrounded) invunerableLocker = false;
 
