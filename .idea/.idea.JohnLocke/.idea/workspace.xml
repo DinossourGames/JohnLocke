@@ -2,11 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Common/GamepadManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Common/Restart.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Common/Boundaries.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/Boundaries.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Palettes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/DS4 Wrapper Dinossour.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/DS4 Wrapper Dinossour.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/DS4 Wrapper Dinossour.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/DS4 Wrapper Dinossour.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/HIDHandler.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/HIDHandler.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/HIDHandler.exe.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/HIDHandler.exe.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControlManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/Restart.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/SceneManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/SceneManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,15 +37,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@0.9.3-preview/InputSystem/Utilities/ArrayHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Common/GamepadManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Images/Test/Platform.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Common/Boundaries.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Common/Restart.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Common/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/Assets/Common/Boundaries.cs" />
+        <option value="$PROJECT_DIR$/Assets/Common/SceneManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Common/Restart.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
+        <option value="$PROJECT_DIR$/Assets/Common/GamepadManager.cs" />
       </list>
     </option>
   </component>
@@ -42,7 +70,7 @@
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -56,18 +84,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="3540">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="3540" />
       <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="19568">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="3540">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="19568" />
+      <option name="pid" value="3540" />
       <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
@@ -91,6 +119,8 @@
       <workItem from="1566263241438" duration="11812000" />
       <workItem from="1566323460235" duration="4673000" />
       <workItem from="1566416705949" duration="2418000" />
+      <workItem from="1566442849365" duration="398000" />
+      <workItem from="1566443385984" duration="11725000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>
@@ -129,42 +159,44 @@
   <component name="WindowStateProjectService">
     <state x="872" y="183" key="#Plugins" />
     <state x="872" y="183" key="#Plugins/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.0.bottom" />
-    <state width="2517" height="2" key="GridCell.Tab.0.bottom/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.0.center" />
-    <state width="2517" height="2" key="GridCell.Tab.0.center/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.0.left" />
-    <state width="2517" height="2" key="GridCell.Tab.0.left/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.0.right" />
-    <state width="2517" height="2" key="GridCell.Tab.0.right/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.1.bottom" />
-    <state width="2517" height="2" key="GridCell.Tab.1.bottom/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.1.center" />
-    <state width="2517" height="2" key="GridCell.Tab.1.center/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.1.left" />
-    <state width="2517" height="2" key="GridCell.Tab.1.left/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.1.right" />
-    <state width="2517" height="2" key="GridCell.Tab.1.right/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.2.bottom" />
-    <state width="2517" height="2" key="GridCell.Tab.2.bottom/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.2.center" />
-    <state width="2517" height="2" key="GridCell.Tab.2.center/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.2.left" />
-    <state width="2517" height="2" key="GridCell.Tab.2.left/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.2.right" />
-    <state width="2517" height="2" key="GridCell.Tab.2.right/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.3.bottom" />
-    <state width="2517" height="2" key="GridCell.Tab.3.bottom/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.3.center" />
-    <state width="2517" height="2" key="GridCell.Tab.3.center/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.3.left" />
-    <state width="2517" height="2" key="GridCell.Tab.3.left/2560.1080/1600.900" />
-    <state width="2517" height="2" key="GridCell.Tab.3.right" />
-    <state width="2517" height="2" key="GridCell.Tab.3.right/2560.1080/1600.900" />
+    <state x="995" y="327" key="#com.intellij.fileTypes.FileTypeChooser" />
+    <state x="995" y="327" key="#com.intellij.fileTypes.FileTypeChooser/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.0.bottom" />
+    <state width="2517" height="351" key="GridCell.Tab.0.bottom/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.0.center" />
+    <state width="2517" height="351" key="GridCell.Tab.0.center/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.0.left" />
+    <state width="2517" height="351" key="GridCell.Tab.0.left/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.0.right" />
+    <state width="2517" height="351" key="GridCell.Tab.0.right/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.1.bottom" />
+    <state width="2517" height="351" key="GridCell.Tab.1.bottom/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.1.center" />
+    <state width="2517" height="351" key="GridCell.Tab.1.center/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.1.left" />
+    <state width="2517" height="351" key="GridCell.Tab.1.left/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.1.right" />
+    <state width="2517" height="351" key="GridCell.Tab.1.right/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.2.bottom" />
+    <state width="2517" height="351" key="GridCell.Tab.2.bottom/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.2.center" />
+    <state width="2517" height="351" key="GridCell.Tab.2.center/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.2.left" />
+    <state width="2517" height="351" key="GridCell.Tab.2.left/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.2.right" />
+    <state width="2517" height="351" key="GridCell.Tab.2.right/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.3.bottom" />
+    <state width="2517" height="351" key="GridCell.Tab.3.bottom/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.3.center" />
+    <state width="2517" height="351" key="GridCell.Tab.3.center/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.3.left" />
+    <state width="2517" height="351" key="GridCell.Tab.3.left/2560.1080/1600.900" />
+    <state width="2517" height="351" key="GridCell.Tab.3.right" />
+    <state width="2517" height="351" key="GridCell.Tab.3.right/2560.1080/1600.900" />
     <state x="1011" y="249" key="RiderGenerateDialog" />
     <state x="1011" y="249" key="RiderGenerateDialog/2560.1080/1600.900" />
-    <state x="765" y="167" key="SettingsEditor" />
-    <state x="765" y="167" key="SettingsEditor/2560.1080/1600.900" />
+    <state x="1127" y="192" key="SettingsEditor" />
+    <state x="1127" y="192" key="SettingsEditor/2560.1080/1600.900" />
     <state x="757" y="208" key="VCS.ChangeListViewerDialog" />
     <state x="757" y="208" key="VCS.ChangeListViewerDialog/1920.1080" />
     <state x="943" y="227" width="1344" height="678" key="search.everywhere.popup" />

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,9 +27,6 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("LoadingScreen");
     }
 
- 
-  
-
     IEnumerator LoadSceneAsync(string sceneName, int bgIndex)
     {
         Background.sprite = BgImages[bgIndex];
@@ -46,7 +44,13 @@ public class SceneManager : MonoBehaviour
         yield return new WaitForSeconds(.7f);
 
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
-
     }
 
+    private void OnApplicationQuit()
+    {
+        foreach (var item in Process.GetProcessesByName("HIDHandler"))
+        {
+            item.Kill();
+        }
+    }
 }

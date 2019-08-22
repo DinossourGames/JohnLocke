@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\TonyStark\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\TonyStark\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_JohnLocke.-1057941309.00" t="ExcludeRecursive" />
-    <e p="C:\Users\TonyStark\Documents\GitHub\JohnLocke" t="IncludeRecursive">
+    <e p="C:\Users\felip\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\felip\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_JohnLocke.-402021886.00" t="ExcludeRecursive" />
+    <e p="C:\Users\felip\Documents\GitHub\JohnLocke" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Common" t="Include">
           <e p="Boundaries.cs" t="Include" />
+          <e p="GamepadManager.cs" t="Include" />
           <e p="InputActions.cs" t="Include" />
+          <e p="Restart.cs" t="Include" />
+          <e p="SceneManager.cs" t="Include" />
         </e>
         <e p="Editor" t="Include">
           <e p="DeletePrefs.cs" t="Include" />
@@ -22,8 +25,6 @@
               <e p="Patricio.cs" t="Include" />
             </e>
           </e>
-          <e p="ControlManager.cs" t="Include" />
-          <e p="SceneManager.cs" t="Include" />
         </e>
       </e>
       <e p="JohnLocke.sln" t="IncludeFlat" />

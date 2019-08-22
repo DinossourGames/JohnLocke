@@ -799,11 +799,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 5
   m_Material: {fileID: 6200000, guid: 764b04f463c2d9a41963455d20cd28a3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &1556233438
 MonoBehaviour:
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26807125a04ec8741b96ae1cfc6ddb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
+  speed: 6
   movement: {x: 0, y: 0}
   isFacingRight: 1
   freezeMovement: 0
@@ -961,12 +961,34 @@ MonoBehaviour:
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1556233438}
+        m_MethodName: OnDeviceLost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.InputSystem.PlayerInput+DeviceLostEvent, Unity.InputSystem,
       Version=0.9.3.0, Culture=neutral, PublicKeyToken=null
   m_DeviceRegainedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1556233438}
+        m_MethodName: OnDeviceRegained
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.InputSystem.PlayerInput+DeviceRegainedEvent, Unity.InputSystem,
       Version=0.9.3.0, Culture=neutral, PublicKeyToken=null
   m_ActionEvents:
@@ -1123,7 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218f08d91df429c49b4630944bbf54d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCamera: {fileID: 1435773014}
+  mainCamera: {fileID: 1435773014}
   screenBounds: {x: 0, y: 0}
 --- !u!1001 &1705148627
 PrefabInstance:
@@ -1303,6 +1325,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a344c9b0471bd4bb11ac947a4e22d6, type: 3}
+--- !u!1 &2091861246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5195068401754064599, guid: d1a344c9b0471bd4bb11ac947a4e22d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 5195068402004415076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2091861250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091861246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f425a287f4c7d574eb2be54de1273839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5195068402004415076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1380,5 +1420,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 42b79921f6609a845894b24f3da7ed91, type: 2}
+    - target: {fileID: 5195068401754064592, guid: d1a344c9b0471bd4bb11ac947a4e22d6,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a344c9b0471bd4bb11ac947a4e22d6, type: 3}

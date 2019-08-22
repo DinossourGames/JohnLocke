@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DS4_Wrapper;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
@@ -54,15 +55,12 @@ public class Patricio : MonoBehaviour
     [SerializeField] [Range(0f, .24f)] private float deadZone;
 
 
-    private DualShock4GamepadHID _gamepad;
 
     // Start is called before the first frame update
 
     // Update is called once per frame
     private void Start()
     {
-        _gamepad = (DualShock4GamepadHID) DualShockGamepad.current;
-        _gamepad.SetLightBarColor(new Color(0, 255, 0));
         rbd = GetComponent<Rigidbody2D>();
         parry = false;
     }
@@ -70,7 +68,6 @@ public class Patricio : MonoBehaviour
 
     private void Update()
     {
-        Move();
         Jump();
         Invulnerable();
         Shoot();
@@ -79,6 +76,7 @@ public class Patricio : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Move();
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
     }
 
@@ -86,11 +84,8 @@ public class Patricio : MonoBehaviour
 
     private void Shoot()
     {
+       
         Aim();
-        if (shoot)
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene()
-                .buildIndex);
-
         if (!shoot || !(Time.time > shootTime)) return;
         shootTime = Time.time + shootDelay;
         bulletPrefab.Parent = gameObject;
@@ -126,34 +121,26 @@ public class Patricio : MonoBehaviour
     {
         if (isInv)
         {
-            _gamepad.SetMotorSpeeds(.5f, 0);
-            _gamepad.SetLightBarColor(new Color(255, 0, 0));
-
+           GamepadManager.SetRumble(0f,1f);
+           GamepadManager.SetLighbar(new Color32(255,0,255,0));
         }
         else
         {
-            _gamepad.SetMotorSpeeds(0, 0);
-            _gamepad.SetLightBarColor(new Color(0, 255, 0));
+            GamepadManager.SetRumble(0,0);
+            GamepadManager.SetLighbar(new Color32(32, 255, 0, 0));
+
         }
 
 
         if (!invunerableLocker)
         {
             isInv = false;
-            _gamepad.SetLightBarColor(new Color(0, 255, 0));
+            
         }
 
         if (!invunerable || isInv || !invunerableLocker) return;
         isInv = true;
         invunerableLocker = true;
-    }
-
-    private IEnumerator SetLight()
-    {
-        _gamepad.SetLightBarColor(new Color(255, 0, 0));
-        yield return new WaitForSeconds(3);
-        _gamepad.SetLightBarColor(new Color(0, 255, 0));
-        invunerableLocker = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -219,7 +206,7 @@ public class Patricio : MonoBehaviour
     private void Move()
     {
         Flip();
-        if (!freezeMovement) rbd.velocity = new Vector2(movement.x * speed * Time.deltaTime, rbd.velocity.y);
+        if (!freezeMovement) rbd.velocity = new Vector2(movement.x * speed, rbd.velocity.y);
     }
 
     private void Flip()
@@ -228,14 +215,12 @@ public class Patricio : MonoBehaviour
         {
             isFacingRight = true;
             var localScale = transform.localScale;
-            // ReSharper disable once Unity.InefficientPropertyAccess
             transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
         }
 
         if (!(movement.x < 0) || !isFacingRight) return;
         isFacingRight = false;
         var scale = transform.localScale;
-        // ReSharper disable once Unity.InefficientPropertyAccess
         transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
     }
 
@@ -358,6 +343,6 @@ public class Patricio : MonoBehaviour
                 break;
         }
     }
-
+    
     #endregion
 }
