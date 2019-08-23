@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Patricio : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class Patricio : MonoBehaviour
     [SerializeField] private float offset;
     [SerializeField] [Range(0f, .24f)] private float deadZone;
 
-
+    public Text text; 
 
     // Start is called before the first frame update
 
@@ -68,6 +69,7 @@ public class Patricio : MonoBehaviour
 
     private void Update()
     {
+        text.text = framCount.ToString();
         Jump();
         Invulnerable();
         Shoot();
@@ -119,17 +121,17 @@ public class Patricio : MonoBehaviour
 
     private void Invulnerable()
     {
-        if (isInv)
-        {
-           GamepadManager.SetRumble(0f,1f);
-           GamepadManager.SetLighbar(new Color32(255,0,255,0));
-        }
-        else
-        {
-            GamepadManager.SetRumble(0,0);
-            GamepadManager.SetLighbar(new Color32(32, 255, 0, 0));
-
-        }
+//        if (isInv)
+//        {
+//           GamepadManager.SetRumble(0f,1f);
+//           GamepadManager.SetLighbar(new Color32(255,0,255,0));
+//        }
+//        else
+//        {
+//            GamepadManager.SetRumble(0,0);
+//            GamepadManager.SetLighbar(new Color32(32, 255, 0, 0));
+//
+//        }
 
 
         if (!invunerableLocker)

@@ -14,19 +14,20 @@ public class BossFightManager : MonoBehaviour
     [SerializeField]
     private BossFightState fightState;
 
-    private void Awake()
+    private void Start()
     {
-        GamepadManager.Instance.UpdateGamepad();
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 75;
     }
 
-    private void OnApplicationQuit()
-    {
-        //TODO: REMOVE THIS
-        foreach (var item in Process.GetProcessesByName("HIDHandler"))
-        {
-            item.Kill();
-        }
-    }
+//    private void OnApplicationQuit()
+//    {
+//        //TODO: REMOVE THIS
+//        foreach (var item in Process.GetProcessesByName("HIDHandler"))
+//        {
+//            item.Kill();
+//        }
+//    }
 
    
 }

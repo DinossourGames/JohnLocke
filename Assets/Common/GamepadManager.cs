@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using DS4_Wrapper;
 using UnityEngine;
@@ -35,6 +33,7 @@ public sealed class GamepadManager
 
     private static Gamepad _gamepad;
     private static GamepadType _gamepadType;
+    private static bool isConnected;
 
     private GamepadManager()
     {
@@ -44,7 +43,15 @@ public sealed class GamepadManager
 
     private void Initialize()
     {
-       Process.Start($"{Application.dataPath}/Resources/HIDHandler.exe");
+//        try
+//        {
+//            Process.Start($"{Application.dataPath}/Resources/HIDHandler.exe");
+//            isConnected = Ds4Manager.Instancia.Ping();
+//        }
+//        catch
+//        {
+//            // ignored
+//        }
     }
 
     public void UpdateGamepad()
@@ -61,8 +68,8 @@ public sealed class GamepadManager
             _gamepadType = GamepadType.Ps4;
         else if (_gamepad.GetType() == typeof(DualShock3GamepadHID))
             _gamepadType = GamepadType.Ps3;
-        else if (_gamepad.GetType() == typeof(XboxOneGamepad))
-            _gamepadType = GamepadType.XOne;
+//        else if (_gamepad.GetType() == typeof(XboxOneGamepad))
+//            _gamepadType = GamepadType.XOne;
         else if (_gamepad.GetType() == typeof(XInputController))
             _gamepadType = GamepadType.Xbox;
         else
@@ -72,7 +79,7 @@ public sealed class GamepadManager
     public static void SetLighbar(Color32 color)
     {
         if (_gamepadType != GamepadType.Ps4) return;
-        if (Ds4Manager.Instancia.Ping())
+        if (isConnected)
             Ds4Manager.Instancia.SetLights(color);
         else
         {
@@ -87,7 +94,7 @@ public sealed class GamepadManager
             return;
 
         if (_gamepadType != GamepadType.Ps4) return;
-        if (Ds4Manager.Instancia.Ping())
+        if (isConnected)
             Ds4Manager.Instancia.SetRumble(left, 0, right, 0);
         else
         {
@@ -103,9 +110,14 @@ public sealed class GamepadManager
 
         if (_gamepadType == GamepadType.Ps4)
         {
-            if (Ds4Manager.Instancia.Ping())
+            if (isConnected)
                 Ds4Manager.Instancia.SetRumble((byte) (int) Math.Ceiling(left * 255), 0,
                     (byte) (int) Math.Ceiling(right * 255), 0);
+            else
+            {
+                var controller  = _gamepad as DualShock4GamepadHID;
+                controller?.SetMotorSpeeds(right,left );
+            }
         }
         else if (_gamepadType == GamepadType.Generic)
             _gamepad.SetMotorSpeeds(left, right);
@@ -114,13 +126,13 @@ public sealed class GamepadManager
             var controller = _gamepad as XInputController;
             controller?.SetMotorSpeeds(left, right);
         }
-        else if (_gamepadType == GamepadType.XOne)
-        {
-            var controller = _gamepad as XboxOneGamepad;
-            if (leftTrigger != -1f && rightTrigger != -1f)
-                controller?.SetMotorSpeeds(left, right, (float) leftTrigger, (float) rightTrigger);
-            else
-                controller?.SetMotorSpeeds(left, right);
-        }
+//        else if (_gamepadType == GamepadType.XOne)
+//        {
+//            var controller = _gamepad as XboxOneGamepad;
+//            if (leftTrigger != -1f && rightTrigger != -1f)
+//                controller?.SetMotorSpeeds(left, right, (float) leftTrigger, (float) rightTrigger);
+//            else
+//                controller?.SetMotorSpeeds(left, right);
+//        }
     }
 }

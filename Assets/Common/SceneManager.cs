@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class SceneManager : MonoBehaviour
 
     public static string sceneToLoad;
     public static int index;
+    
 
     private void Start()
     {
@@ -45,12 +47,4 @@ public class SceneManager : MonoBehaviour
 
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
     }
-
-    private void OnApplicationQuit()
-    {
-        foreach (var item in Process.GetProcessesByName("HIDHandler"))
-        {
-            item.Kill();
-        }
-    }
-}
+ }
