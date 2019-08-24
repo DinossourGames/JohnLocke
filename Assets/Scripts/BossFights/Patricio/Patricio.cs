@@ -55,7 +55,7 @@ public class Patricio : MonoBehaviour
     [SerializeField] private float offset;
     [SerializeField] [Range(0f, .24f)] private float deadZone;
 
-    public Text text; 
+    public Text text;
 
     // Start is called before the first frame update
 
@@ -85,7 +85,6 @@ public class Patricio : MonoBehaviour
 
     private void Shoot()
     {
-       
         Aim();
         if (!shoot || !(Time.time > shootTime)) return;
         shootTime = Time.time + shootDelay;
@@ -136,7 +135,6 @@ public class Patricio : MonoBehaviour
         if (!invunerableLocker)
         {
             isInv = false;
-            
         }
 
         if (!invunerable || isInv || !invunerableLocker) return;
@@ -234,11 +232,20 @@ public class Patricio : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                movement = context.ReadValue<Vector2>();
+                StartCoroutine(ReadInput(context));
                 break;
             case InputActionPhase.Canceled:
                 movement = Vector2.zero;
                 break;
+        }
+    }
+
+    private IEnumerator ReadInput(InputAction.CallbackContext context)
+    {
+        while (context.phase == InputActionPhase.Performed)
+        {
+            movement = context.ReadValue<Vector2>();
+            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -344,6 +351,6 @@ public class Patricio : MonoBehaviour
                 break;
         }
     }
-    
+
     #endregion
 }

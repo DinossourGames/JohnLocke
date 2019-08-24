@@ -124,11 +124,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 4048496129307197317}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 42b79921f6609a845894b24f3da7ed91, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0029167533, y: 0}
+  m_Offset: {x: 0.0017127991, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -139,7 +139,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.9893003, y: 1}
+  m_Size: {x: 2.9034548, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &4048496129307197318
 Rigidbody2D:
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 42b79921f6609a845894b24f3da7ed91, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -175,10 +175,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillPlatform: {fileID: 4048496129225025842}
+  basePlatform: {fileID: 4048496130054752643}
   state: 4
-  fillRatio: 0.25
-  fillDelay: 1
-  _hasCollision: 0
+  fillRatio: 0.2
+  fillDelay: 1.7
+  mainCamera: {fileID: 0}
+  screenBounds: {x: 0, y: 0}
+  platformBounds: {x: 0, y: 0}
+  riseDelay: 0.106
+  upAmmount: 0.107
 --- !u!1 &4048496130054752643
 GameObject:
   m_ObjectHideFlags: 0
