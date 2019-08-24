@@ -69,7 +69,6 @@ public class Patricio : MonoBehaviour
 
     private void Update()
     {
-        text.text = framCount.ToString();
         Jump();
         Invulnerable();
         Shoot();

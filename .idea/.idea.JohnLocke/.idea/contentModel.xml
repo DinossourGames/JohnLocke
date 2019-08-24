@@ -23,6 +23,7 @@
               <e p="BossFightManager.cs" t="Include" />
               <e p="Bullet.cs" t="Include" />
               <e p="Patricio.cs" t="Include" />
+              <e p="Platform.cs" t="Include" />
             </e>
           </e>
         </e>
