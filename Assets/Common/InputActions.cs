@@ -144,7 +144,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -155,7 +155,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<DualShockGamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad;Keyboard"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -199,7 +199,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -243,7 +243,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Invulnerability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -265,7 +265,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Stare"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -276,7 +276,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Stare"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -287,7 +287,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Special"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -309,7 +309,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Freeze"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -320,8 +320,155 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<DualShockGamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Freeze"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MittensBossFight"",
+            ""id"": ""de5c8eb9-cadf-448e-884d-2c482889df24"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Button"",
+                    ""id"": ""568a9cb8-2386-4a55-85c9-90626c02cc4c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""c814f345-8e36-49a8-8ac8-0675b9be5205"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""9341c749-1299-4518-ab1c-d83c16fdf8ec"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""d959c598-c5cb-47b4-8d72-c12553e3e220"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SwitchWeapons"",
+                    ""type"": ""Button"",
+                    ""id"": ""c3e8ae2f-43ee-496f-8a79-55f3367cce4c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""8798c4a7-c4d1-41ec-82a6-3a054563aad3"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e9641610-2de2-4ce9-950f-87ecb84991fe"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""15b3c6ea-dd10-418a-b4a2-12bb316d305e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""702595e5-afb3-4b4c-abf1-8419b9536cf3"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c46a7cd0-fcb4-4179-ab5a-5088445d0c4e"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a71b290-1dee-4101-b190-8c9573dd8262"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbd1524c-d72c-46c3-9075-aec4b1aa4752"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1915e22-3754-4aa1-bb47-f8cc8ec53647"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94afe6d0-4751-47bf-a38a-e8fadf0316de"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""SwitchWeapons"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -370,6 +517,13 @@ public class InputActions : IInputActionCollection
         m_PatricioBossFight_Stare = m_PatricioBossFight.GetAction("Stare");
         m_PatricioBossFight_Special = m_PatricioBossFight.GetAction("Special");
         m_PatricioBossFight_Freeze = m_PatricioBossFight.GetAction("Freeze");
+        // MittensBossFight
+        m_MittensBossFight = asset.GetActionMap("MittensBossFight");
+        m_MittensBossFight_Move = m_MittensBossFight.GetAction("Move");
+        m_MittensBossFight_Shoot = m_MittensBossFight.GetAction("Shoot");
+        m_MittensBossFight_Dash = m_MittensBossFight.GetAction("Dash");
+        m_MittensBossFight_Reload = m_MittensBossFight.GetAction("Reload");
+        m_MittensBossFight_SwitchWeapons = m_MittensBossFight.GetAction("SwitchWeapons");
     }
 
     ~InputActions()
@@ -504,6 +658,71 @@ public class InputActions : IInputActionCollection
         }
     }
     public PatricioBossFightActions @PatricioBossFight => new PatricioBossFightActions(this);
+
+    // MittensBossFight
+    private readonly InputActionMap m_MittensBossFight;
+    private IMittensBossFightActions m_MittensBossFightActionsCallbackInterface;
+    private readonly InputAction m_MittensBossFight_Move;
+    private readonly InputAction m_MittensBossFight_Shoot;
+    private readonly InputAction m_MittensBossFight_Dash;
+    private readonly InputAction m_MittensBossFight_Reload;
+    private readonly InputAction m_MittensBossFight_SwitchWeapons;
+    public struct MittensBossFightActions
+    {
+        private InputActions m_Wrapper;
+        public MittensBossFightActions(InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_MittensBossFight_Move;
+        public InputAction @Shoot => m_Wrapper.m_MittensBossFight_Shoot;
+        public InputAction @Dash => m_Wrapper.m_MittensBossFight_Dash;
+        public InputAction @Reload => m_Wrapper.m_MittensBossFight_Reload;
+        public InputAction @SwitchWeapons => m_Wrapper.m_MittensBossFight_SwitchWeapons;
+        public InputActionMap Get() { return m_Wrapper.m_MittensBossFight; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MittensBossFightActions set) { return set.Get(); }
+        public void SetCallbacks(IMittensBossFightActions instance)
+        {
+            if (m_Wrapper.m_MittensBossFightActionsCallbackInterface != null)
+            {
+                Move.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnMove;
+                Move.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnMove;
+                Move.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnMove;
+                Shoot.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnShoot;
+                Shoot.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnShoot;
+                Shoot.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnShoot;
+                Dash.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnDash;
+                Dash.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnDash;
+                Dash.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnDash;
+                Reload.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnReload;
+                Reload.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnReload;
+                Reload.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnReload;
+                SwitchWeapons.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnSwitchWeapons;
+                SwitchWeapons.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnSwitchWeapons;
+                SwitchWeapons.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnSwitchWeapons;
+            }
+            m_Wrapper.m_MittensBossFightActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                Move.started += instance.OnMove;
+                Move.performed += instance.OnMove;
+                Move.canceled += instance.OnMove;
+                Shoot.started += instance.OnShoot;
+                Shoot.performed += instance.OnShoot;
+                Shoot.canceled += instance.OnShoot;
+                Dash.started += instance.OnDash;
+                Dash.performed += instance.OnDash;
+                Dash.canceled += instance.OnDash;
+                Reload.started += instance.OnReload;
+                Reload.performed += instance.OnReload;
+                Reload.canceled += instance.OnReload;
+                SwitchWeapons.started += instance.OnSwitchWeapons;
+                SwitchWeapons.performed += instance.OnSwitchWeapons;
+                SwitchWeapons.canceled += instance.OnSwitchWeapons;
+            }
+        }
+    }
+    public MittensBossFightActions @MittensBossFight => new MittensBossFightActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -532,5 +751,13 @@ public class InputActions : IInputActionCollection
         void OnStare(InputAction.CallbackContext context);
         void OnSpecial(InputAction.CallbackContext context);
         void OnFreeze(InputAction.CallbackContext context);
+    }
+    public interface IMittensBossFightActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+        void OnSwitchWeapons(InputAction.CallbackContext context);
     }
 }

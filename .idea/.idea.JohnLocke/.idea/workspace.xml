@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Common/Restart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/Restart.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Common/InputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/InputActions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Common/InputActions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/InputActions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Common/InputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/InputActions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Common/InputActions.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/InputActions.inputactions.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,16 +29,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Common/GamepadManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Common/InputActions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@0.9.4-preview/InputSystem/Editor/AssetEditor/InputActionAssetManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Common/Boundaries.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Desktop/Mittens Boss Fight/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Images/Test/Platform.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Common/InputActions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Common/Boundaries.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Common/Restart.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Common/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -41,6 +50,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/Restart.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" />
       </list>
     </option>
   </component>
@@ -108,6 +118,10 @@
       <workItem from="1566443385984" duration="14080000" />
       <workItem from="1566527378096" duration="3554000" />
       <workItem from="1566531744393" duration="25659000" />
+      <workItem from="1566768993802" duration="516000" />
+      <workItem from="1566772348669" duration="211000" />
+      <workItem from="1566772570224" duration="55000" />
+      <workItem from="1566772789747" duration="3425000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>
@@ -180,15 +194,19 @@
     <state width="2517" height="351" key="GridCell.Tab.3.left/2560.1080/1600.900" />
     <state width="2517" height="351" key="GridCell.Tab.3.right" />
     <state width="2517" height="351" key="GridCell.Tab.3.right/2560.1080/1600.900" />
-    <state x="1011" y="249" key="RiderGenerateDialog" />
+    <state x="974" y="139" key="RiderGenerateDialog" />
+    <state x="974" y="139" key="RiderGenerateDialog/1366.768/1600.900" />
     <state x="1011" y="249" key="RiderGenerateDialog/2560.1080/1600.900" />
     <state x="1127" y="192" key="SettingsEditor" />
     <state x="1127" y="192" key="SettingsEditor/2560.1080/1600.900" />
     <state x="757" y="208" key="VCS.ChangeListViewerDialog" />
     <state x="757" y="208" key="VCS.ChangeListViewerDialog/1920.1080" />
+    <state x="450" y="264" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate" />
+    <state x="450" y="264" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate/1366.768/1600.900" />
     <state x="936" y="243" key="run.anything.popup" />
     <state x="936" y="243" key="run.anything.popup/2560.1080/1600.900" />
     <state x="943" y="227" width="1344" height="678" key="search.everywhere.popup" />
+    <state x="943" y="227" width="1344" height="678" key="search.everywhere.popup/1366.768/1600.900" />
     <state x="943" y="227" width="1344" height="678" key="search.everywhere.popup/1920.1080" />
     <state x="943" y="227" width="1344" height="678" key="search.everywhere.popup/2560.1080/1600.900" />
   </component>
