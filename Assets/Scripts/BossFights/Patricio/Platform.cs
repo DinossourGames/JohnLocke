@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
+using Random = UnityEngine.Random;
 
 enum State
 {
@@ -30,10 +33,14 @@ public class Platform : MonoBehaviour
     private bool _canCheck = true;
 
     // Screen bounds
-    [SerializeField, Header("Boundaries and Rise Config"), Space]
+    [SerializeField, Header("Boundaries"), Space]
     private Camera mainCamera;
 
     [SerializeField] private Vector2 screenBounds;
+
+    [SerializeField] private Transform leftChecker;
+
+    [SerializeField] private Transform RightChecker;
 
     // Sprite Bounds
     private BoxCollider2D _collider2D;
@@ -46,6 +53,7 @@ public class Platform : MonoBehaviour
     private Transform player;
     private SpriteRenderer baseSpriteRenderer;
     private Rigidbody2D rb;
+    [SerializeField, Space] private bool isTop;
 
     private void Start()
     {
@@ -58,29 +66,174 @@ public class Platform : MonoBehaviour
         platformBounds = _collider2D.size;
         baseSpriteRenderer = basePlatform.GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(Teste());
     }
 
-    private IEnumerator Rise()
+    private void Update()
     {
-        yield return StartCoroutine(ShakePlatform());
+        isTop = transform.position.y > screenBounds.y / 2;
+    }
 
-        while (transform.position.y < screenBounds.y - platformBounds.y / 2)
+    private IEnumerator Teste()
+    {
+        yield return new WaitForSeconds(2);
+        yield return StartCoroutine(OneLeft());
+
+        yield return StartCoroutine(GoLeft());
+        yield return new WaitForSeconds(2);
+        yield return StartCoroutine(Rise());
+        yield return new WaitForSeconds(2);
+
+        yield return StartCoroutine(OneRight());
+        yield return new WaitForSeconds(2);
+
+        yield return StartCoroutine(GoRight());
+        yield return new WaitForSeconds(2);
+
+        yield return StartCoroutine(Fall());
+        yield return new WaitForSeconds(2);
+
+        yield return StartCoroutine(OneLeft());
+        yield return new WaitForSeconds(2);
+
+        yield return StartCoroutine(Die());
+    }
+
+    private IEnumerator OneLeft()
+    {
+        state = State.MovingLeft;
+        yield return StartCoroutine(ShakePlatform());
+        var next = transform.position.x - platformBounds.x;
+
+        while (transform.position.x > next)
         {
             var position = transform.position;
-            position += Vector3.up * upAmmount;
+            position += Time.deltaTime * 5 * Vector3.left;
 
-            if (position.y > screenBounds.y - platformBounds.y && player.parent != null)
-                StartCoroutine(DropPlayer());
+            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
+                screenBounds.x - platformBounds.x / 2);
+
+            transform.position = position;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        state = isTop ? State.IdleUp : State.IdleDown;
+    }
+
+    private IEnumerator OneRight()
+    {
+        state = State.MovingRight;
+        yield return StartCoroutine(ShakePlatform());
+        var next = transform.position.x - platformBounds.x;
+
+        while (transform.position.x < next)
+        {
+            var position = transform.position;
+            position += Time.deltaTime * 5 * Vector3.right;
+
+            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
+                screenBounds.x - platformBounds.x / 2);
+
+            transform.position = position;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        state = isTop ? State.IdleUp : State.IdleDown;
+    }
+
+    private IEnumerator GoRight()
+    {
+        yield return StartCoroutine(ShakePlatform());
+        state = State.MovingRight;
+
+        while (transform.position.x < screenBounds.x - platformBounds.x / 2)
+        {
+            var position = transform.position;
+            position += Time.deltaTime * 5 * Vector3.right;
+
+            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
+                screenBounds.x - platformBounds.x / 2);
+
+            transform.position = position;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        state = isTop ? State.IdleUp : State.IdleDown;
+    }
+
+    private IEnumerator GoLeft()
+    {
+        yield return StartCoroutine(ShakePlatform());
+        state = State.MovingLeft;
+        while (transform.position.x > screenBounds.x * -1 + platformBounds.x / 2)
+        {
+            var position = transform.position;
+            position += Time.deltaTime * 5 * Vector3.left;
+
+            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
+                screenBounds.x - platformBounds.x / 2);
+
+            transform.position = position;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        state = isTop ? State.IdleUp : State.IdleDown;
+    }
+
+    private IEnumerator Fall()
+    {
+        yield return StartCoroutine(ShakePlatform());
+        yield return StartCoroutine(ShakePlatform());
+        yield return StartCoroutine(ShakePlatform());
+        state = State.Falling;
+
+        while (transform.position.y > screenBounds.y * -1 + platformBounds.y / 2)
+        {
+            var position = transform.position;
+            position += Time.deltaTime * 20 * Vector3.down;
 
             position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + platformBounds.y / 2,
                 screenBounds.y - platformBounds.y / 2);
 
             transform.position = position;
-            yield return new WaitForSeconds(riseDelay);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        state = State.IdleDown;
+    }
+
+    private IEnumerator Rise()
+    {
+        state = State.Rising;
+        yield return StartCoroutine(ShakePlatform());
+
+        while (transform.position.y < screenBounds.y - platformBounds.y / 2)
+        {
+            var position = transform.position;
+            position += Time.fixedDeltaTime * 5 * Vector3.up;
+
+            if (player != null)
+                if (position.y > screenBounds.y - platformBounds.y && player.parent != null)
+                    StartCoroutine(DropPlayer());
+
+            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + platformBounds.y / 2,
+                screenBounds.y - platformBounds.y / 2);
+
+            transform.position = position;
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
 
         state = State.IdleUp;
-        _canCheck = true;
+    }
+
+    private IEnumerator Die()
+    {
+        state = State.Falling;
+        yield return StartCoroutine(ShakePlatform());
+        rb.isKinematic = false;
+        rb.gravityScale = 5;
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 
     private IEnumerator DropPlayer()
@@ -101,7 +254,7 @@ public class Platform : MonoBehaviour
         fillPlatform.transform.localScale = new Vector3(localScale.x, fillAmmount, localScale.z);
         var counter = 0f;
         const float maxX = .2f;
-        const float maxY = .2f;
+        const float maxY = .4f;
         const float shakeTime = .3f;
         var pos = transform.position;
         while (counter <= shakeTime)
