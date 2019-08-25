@@ -66,7 +66,6 @@ public class Platform : MonoBehaviour
         platformBounds = _collider2D.size;
         baseSpriteRenderer = basePlatform.GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(Teste());
     }
 
     private void Update()
@@ -74,30 +73,6 @@ public class Platform : MonoBehaviour
         isTop = transform.position.y > screenBounds.y / 2;
     }
 
-    private IEnumerator Teste()
-    {
-        yield return new WaitForSeconds(2);
-        yield return StartCoroutine(OneLeft());
-
-        yield return StartCoroutine(GoLeft());
-        yield return new WaitForSeconds(2);
-        yield return StartCoroutine(Rise());
-        yield return new WaitForSeconds(2);
-
-        yield return StartCoroutine(OneRight());
-        yield return new WaitForSeconds(2);
-
-        yield return StartCoroutine(GoRight());
-        yield return new WaitForSeconds(2);
-
-        yield return StartCoroutine(Fall());
-        yield return new WaitForSeconds(2);
-
-        yield return StartCoroutine(OneLeft());
-        yield return new WaitForSeconds(2);
-
-        yield return StartCoroutine(Die());
-    }
 
     private IEnumerator OneLeft()
     {

@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\BossFights\Patricio\Bullet.cs" />
     <Compile Include="Assets\Scripts\BossFights\Patricio\Patricio.cs" />
     <Compile Include="Assets\Scripts\BossFights\Patricio\Platform.cs" />
+    <Compile Include="Assets\Scripts\BossFights\Patricio\PlatformManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/felip/Documents/GitHub/JohnLocke/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
