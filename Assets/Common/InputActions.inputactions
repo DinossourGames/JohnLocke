@@ -139,6 +139,17 @@
                 },
                 {
                     "name": "",
+                    "id": "bd9bf6a2-858b-4062-909d-7d176acaa167",
+                    "path": "<DualShockGamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2dccbe4c-4a40-4674-b641-37c0ea6462de",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",

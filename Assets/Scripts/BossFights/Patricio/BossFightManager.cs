@@ -1,27 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public enum BOSS_FIGHT_STATE { STARTING, STAGE1, STAGE2, STAGE3, FINISHING }
+public enum BossFightState { Starting, Stage1, Stage2, Stage3, Finishing }
 
 
 public class BossFightManager : MonoBehaviour
 {
 
     [Header("BOSS MANAGER STATS")]
-    [SerializeField] BOSS_FIGHT_STATE fightState;
+    [SerializeField]
+    private BossFightState fightState;
 
-    private void Awake()
+    private void Start()
     {
-        Process.Start($"{Application.dataPath}/Resources/HIDHandler.exe");
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 75;
     }
 
-    private void OnApplicationQuit()
-    {
-        foreach (var item in Process.GetProcessesByName("HIDHandler"))
-        {
-            item.Kill();
-        }
-    }
+//    private void OnApplicationQuit()
+//    {
+//        //TODO: REMOVE THIS
+//        foreach (var item in Process.GetProcessesByName("HIDHandler"))
+//        {
+//            item.Kill();
+//        }
+//    }
+
+   
 }
