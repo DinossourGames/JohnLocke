@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/539cb3eee943bfe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/539cb3eee943bfe.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/sniperShot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/sniperShot.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/SMG.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/SMG.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/sniper.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/sniper.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Common/InputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/InputActions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Common/InputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/InputActions.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/WeaponSwitching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/WeaponSwitching.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,10 +56,10 @@
         <option value="$PROJECT_DIR$/Assets/Common/GamepadManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/Restart.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/WeaponSwitching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/WeaponSwitching.cs" />
       </list>
     </option>
   </component>
@@ -123,7 +130,7 @@
       <workItem from="1566768993802" duration="516000" />
       <workItem from="1566772348669" duration="211000" />
       <workItem from="1566772570224" duration="55000" />
-      <workItem from="1566772789747" duration="23972000" />
+      <workItem from="1566772789747" duration="29708000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>
@@ -201,7 +208,8 @@
     <state x="1011" y="249" key="RiderGenerateDialog/2560.1080/1600.900" />
     <state x="1127" y="192" key="SettingsEditor" />
     <state x="1127" y="192" key="SettingsEditor/2560.1080/1600.900" />
-    <state x="757" y="208" key="VCS.ChangeListViewerDialog" />
+    <state x="757" y="148" key="VCS.ChangeListViewerDialog" />
+    <state x="757" y="148" key="VCS.ChangeListViewerDialog/1366.768/1600.900" />
     <state x="757" y="208" key="VCS.ChangeListViewerDialog/1920.1080" />
     <state x="450" y="264" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate" />
     <state x="450" y="264" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate/1366.768/1600.900" />

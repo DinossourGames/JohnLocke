@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WeaponSwitching : MonoBehaviour, InputActions.IMittensBossFightActions
@@ -6,6 +7,22 @@ public class WeaponSwitching : MonoBehaviour, InputActions.IMittensBossFightActi
     private InputActions Controls;
 
     public int selectedWeapon = 0;
+
+
+    private void Awake()
+    {
+        Controls = new InputActions();
+        Controls.MittensBossFight.SwitchWeapons.performed += ctx => Switch();
+    }
+    private void OnEnable()
+    {
+        Controls.MittensBossFight.Enable();
+        SelectWeapon();
+    }
+    private void OnDisable()
+    {
+        Controls.MittensBossFight.Disable();
+    }
 
     void SelectWeapon()
     {
