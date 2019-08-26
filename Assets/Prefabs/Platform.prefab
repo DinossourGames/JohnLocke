@@ -183,12 +183,16 @@ MonoBehaviour:
   fillDelay: 1.7
   mainCamera: {fileID: 0}
   screenBounds: {x: 0, y: 0}
-  leftChecker: {fileID: 6870974400117097992}
-  RightChecker: {fileID: 4941983380643563140}
   platformBounds: {x: 0, y: 0}
-  riseDelay: 0.106
-  upAmmount: 0.107
+  upSpeed: 5
   isTop: 0
+  leftChecker: {fileID: 6870974400117097992}
+  rightChecker: {fileID: 4941983380643563140}
+  right: 0
+  left: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &4048496130054752643
 GameObject:
   m_ObjectHideFlags: 0

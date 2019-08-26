@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
 using Random = UnityEngine.Random;
@@ -30,7 +31,6 @@ public class Platform : MonoBehaviour
 
     private float fillAmmount;
     private bool _hasCollision;
-    private bool _canCheck = true;
 
     // Screen bounds
     [SerializeField, Header("Boundaries"), Space]
@@ -38,22 +38,25 @@ public class Platform : MonoBehaviour
 
     [SerializeField] private Vector2 screenBounds;
 
-    [SerializeField] private Transform leftChecker;
-
-    [SerializeField] private Transform RightChecker;
 
     // Sprite Bounds
     private BoxCollider2D _collider2D;
     [SerializeField] private Vector2 platformBounds;
-    [SerializeField, Range(0f, .5f)] private float riseDelay;
-
-    [SerializeField, Range(0f, .5f)] private float upAmmount;
+    [SerializeField, Range(1, 15)] private float upSpeed;
 
     //references
     private Transform player;
     private SpriteRenderer baseSpriteRenderer;
     private Rigidbody2D rb;
     [SerializeField, Space] private bool isTop;
+
+    [Header("Position Check"), Space] [SerializeField]
+    private Transform leftChecker;
+
+    [SerializeField] private Transform rightChecker;
+    [SerializeField] private bool right;
+    [SerializeField] private bool left;
+    [SerializeField] private LayerMask layerMask;
 
     private void Start()
     {
@@ -70,9 +73,16 @@ public class Platform : MonoBehaviour
 
     private void Update()
     {
-        isTop = transform.position.y > screenBounds.y / 2;
+        var position = transform.position;
+        isTop = position.y > screenBounds.y / 2;
+        left = Physics2D.OverlapPoint(leftChecker.position, layerMask);
+        right = Physics2D.OverlapPoint(rightChecker.position, layerMask);
     }
 
+
+    private void FixedUpdate()
+    {
+    }
 
     private IEnumerator OneLeft()
     {
@@ -83,7 +93,7 @@ public class Platform : MonoBehaviour
         while (transform.position.x > next)
         {
             var position = transform.position;
-            position += Time.deltaTime * 5 * Vector3.left;
+            position += Time.deltaTime * upSpeed * Vector3.left;
 
             position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
                 screenBounds.x - platformBounds.x / 2);
@@ -104,7 +114,7 @@ public class Platform : MonoBehaviour
         while (transform.position.x < next)
         {
             var position = transform.position;
-            position += Time.deltaTime * 5 * Vector3.right;
+            position += Time.deltaTime * upSpeed * Vector3.right;
 
             position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
                 screenBounds.x - platformBounds.x / 2);
@@ -124,7 +134,7 @@ public class Platform : MonoBehaviour
         while (transform.position.x < screenBounds.x - platformBounds.x / 2)
         {
             var position = transform.position;
-            position += Time.deltaTime * 5 * Vector3.right;
+            position += Time.deltaTime * upSpeed * Vector3.right;
 
             position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
                 screenBounds.x - platformBounds.x / 2);
@@ -143,7 +153,7 @@ public class Platform : MonoBehaviour
         while (transform.position.x > screenBounds.x * -1 + platformBounds.x / 2)
         {
             var position = transform.position;
-            position += Time.deltaTime * 5 * Vector3.left;
+            position += Time.deltaTime * upSpeed * Vector3.left;
 
             position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
                 screenBounds.x - platformBounds.x / 2);
@@ -158,14 +168,16 @@ public class Platform : MonoBehaviour
     private IEnumerator Fall()
     {
         yield return StartCoroutine(ShakePlatform());
+        yield return new WaitForSeconds(.2f);
         yield return StartCoroutine(ShakePlatform());
+        yield return new WaitForSeconds(.2f);
         yield return StartCoroutine(ShakePlatform());
         state = State.Falling;
 
         while (transform.position.y > screenBounds.y * -1 + platformBounds.y / 2)
         {
             var position = transform.position;
-            position += Time.deltaTime * 20 * Vector3.down;
+            position += Time.deltaTime * 25 * Vector3.down;
 
             position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + platformBounds.y / 2,
                 screenBounds.y - platformBounds.y / 2);
@@ -177,6 +189,7 @@ public class Platform : MonoBehaviour
         state = State.IdleDown;
     }
 
+    [SuppressMessage("ReSharper", "Unity.PerformanceCriticalCodeNullComparison")]
     private IEnumerator Rise()
     {
         state = State.Rising;
@@ -185,7 +198,7 @@ public class Platform : MonoBehaviour
         while (transform.position.y < screenBounds.y - platformBounds.y / 2)
         {
             var position = transform.position;
-            position += Time.fixedDeltaTime * 5 * Vector3.up;
+            position += Time.fixedDeltaTime * upSpeed * Vector3.up;
 
             if (player != null)
                 if (position.y > screenBounds.y - platformBounds.y && player.parent != null)
@@ -254,7 +267,6 @@ public class Platform : MonoBehaviour
             if (fillAmmount > 1f)
             {
                 peak = true;
-                _canCheck = false;
                 state = State.Rising;
                 continue;
             }
@@ -266,7 +278,8 @@ public class Platform : MonoBehaviour
         if (!peak) yield break;
         fillAmmount = 0f;
         fillPlatform.transform.localScale = new Vector3(localScale.x, fillAmmount, localScale.z);
-        StartCoroutine(Rise());
+
+        StartCoroutine(BossFightManager.FightState == BossFightState.Stage3 ? Die() : Rise());
     }
 
     private IEnumerator Decrease()
@@ -283,7 +296,7 @@ public class Platform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other.collider.CompareTag("Player") || !_canCheck || state == State.IdleUp) return;
+        if (!other.collider.CompareTag("Player") || state != State.IdleDown) return;
         player = other.collider.transform;
         player.SetParent(transform);
         _hasCollision = true;
@@ -293,7 +306,7 @@ public class Platform : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (!other.collider.CompareTag("Player") || !_canCheck) return;
+        if (!other.collider.CompareTag("Player") || state != State.IdleDown) return;
         player = other.collider.transform;
         player.SetParent(null);
         _hasCollision = false;

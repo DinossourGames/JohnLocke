@@ -5,29 +5,21 @@ using System.Diagnostics;
 using UnityEngine;
 
 public enum BossFightState { Starting, Stage1, Stage2, Stage3, Finishing }
-
+public enum BossSide { None, Left, Right}
 
 public class BossFightManager : MonoBehaviour
 {
 
     [Header("BOSS MANAGER STATS")]
-    [SerializeField]
-    private BossFightState fightState;
-
+    public static BossFightState FightState;
+    public static BossSide BossSide;
+    
     private void Start()
     {
+        BossSide = BossSide.Right;
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 75;
     }
-
-//    private void OnApplicationQuit()
-//    {
-//        //TODO: REMOVE THIS
-//        foreach (var item in Process.GetProcessesByName("HIDHandler"))
-//        {
-//            item.Kill();
-//        }
-//    }
-
+    
    
 }

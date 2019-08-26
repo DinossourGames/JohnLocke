@@ -711,7 +711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1556233437
 Rigidbody2D:
   serializedVersion: 4
@@ -788,7 +788,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556233436}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -838,7 +838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556233436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.29, y: 3.65, z: 0}
+  m_LocalPosition: {x: -0.3, y: 1.18, z: 0}
   m_LocalScale: {x: 0.7358927, y: 1, z: 1}
   m_Children:
   - {fileID: 1724545880}
@@ -1226,6 +1226,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255482448278404893, guid: 8d4db83e457ff2446a19c687705e00b7,
+        type: 3}
+      propertyPath: upAmmount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255482448278404893, guid: 8d4db83e457ff2446a19c687705e00b7,
+        type: 3}
+      propertyPath: upSpeed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d4db83e457ff2446a19c687705e00b7, type: 3}
