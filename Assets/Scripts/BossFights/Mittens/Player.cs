@@ -9,21 +9,29 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 {
     private InputActions Controls;
     private Vector2 moveInput;
-    private BoxCollider2D hitbox;
+    private CircleCollider2D hitbox;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
+    private Vector2 direction;
     [SerializeField] private float speed;
     [SerializeField] private SpriteRenderer backSprite;
     [SerializeField] private Vector2 boundsMin;
     [SerializeField]private Vector2 boundsMax;
     private Vector2 playerSize;
+    [SerializeField] private float dashTime; //Moment the dash will be available
+    [SerializeField] private float dashDelay; //Cooldown of the dash
+    private double endDash; //Moment the dash ends
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashSpeedMod;
+     private TrailRenderer trail;
 
     // Start is called before the first frame update
     private void Start()
     {
-        hitbox = GetComponent<BoxCollider2D>();
+        hitbox = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        trail = GetComponent<TrailRenderer>();
         var bounds = backSprite.bounds;
         boundsMin = bounds.min;
         boundsMax = bounds.max;
@@ -31,14 +39,14 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void FixedUpdate()
     {
-        rb.velocity = moveInput * speed;
+        if (Time.time > endDash)
+        {
+            direction = moveInput;
+        }
+        rb.velocity = direction * speed;
     }
 
     private void LateUpdate()
@@ -85,7 +93,20 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        
+        if (Time.time > dashTime)
+            StartCoroutine(Dash());
+    }
+
+    private IEnumerator Dash()
+    {
+        speed *= dashSpeedMod;
+        hitbox.enabled = false;
+        trail.enabled = true;
+        yield return new WaitForSeconds(dashDuration);
+        dashTime = Time.time + dashDelay;
+        hitbox.enabled = true;
+        trail.enabled = false;
+        speed /= dashSpeedMod;
     }
 
     public void OnReload(InputAction.CallbackContext context)
