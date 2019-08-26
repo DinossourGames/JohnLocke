@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
@@ -16,19 +16,21 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     [SerializeField] private float speed;
     [SerializeField] private SpriteRenderer backSprite;
     [SerializeField] private Vector2 boundsMin;
-    [SerializeField]private Vector2 boundsMax;
+    [SerializeField] private Vector2 boundsMax;
     private Vector2 playerSize;
     [SerializeField] private float dashTime; //Moment the dash will be available
     [SerializeField] private float dashDelay; //Cooldown of the dash
     private double endDash; //Moment the dash ends
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashSpeedMod;
-     private TrailRenderer trail;
-     private bool invulnerable;
-     [SerializeField] private int totalHealth;
-     [SerializeField] private int health;
+    private TrailRenderer trail;
+    private bool invulnerable;
+    [SerializeField] private int totalHealth;
+    [SerializeField] private int health;
+    private PlayerInput _pi;
+    public static bool device;
 
-     // Start is called before the first frame update
+    // Start is called before the first frame update
     private void Start()
     {
         hitbox = GetComponent<CircleCollider2D>();
@@ -40,6 +42,13 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         boundsMax = bounds.max;
         playerSize = sprite.bounds.extents;
         health = totalHealth;
+        _pi = GetComponent<PlayerInput>();
+    }
+
+    private void Update()
+    {
+        device = _pi.devices[0].device.displayName == "Mouse" || _pi.devices[0].device.displayName == "Keyboard";
+        print(device);
     }
 
     // Update is called once per frame
@@ -50,6 +59,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         {
             direction = moveInput;
         }
+
         rb.velocity = direction * speed;
     }
 
@@ -57,7 +67,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     {
         var position = transform.position;
         position.x = Mathf.Clamp(position.x, boundsMin.x + playerSize.x, boundsMax.x - playerSize.x);
-        position.y = Mathf.Clamp(position.y, boundsMin.y + playerSize.y, boundsMax.y-playerSize.y);
+        position.y = Mathf.Clamp(position.y, boundsMin.y + playerSize.y, boundsMax.y - playerSize.y);
         transform.position = position;
     }
 
@@ -107,11 +117,11 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         speed *= dashSpeedMod;
         hitbox.enabled = false;
         trail.enabled = true;
-        yield return new WaitForSeconds(dashDuration);
         dashTime = Time.time + dashDelay;
+        yield return new WaitForSeconds(dashDuration);
+        speed /= dashSpeedMod;
         hitbox.enabled = true;
         trail.enabled = false;
-        speed /= dashSpeedMod;
     }
 
     public void TakeDamage(int damageAmount)
@@ -120,7 +130,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         {
             health -= damageAmount;
             StartCoroutine(Invulnerability(3));
-            if(health<=0)
+            if (health <= 0)
                 Destroy(gameObject);
         }
     }
@@ -129,7 +139,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     {
         invulnerable = true;
         sprite.color = new Color32(254, 39, 90, 192);
-        yield return  new WaitForSeconds(time);
+        yield return new WaitForSeconds(time);
         sprite.color = new Color32(90, 18, 99, 1);
         invulnerable = false;
     }
