@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEditor.Build.Content;
@@ -24,6 +23,7 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     [SerializeField] private int totalAmmo;
     [SerializeField] private float reloadTime;
     [SerializeField] private bool reloading;
+    [SerializeField] private float spread;
 
 
     private void Awake()

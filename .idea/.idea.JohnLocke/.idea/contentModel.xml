@@ -21,6 +21,7 @@
           <e p="BossFights" t="Include">
             <e p="Mittens" t="Include">
               <e p="cameraFollow.cs" t="Include" />
+              <e p="MittensBullet.cs" t="Include" />
               <e p="Player.cs" t="Include" />
               <e p="Weapon.cs" t="Include" />
               <e p="WeaponSwitching.cs" t="Include" />

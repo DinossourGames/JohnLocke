@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/539cb3eee943bfe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/539cb3eee943bfe.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/sniperShot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/sniperShot.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/SMG.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/SMG.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/sniper.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/sniper.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/sniperShot.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/sniperShot.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SMG.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SMG.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/sniper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/sniper.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/WeaponSwitching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/WeaponSwitching.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +25,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Common/InputActions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41214D29-AEF2-49F2-BACE-2A17F5BF98F7/24/c7f27012/ECDiffieHellman.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@0.9.4-preview/InputSystem/Editor/AssetEditor/InputActionAssetManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/Mittens Boss Fight/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
@@ -58,8 +56,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/WeaponSwitching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" />
       </list>
     </option>
   </component>
@@ -130,7 +129,7 @@
       <workItem from="1566768993802" duration="516000" />
       <workItem from="1566772348669" duration="211000" />
       <workItem from="1566772570224" duration="55000" />
-      <workItem from="1566772789747" duration="29708000" />
+      <workItem from="1566772789747" duration="33002000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>
