@@ -24,8 +24,11 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashSpeedMod;
      private TrailRenderer trail;
+     private bool invulnerable;
+     [SerializeField] private int totalHealth;
+     [SerializeField] private int health;
 
-    // Start is called before the first frame update
+     // Start is called before the first frame update
     private void Start()
     {
         hitbox = GetComponent<CircleCollider2D>();
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         boundsMin = bounds.min;
         boundsMax = bounds.max;
         playerSize = sprite.bounds.extents;
+        health = totalHealth;
     }
 
     // Update is called once per frame
@@ -99,6 +103,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 
     private IEnumerator Dash()
     {
+        endDash = Time.time + dashDuration;
         speed *= dashSpeedMod;
         hitbox.enabled = false;
         trail.enabled = true;
@@ -109,12 +114,37 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         speed /= dashSpeedMod;
     }
 
+    public void TakeDamage(int damageAmount)
+    {
+        if (!invulnerable)
+        {
+            health -= damageAmount;
+            StartCoroutine(Invulnerability(3));
+            if(health<=0)
+                Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator Invulnerability(float time)
+    {
+        invulnerable = true;
+        sprite.color = new Color32(254, 39, 90, 192);
+        yield return  new WaitForSeconds(time);
+        sprite.color = new Color32(90, 18, 99, 1);
+        invulnerable = false;
+    }
+
     public void OnReload(InputAction.CallbackContext context)
     {
         throw new System.NotImplementedException();
     }
 
     public void OnSwitchWeapons(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnAim(InputAction.CallbackContext context)
     {
         throw new System.NotImplementedException();
     }

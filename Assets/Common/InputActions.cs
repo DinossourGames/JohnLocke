@@ -370,6 +370,14 @@ public class InputActions : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""158c7864-f178-42cd-b447-fe89852723bd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -430,11 +438,33 @@ public class InputActions : IInputActionCollection
                 },
                 {
                     ""name"": """",
+                    ""id"": ""7e0d814b-381b-4e85-b8dd-0f6e5306c69f"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3a71b290-1dee-4101-b190-8c9573dd8262"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cf10501-5281-428b-a450-088b5eb2f4c8"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -452,11 +482,33 @@ public class InputActions : IInputActionCollection
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a97435c0-2436-4d20-8b3d-ef278a2ad67f"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c1915e22-3754-4aa1-bb47-f8cc8ec53647"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b8a3917-0cfd-470d-bb69-e3b0b75ae4c8"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -469,6 +521,39 @@ public class InputActions : IInputActionCollection
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
                     ""action"": ""SwitchWeapons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0089886c-b39c-4560-808c-e8b4fcd724a3"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5d5e214-83d6-40eb-a9ea-7b9d166a8361"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0552265-af32-4f35-b307-3c01db972ac6"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -524,6 +609,7 @@ public class InputActions : IInputActionCollection
         m_MittensBossFight_Dash = m_MittensBossFight.GetAction("Dash");
         m_MittensBossFight_Reload = m_MittensBossFight.GetAction("Reload");
         m_MittensBossFight_SwitchWeapons = m_MittensBossFight.GetAction("SwitchWeapons");
+        m_MittensBossFight_Aim = m_MittensBossFight.GetAction("Aim");
     }
 
     ~InputActions()
@@ -667,6 +753,7 @@ public class InputActions : IInputActionCollection
     private readonly InputAction m_MittensBossFight_Dash;
     private readonly InputAction m_MittensBossFight_Reload;
     private readonly InputAction m_MittensBossFight_SwitchWeapons;
+    private readonly InputAction m_MittensBossFight_Aim;
     public struct MittensBossFightActions
     {
         private InputActions m_Wrapper;
@@ -676,6 +763,7 @@ public class InputActions : IInputActionCollection
         public InputAction @Dash => m_Wrapper.m_MittensBossFight_Dash;
         public InputAction @Reload => m_Wrapper.m_MittensBossFight_Reload;
         public InputAction @SwitchWeapons => m_Wrapper.m_MittensBossFight_SwitchWeapons;
+        public InputAction @Aim => m_Wrapper.m_MittensBossFight_Aim;
         public InputActionMap Get() { return m_Wrapper.m_MittensBossFight; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -700,6 +788,9 @@ public class InputActions : IInputActionCollection
                 SwitchWeapons.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnSwitchWeapons;
                 SwitchWeapons.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnSwitchWeapons;
                 SwitchWeapons.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnSwitchWeapons;
+                Aim.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnAim;
+                Aim.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnAim;
+                Aim.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnAim;
             }
             m_Wrapper.m_MittensBossFightActionsCallbackInterface = instance;
             if (instance != null)
@@ -719,6 +810,9 @@ public class InputActions : IInputActionCollection
                 SwitchWeapons.started += instance.OnSwitchWeapons;
                 SwitchWeapons.performed += instance.OnSwitchWeapons;
                 SwitchWeapons.canceled += instance.OnSwitchWeapons;
+                Aim.started += instance.OnAim;
+                Aim.performed += instance.OnAim;
+                Aim.canceled += instance.OnAim;
             }
         }
     }
@@ -759,5 +853,6 @@ public class InputActions : IInputActionCollection
         void OnDash(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnSwitchWeapons(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
 }
