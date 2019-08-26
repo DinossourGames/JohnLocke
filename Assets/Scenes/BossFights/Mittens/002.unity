@@ -684,5 +684,10 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4010960416773019779, guid: 66891cfd91d618348b55bb5fc28e939b,
+        type: 3}
+      propertyPath: backSprite
+      value: 
+      objectReference: {fileID: 1713782675}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66891cfd91d618348b55bb5fc28e939b, type: 3}

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
@@ -14,6 +13,10 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     [SerializeField] private float speed;
+    [SerializeField] private SpriteRenderer backSprite;
+    [SerializeField] private Vector2 boundsMin;
+    [SerializeField]private Vector2 boundsMax;
+    private Vector2 playerSize;
 
     // Start is called before the first frame update
     private void Start()
@@ -21,6 +24,10 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         hitbox = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        var bounds = backSprite.bounds;
+        boundsMin = bounds.min;
+        boundsMax = bounds.max;
+        playerSize = sprite.bounds.extents;
     }
 
     // Update is called once per frame
@@ -32,6 +39,14 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     private void FixedUpdate()
     {
         rb.velocity = moveInput * speed;
+    }
+
+    private void LateUpdate()
+    {
+        var position = transform.position;
+        position.x = Mathf.Clamp(position.x, boundsMin.x + playerSize.x, boundsMax.x - playerSize.x);
+        position.y = Mathf.Clamp(position.y, boundsMin.y + playerSize.y, boundsMax.y-playerSize.y);
+        transform.position = position;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -50,8 +65,6 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
             case InputActionPhase.Canceled:
                 MoveCancelled();
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -72,7 +85,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnReload(InputAction.CallbackContext context)
