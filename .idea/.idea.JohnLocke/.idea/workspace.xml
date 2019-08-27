@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Test/Sprites_0.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Test/Sprites_0.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Test/teste.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Test/teste.anim.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Test/Sprites.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/Test/Sprites.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/PlatformManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/PlatformManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,30 +23,31 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Images/Test/Platform.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B6D68F36-8D66-45AF-BF0E-07217963C67F/95/6c6c5177/Single.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/9e/7c04a9cf/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/6a/a6d1d002/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///C# Console" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Common/Boundaries.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/d4/407c3742/YieldInstruction.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/9f/22da1ba0/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D5533F88-33E4-475E-A658-BF00493D5AAD/1c/17c0ebbe/ObservableCollection`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/29/4f2b2b0e/WaitForSeconds.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F58CDE91-96FF-4D57-AE94-5F019534AF41/bc/ec73ff25/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Common/GamepadManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Common/InputActions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/4d/ee050c5c/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Images/Test/Platform.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/6a/a6d1d002/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Common/Boundaries.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/9f/22da1ba0/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F58CDE91-96FF-4D57-AE94-5F019534AF41/bc/ec73ff25/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/PlatformManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/e1/75b4db42/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.lightweight@6.9.1/Runtime/2D/Light2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/fd/cfe9cbbc/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Common/InputActions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Common/Restart.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Common/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2CE23092-8A98-496B-A12C-A183760FB5F6/4d/ee050c5c/Component.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -49,11 +55,12 @@
         <option value="$PROJECT_DIR$/Assets/Common/Boundaries.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/SceneManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/GamepadManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/Restart.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/PlatformManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bullet.cs" />
       </list>
     </option>
   </component>

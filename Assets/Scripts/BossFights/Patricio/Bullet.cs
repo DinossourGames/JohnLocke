@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,11 +19,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        rbd = GetComponent<Rigidbody2D>();
-        rbd.mass = 0;
-        rbd.gravityScale = 0;
-        rbd.velocity = Direction * speed;
-        Invoke("DestroyProjectile", lifeSpan);
+        Invoke(nameof(DestroyProjectile), lifeSpan);
     }
 
     private void DestroyProjectile()
@@ -30,6 +27,11 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+    private void Update()
+    {
+        transform.Translate(Time.deltaTime * speed * Direction);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

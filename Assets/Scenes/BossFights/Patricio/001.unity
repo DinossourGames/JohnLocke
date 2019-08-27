@@ -411,8 +411,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289695102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.87, y: 0.025, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.506, y: -0.045, z: 0}
+  m_LocalScale: {x: 0.78519, y: 0.78519, z: 0.78519}
   m_Children: []
   m_Father: {fileID: 1556233440}
   m_RootOrder: 1
@@ -453,7 +453,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -512,9 +512,10 @@ GameObject:
   - component: {fileID: 1556233439}
   - component: {fileID: 1556233438}
   - component: {fileID: 1556233437}
-  - component: {fileID: 1556233441}
   - component: {fileID: 1556233442}
   - component: {fileID: 1556233443}
+  - component: {fileID: 1556233444}
+  - component: {fileID: 1556233441}
   m_Layer: 10
   m_Name: Patricio
   m_TagString: Player
@@ -588,7 +589,7 @@ MonoBehaviour:
     type: 3}
   shootOrigin: {fileID: 1289695103}
   vectorOffset: {x: 0, y: 0}
-  offset: 0.6
+  offset: 0.8
   deadZone: 0.155
   text: {fileID: 0}
 --- !u!212 &1556233439
@@ -629,7 +630,8 @@ SpriteRenderer:
   m_SortingLayerID: 803710713
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ccc57eec5dbacc54caa4773dea227a12, type: 3}
+  m_Sprite: {fileID: 4773600122041589604, guid: c81d7035707ef0c45b2da9eb7f16462a,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -649,7 +651,7 @@ Transform:
   m_GameObject: {fileID: 1556233436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.39, y: 1.18, z: 0}
-  m_LocalScale: {x: 0.7358927, y: 1, z: 1}
+  m_LocalScale: {x: 1.2797112, y: 1.4357, z: 1.4357}
   m_Children:
   - {fileID: 1724545880}
   - {fileID: 1289695103}
@@ -657,8 +659,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1556233441
-BoxCollider2D:
+--- !u!70 &1556233441
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -666,23 +668,13 @@ BoxCollider2D:
   m_GameObject: {fileID: 1556233436}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 42b79921f6609a845894b24f3da7ed91, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0051064193}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.04, y: 0.04}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.98978716}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.75, y: 1.19}
+  m_Direction: 0
 --- !u!114 &1556233442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,6 +857,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1435773014}
   screenBounds: {x: 0, y: 0}
+--- !u!95 &1556233444
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556233436}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ece13f68c19851459f4cc877e8e949b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1724545879
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724545879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.444, z: 0}
+  m_LocalPosition: {x: 0, y: -0.561, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1556233440}

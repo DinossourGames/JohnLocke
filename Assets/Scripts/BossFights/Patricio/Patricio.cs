@@ -229,20 +229,11 @@ public class Patricio : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                StartCoroutine(ReadInput(context));
+                movement = context.ReadValue<Vector2>();
                 break;
             case InputActionPhase.Canceled:
                 movement = Vector2.zero;
                 break;
-        }
-    }
-
-    private IEnumerator ReadInput(InputAction.CallbackContext context)
-    {
-        while (context.phase == InputActionPhase.Performed)
-        {
-            movement = context.ReadValue<Vector2>();
-            yield return new WaitForEndOfFrame();
         }
     }
 
