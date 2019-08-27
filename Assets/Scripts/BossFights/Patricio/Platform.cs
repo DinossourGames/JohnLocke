@@ -70,7 +70,6 @@ public class Platform : MonoBehaviour
     [SerializeField] private float offset;
     private bool shake;
 
-    
 
     private void Start()
     {
@@ -93,120 +92,82 @@ public class Platform : MonoBehaviour
         isTop = position.y > screenBounds.y / 2;
     }
 
-    public void UpdateState()
+    public void UpdateState(PlatformPosition update)
     {
-//        _movementLocker = true;
-        StartCoroutine(Rise());
+        var distance = Vector3.Distance(transform.position, update.Position.center);
+        var direction = transform.position.x - update.Position.center.x > 0; //  > 0 - right | < 0 -left
+
+        if (_state == State.Rising || _state == State.Falling || _state == State.IdleUp ||
+            _state == State.MovingLeft ||
+            _state == State.MovingRight || _movementLocker)
+            return;
+
+        var yDiff = Mathf.Abs(transform.position.y - update.Position.center.y);
+
+        if (distance < 3.4f && distance > 2.5f && yDiff < .4f)
+        {
+            if (BossFightManager.BossSide == BossSide.Right)
+            {
+                if (direction)
+                {
+                    _movementLocker = true;
+                    StartCoroutine(Move(update.Position.center, true));
+                }
+            }
+
+            if (BossFightManager.BossSide == BossSide.Left)
+            {
+                if (!direction)
+                {
+                    _movementLocker = true;
+                    StartCoroutine(Move(update.Position.center, false));
+                }
+            }
+        }
     }
 
 
     public IEnumerator Move(Vector2 endpoint, bool movingLeft)
     {
-        _movementLocker = true;
         _state = movingLeft ? State.MovingLeft : State.MovingRight;
         yield return StartCoroutine(ShakePlatform());
 
-        while (Math.Abs(Vector2.Distance(endpoint,transform.position)) > .05f)
+        while (Vector2.Distance(transform.position, endpoint) > .1f)
         {
-            _baseSpriteRenderer.color = new Color32((byte) Random.Range(0,255),(byte) Random.Range(0,255),(byte) Random.Range(0,255),(byte) Random.Range(0,255));
-            transform.position += Time.deltaTime * upSpeed * Vector3.left;
+            _baseSpriteRenderer.color = new Color32((byte) Random.Range(0, 255), (byte) Random.Range(0, 255),(byte) Random.Range(0, 255), (byte) Random.Range(0, 255));
+            transform.position += Time.deltaTime * upSpeed * (movingLeft ? Vector3.left : Vector3.right);
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
         _state = isTop ? State.IdleUp : State.IdleDown;
-        _movementLocker = false;
-//        _baseSpriteRenderer.color = Color.white;
-    }
-
-
-    private IEnumerator CoUpdate()
-    {
-        if (BossFightManager.BossSide == BossSide.Right && !left)
-        {
-            if (_state == State.Rising || _state == State.Falling ||
-                _state == State.MovingLeft || _state == State.MovingRight) yield break;
-
-            yield return StartCoroutine(OneLeft());
-        }
-
-        if (BossFightManager.BossSide == BossSide.Left && !right)
-        {
-            if (_state == State.Rising || _state == State.Falling ||
-                _state == State.MovingLeft || _state == State.MovingRight) yield break;
-
-            yield return StartCoroutine(OneRight());
-        }
-
-
+        yield return new WaitForSeconds(3f);
         _movementLocker = false;
     }
 
     private IEnumerator RiseCycle()
     {
         var direction = BossFightManager.BossSide == BossSide.Left;
-
-        switch (BossFightManager.FightState)
-        {
-            case BossFightState.Stage1:
-                yield return StartCoroutine(Rise());
-                yield return StartCoroutine(direction ? GoLeft() : GoRight());
-                yield return StartCoroutine(Fall());
-                break;
-            case BossFightState.Stage2:
-                yield return StartCoroutine(Rise());
-                yield return StartCoroutine(direction ? GoLeft() : GoRight());
-                yield return StartCoroutine(Fall());
-                break;
-            case BossFightState.Stage3:
-                yield return StartCoroutine(Shinee());
-                break;
-            case BossFightState.Starting:
-                break;
-            case BossFightState.Finishing:
-                break;
-        }
-    }
-
-
-    public IEnumerator OneLeft()
-    {
-        _state = State.MovingLeft;
-        yield return StartCoroutine(ShakePlatform());
-        var next = transform.position.x - platformBounds.x;
-
-        while (transform.position.x >= next)
-        {
-            var position = transform.position;
-            position += Time.deltaTime * upSpeed * Vector3.left;
-//            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
-//                screenBounds.x - platformBounds.x / 2);
-
-            transform.position = position;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-
-        _state = isTop ? State.IdleUp : State.IdleDown;
-    }
-
-    private IEnumerator OneRight()
-    {
-        _state = State.MovingRight;
-        yield return StartCoroutine(ShakePlatform());
-        var next = transform.position.x - platformBounds.x;
-
-        while (transform.position.x <= next)
-        {
-            var position = transform.position;
-            position += Time.deltaTime * upSpeed * Vector3.right;
-
-//            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
-//                screenBounds.x - platformBounds.x / 2);
-
-            transform.position = position;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-
-        _state = isTop ? State.IdleUp : State.IdleDown;
+//
+//        switch (BossFightManager.FightState)
+//        {
+//            case BossFightState.Stage1:
+//                yield return StartCoroutine(Rise());
+//                yield return StartCoroutine(direction ? GoLeft() : GoRight());
+//                yield return StartCoroutine(Fall());
+//                break;
+//            case BossFightState.Stage2:
+        yield return StartCoroutine(Rise());
+        yield return StartCoroutine(direction ? GoLeft() : GoRight());
+        yield return StartCoroutine(Fall());
+//                break;
+//            case BossFightState.Stage3:
+//                yield return StartCoroutine(Shinee());
+//                break;
+//            case BossFightState.Starting:
+//                break;
+//            case BossFightState.Finishing:
+//                break;
+//        }
     }
 
     private IEnumerator GoRight()
@@ -214,13 +175,14 @@ public class Platform : MonoBehaviour
         yield return StartCoroutine(ShakePlatform());
         _state = State.MovingRight;
 
-        while (transform.position.x < screenBounds.x - platformBounds.x / 2)
+        var bound = new Vector2(screenBounds.x - _baseSpriteRenderer.bounds.extents.x, transform.position.y);
+        while (Vector2.Distance(transform.position, bound) > 0)
         {
             var position = transform.position;
             position += Time.deltaTime * upSpeed * Vector3.right;
 
-            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x,
-                screenBounds.x);
+            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
+                screenBounds.x - _baseSpriteRenderer.bounds.extents.x);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.deltaTime);
@@ -233,13 +195,15 @@ public class Platform : MonoBehaviour
     {
         yield return StartCoroutine(ShakePlatform());
         _state = State.MovingLeft;
-        while (transform.position.x > screenBounds.x * -1 + platformBounds.x / 2)
+        var bound = new Vector2(screenBounds.x * -1 + _baseSpriteRenderer.bounds.extents.x, transform.position.y);
+
+        while (Vector2.Distance(transform.position, bound) > 0)
         {
             var position = transform.position;
             position += Time.deltaTime * upSpeed * Vector3.left;
 
-            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
-                screenBounds.x - platformBounds.x / 2);
+            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + _baseSpriteRenderer.bounds.extents.x,
+                screenBounds.x - _baseSpriteRenderer.bounds.extents.x);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.deltaTime);

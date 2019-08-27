@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 
@@ -37,31 +38,6 @@ public class PlatformPosition
     }
 }
 
-[Serializable]
-public class PlatformData
-{
-    [SerializeField] private GameObject platformObject;
-    [SerializeField] private Platform platformScript;
-
-    public PlatformData(GameObject platformObject, Platform platformScript)
-    {
-        this.PlatformObject = platformObject;
-        this.PlatformScript = platformScript;
-    }
-
-    public GameObject PlatformObject
-    {
-        get => platformObject;
-        set => platformObject = value;
-    }
-
-    public Platform PlatformScript
-    {
-        get => platformScript;
-        set => platformScript = value;
-    }
-}
-
 public class PlatformManager : MonoBehaviour
 {
     [SerializeField] private Vector2 screenBounds;
@@ -70,16 +46,15 @@ public class PlatformManager : MonoBehaviour
     [SerializeField] private LayerMask platformMask;
 
     [Header("Listas"), Space] [SerializeField]
-    private List<PlatformData> platforms;
+    private List<PlatformPosition> platformsPositions;
 
-    [SerializeField] private List<PlatformPosition> platformsPositions;
-
+    [SerializeField] private List<Platform> _platforms; 
     private void Start()
     {
         screenBounds =
             mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
         platformsPositions = new List<PlatformPosition>();
-
+        _platforms = new List<Platform>();
         var sizeX = (screenBounds.x * 2 / 6);
         var sizeY = 1;
 
@@ -92,68 +67,39 @@ public class PlatformManager : MonoBehaviour
 
             Debug.DrawLine(start, end, Color.black, 1000);
 
-            var pos = new PlatformPosition(i, false, rect);
-            platformsPositions.Add(pos);
-        }
 
-        for (var i = 0; i < platformsPositions.Count; i++)
-        {
-            var platformsPosition = platformsPositions[i];
             var platform = Instantiate(platformPrefab,
-                new Vector3(platformsPosition.Position.center.x, platformsPosition.Position.center.y, 0),
+                new Vector3(rect.center.x, rect.center.y, 0),
                 Quaternion.identity);
             platform.transform.SetParent(transform);
-            var data = new PlatformData(platform, platform.GetComponent<Platform>());
-            platforms.Add(data);
-            platformsPositions[i].IsOccuped = true;
+
+            _platforms.Add(platform.GetComponent<Platform>());
+            
+            var pos = new PlatformPosition(i, false, rect);
+
+            platformsPositions.Add(pos);
         }
-
-        platforms[0].PlatformScript.UpdateState();
+ 
     }
-
 
     private void Update()
     {
         PositionCheckers();
-        UpdatePositions();
     }
 
     private void PositionCheckers()
     {
-        foreach (var position in platformsPositions)
+        foreach (var t in platformsPositions)
         {
-            position.IsOccuped = Physics2D.OverlapPoint(position.Position.center, platformMask);
-        }
-    }
+            t.IsOccuped =
+                Physics2D.OverlapPoint(t.Position.center, platformMask);
 
-    private void UpdatePositions()
-    {
-        foreach (var platform in platforms)
-        {
-            var state = platform.PlatformScript.State;
-            if (state == State.Rising || state == State.Falling || state == State.IdleUp || state == State.MovingLeft ||
-                state == State.MovingRight)
-                continue;
-
-            //TODO : Check boss side and take different approach.
-
-            //check if the near point is empty
-            foreach (var platformPosition in platformsPositions.Where(platformPosition => !platformPosition.IsOccuped))
+            if (t.IsOccuped) continue;
+            foreach (var plat in _platforms)
             {
-                var distance = Vector3.Distance(platform.PlatformObject.transform.position,
-                    platformPosition.Position.center);
-                if (distance > 2.5f && distance < 4f)
-                {
-                    print(
-                        $"Platform: {platforms.IndexOf(platform)} Distance: {distance}  State: {platform.PlatformScript.State}");
-
-                    if (BossFightManager.BossSide == BossSide.Right)
-                    {
-                        if (platforms.IndexOf(platform) > platformPosition.Index && !platform.PlatformScript._movementLocker)
-                            platform.PlatformScript.StartCoroutine(platform.PlatformScript.Move(platformPosition.Position.center,true));
-                    }
-                }
+                plat.UpdateState(t);
             }
         }
     }
-}
+    
+ }
