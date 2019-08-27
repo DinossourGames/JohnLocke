@@ -1,41 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG_Patricio.psb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG_Patricio.psb.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BallTricio_OKAY.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BallTricio_OKAY.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/Jumtricio_OKAY.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/Jumtricio_OKAY.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/PatricioJump.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/PatricioJump.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/PatricioParry.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/PatricioParry.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Anim/patricio.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Anim/patricio.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Test/Sprites.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Test/Sprites.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Test/Sprites_0.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Test/Sprites_0.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Test/teste.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Test/teste.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JohnLocke.sln" beforeDir="false" afterPath="$PROJECT_DIR$/JohnLocke.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/Packages-Update.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/Packages-Update.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-    </list>
+    <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +107,7 @@
       <workItem from="1566531744393" duration="25659000" />
       <workItem from="1566772259474" duration="14897000" />
       <workItem from="1566793722552" duration="6792000" />
-      <workItem from="1566928974334" duration="8041000" />
+      <workItem from="1566928974334" duration="8162000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>
