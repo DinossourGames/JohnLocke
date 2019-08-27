@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/SMGShot.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/SMGShot.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SMG.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SMG.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/sniper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/sniper.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/sniperShot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/sniperShot.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +52,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" />
       </list>
     </option>
   </component>
@@ -137,7 +125,7 @@
       <workItem from="1566772570224" duration="55000" />
       <workItem from="1566772789747" duration="33002000" />
       <workItem from="1566874064628" duration="108000" />
-      <workItem from="1566874490713" duration="5524000" />
+      <workItem from="1566874490713" duration="5842000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>
