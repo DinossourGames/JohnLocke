@@ -139,7 +139,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         invulnerable = true;
         sprite.color = new Color32(254, 39, 90, 192);
         yield return new WaitForSeconds(time);
-        sprite.color = new Color32(90, 18, 99, 1);
+        sprite.color = new Color32(90, 18, 99, 255);
         invulnerable = false;
     }
 

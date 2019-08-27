@@ -24,7 +24,6 @@ public class MittensGameManager : MonoBehaviour
    {
       if (dinoBoss.Health < dinoBoss.TotalHealth)
       {
-         print("yay");
       }
    }
 
@@ -36,12 +35,18 @@ public class MittensGameManager : MonoBehaviour
       {
          if (target.CompareTag("Boss"))
          {
-            print("da");
             target.GetComponent<Boss>().TakeDamage(damage);
          }
-         else if (target.CompareTag("Missile"))
+         if (target.CompareTag("Missile"))
          {
             //target.GetComponent<>()
+         }
+      }
+      else if (sender.CompareTag(("Boss")))
+      {
+         if(target.CompareTag("Player"))
+         {
+            target.GetComponent<Player>().TakeDamage(damage);
          }
       }
    }

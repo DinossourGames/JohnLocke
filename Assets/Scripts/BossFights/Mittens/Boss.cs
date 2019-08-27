@@ -36,4 +36,14 @@ public class Boss : MonoBehaviour
     {
         _health -= damageAmount;
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        MittensGameManager.DealDamage(gameObject, other.gameObject, 1);
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        MittensGameManager.DealDamage(gameObject, other.gameObject, 1);
+    }
 }
