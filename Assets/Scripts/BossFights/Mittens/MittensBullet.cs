@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,6 @@ public class MittensBullet : MonoBehaviour
     [SerializeField] private float lifeTime;
     [SerializeField] private float speed;
     [SerializeField] private GameObject explosion;
-    [SerializeField] private string[] targetTags;
     [SerializeField] private int damage;
     [SerializeField] private int piercing;
     private float timeToDie;
@@ -21,9 +21,9 @@ public class MittensBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right *speed * Time.deltaTime);
+        transform.Translate(Time.deltaTime * speed * Vector2.right);
         if (Time.time >= timeToDie)
-            DestroyProjectile();//speed = 0;
+            DestroyProjectile();
     }
 
     void DestroyProjectile()
@@ -34,13 +34,10 @@ public class MittensBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-//        if (collision.CompareTag(targetTags))
-//        {
-//            //collision.GetComponent<enemy>().TakeDamage(damage);
-//            if (piercing <= 0)
-//                DestroyProjectile();
-//            else
-//                piercing--;
-//        }
+        MittensGameManager.DealDamage(gameObject, collision.gameObject, damage);
+        if (piercing <= 0)
+            DestroyProjectile();
+        else
+            piercing--;
     }
 }
