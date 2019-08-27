@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: aadb309b003db1448a19585ab852a17c, type: 3}
-  m_Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0.48235294}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -176,9 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fillPlatform: {fileID: 4048496129225025842}
   basePlatform: {fileID: 4048496130054752643}
-  _state: 0
-  fillRatio: 0.25
-  fillDelay: 1.7
+  _state: 4
+  fillRatio: 0.2
+  fillDelay: 1.06
   _movementLocker: 0
   mainCamera: {fileID: 0}
   screenBounds: {x: 0, y: 0}
@@ -264,7 +264,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ccc57eec5dbacc54caa4773dea227a12, type: 3}
-  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

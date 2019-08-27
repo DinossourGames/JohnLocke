@@ -14,6 +14,7 @@ public class Patricio : MonoBehaviour
     [SerializeField] private Vector2 movement;
     [SerializeField] private bool isFacingRight;
     [SerializeField] private bool freezeMovement;
+    [SerializeField] private Animator animator;
     [SerializeField] [Space] private Vector2 movementNormalized;
 
     [SerializeField] [Space] [Header("Jump")]
@@ -51,6 +52,7 @@ public class Patricio : MonoBehaviour
     [SerializeField] private float shootDelay;
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform shootOrigin;
+    [SerializeField] private SpriteRenderer armSprite;
     [SerializeField] private Vector2 vectorOffset;
     [SerializeField] private float offset;
     [SerializeField] [Range(0f, .24f)] private float deadZone;
@@ -60,6 +62,8 @@ public class Patricio : MonoBehaviour
     private void Start()
     {
         rbd = GetComponent<Rigidbody2D>();
+        armSprite = shootOrigin.GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         parry = false;
     }
 
@@ -87,7 +91,7 @@ public class Patricio : MonoBehaviour
         shootTime = Time.time + shootDelay;
         bulletPrefab.Parent = gameObject;
         bulletPrefab.Direction = movementNormalized;
-        Instantiate(bulletPrefab, shootOrigin.position, shootOrigin.rotation);
+        Instantiate(bulletPrefab, shootOrigin.position, Quaternion.identity);
     }
 
     private void Aim()
@@ -105,13 +109,22 @@ public class Patricio : MonoBehaviour
         if (movementNormalized != Vector2.zero && isGrounded) invunerableLocker = false;
 
         movementNormalized = movementNormalized == Vector2.zero
-            ? isFacingRight ? Vector2.right : Vector2.left
+            ? Vector2.down
             : movementNormalized;
 
-        vectorOffset.x = movementNormalized.x * offset;
-        vectorOffset.y = movementNormalized.y * offset;
+
+        vectorOffset.x = movementNormalized.x * (offset - .03f);
+        vectorOffset.y = movementNormalized.y == -1
+            ? movementNormalized.y * (offset - .3f)
+            : movementNormalized.y * offset;
+
+        var angle = Mathf.Atan2(movementNormalized.y, movementNormalized.x) * Mathf.Rad2Deg;
+
 
         shootOrigin.position = transform.position + new Vector3(vectorOffset.x, vectorOffset.y);
+        shootOrigin.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        armSprite.flipX = !isFacingRight;
     }
 
     private void Invulnerable()
@@ -155,6 +168,9 @@ public class Patricio : MonoBehaviour
 
     private void Jump()
     {
+        armSprite.enabled = isGrounded && !parry;
+        animator.SetBool("isJumping",!isGrounded && !parry);
+        
         if (jump) framCount++;
 
         if (isGrounded && jump)
@@ -178,6 +194,7 @@ public class Patricio : MonoBehaviour
                     isJumping = false;
                 }
             }
+
         }
 
         if (isGrounded) invunerableLocker = false;
@@ -194,7 +211,9 @@ public class Patricio : MonoBehaviour
             invunerableLocker = false;
         }
 
+        animator.SetBool("isParrying",parry);
         if (!parry || !jump) return;
+
         rbd.velocity = 1.4f * jumpForce * Vector2.up;
         parry = false;
     }
@@ -203,6 +222,8 @@ public class Patricio : MonoBehaviour
     {
         Flip();
         if (!freezeMovement) rbd.velocity = new Vector2(movement.x * speed, rbd.velocity.y);
+        
+        animator.SetBool("isWalking", rbd.velocity != Vector2.zero && isGrounded );
     }
 
     private void Flip()
