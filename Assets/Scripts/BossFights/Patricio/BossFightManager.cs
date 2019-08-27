@@ -15,7 +15,6 @@ public enum BossFightState
 
 public enum BossSide
 {
-    None,
     Left,
     Right
 }
