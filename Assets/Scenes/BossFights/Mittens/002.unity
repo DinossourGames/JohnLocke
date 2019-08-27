@@ -510,5 +510,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.049
       objectReference: {fileID: 0}
+    - target: {fileID: 2039028431, guid: 66891cfd91d618348b55bb5fc28e939b, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1597119226855905295, guid: 9fe4f87364b0979439a15b23ae10a498,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66891cfd91d618348b55bb5fc28e939b, type: 3}

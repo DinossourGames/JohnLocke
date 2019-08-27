@@ -1,5 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1221707143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627132872947115706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 0
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.45
+  m_Color: {r: 0.9245283, g: 0.8837201, b: 0.082858644, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0.14
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 1
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_PointLightDistance: 0.4
+  m_PointLightQuality: 0
+  m_ShapeLightParametricSides: 3
+  m_ShapeLightParametricAngleOffset: 90
+  m_ShapeLightParametricRadius: 0
+  m_ShapeLightFalloffSize: 4.14
+  m_ShapeLightFalloffOffset: {x: 3.6, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &3740421655990685998
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +49,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6597498089763562601}
   - component: {fileID: 1143517963}
+  - component: {fileID: 119411090369463513}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -34,6 +74,19 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1143517963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3740421655990685998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8124c3d11c25f4080fe45f5ac0ed13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedWeapon: 0
+--- !u!114 &119411090369463513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,8 +129,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8077721261171073830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.53, y: -1.03, z: 0}
-  m_LocalScale: {x: 0.99498403, y: 0.99498403, z: 0.99498403}
+  m_LocalPosition: {x: -2.712, y: -1.212, z: 0}
+  m_LocalScale: {x: 0.63181484, y: 0.63181484, z: 0.63181484}
   m_Children:
   - {fileID: 6597498089763562601}
   m_Father: {fileID: 0}
@@ -527,6 +580,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.06295482
       objectReference: {fileID: 0}
+    - target: {fileID: 2066399685483282279, guid: 6bb063b1bd07a5247b9981768ea7bd99,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607144189183948847, guid: 6bb063b1bd07a5247b9981768ea7bd99,
+        type: 3}
+      propertyPath: cadence
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607144189183948847, guid: 6bb063b1bd07a5247b9981768ea7bd99,
+        type: 3}
+      propertyPath: reloadTime
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bb063b1bd07a5247b9981768ea7bd99, type: 3}
 --- !u!4 &4826670155051746363 stripped
@@ -550,12 +618,12 @@ PrefabInstance:
     - target: {fileID: 8860270863458501281, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.089
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8860270863458501281, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.069
+      value: 0.035
       objectReference: {fileID: 0}
     - target: {fileID: 8860270863458501281, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
         type: 3}
@@ -617,11 +685,38 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.33431304
       objectReference: {fileID: 0}
+    - target: {fileID: 8860270863458501282, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860270863458501283, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1597119226855905295, guid: 9fe4f87364b0979439a15b23ae10a498,
+        type: 3}
+    - target: {fileID: 8860270863458501283, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
+        type: 3}
+      propertyPath: cadence
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860270863458501283, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
+        type: 3}
+      propertyPath: reloadTime
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62, type: 3}
 --- !u!4 &2039028429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8860270863458501281, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
+    type: 3}
+  m_PrefabInstance: {fileID: 8860270864960657516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &627132872947115706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8233151238238289622, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
     type: 3}
   m_PrefabInstance: {fileID: 8860270864960657516}
   m_PrefabAsset: {fileID: 0}

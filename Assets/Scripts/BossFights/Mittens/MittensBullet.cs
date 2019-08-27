@@ -7,14 +7,14 @@ public class MittensBullet : MonoBehaviour
     [SerializeField] private float lifeTime;
     [SerializeField] private float speed;
     [SerializeField] private GameObject explosion;
-    [SerializeField] private string target;
+    [SerializeField] private string[] targetTags;
     [SerializeField] private int damage;
     [SerializeField] private int piercing;
     private float timeToDie;
 
     void Start()
     {
-        Invoke("DestroyProjectile", lifeTime);
+        //Invoke("DestroyProjectile", lifeTime);
         timeToDie = Time.time + lifeTime;
     }
 
@@ -23,7 +23,7 @@ public class MittensBullet : MonoBehaviour
     {
         transform.Translate(Vector2.right *speed * Time.deltaTime);
         if (Time.time >= timeToDie)
-            DestroyProjectile();
+            DestroyProjectile();//speed = 0;
     }
 
     void DestroyProjectile()
@@ -34,13 +34,13 @@ public class MittensBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(target))
-        {
-            //collision.GetComponent<enemy>().TakeDamage(damage);
-            if (piercing <= 0)
-                DestroyProjectile();
-            else
-                piercing--;
-        }
+//        if (collision.CompareTag(targetTags))
+//        {
+//            //collision.GetComponent<enemy>().TakeDamage(damage);
+//            if (piercing <= 0)
+//                DestroyProjectile();
+//            else
+//                piercing--;
+//        }
     }
 }

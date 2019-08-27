@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 0
   ammo: 0
-  bullet: {fileID: 0}
+  bullet: {fileID: 8689825769703428639, guid: a659e14429b5dfc45bc1d520393d2492, type: 3}
   shotPoint: {fileID: 7830955129238544769}
   cadence: 0
   totalAmmo: 30

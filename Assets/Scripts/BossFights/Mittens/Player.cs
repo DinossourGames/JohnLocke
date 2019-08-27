@@ -48,7 +48,6 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     private void Update()
     {
         device = _pi.devices[0].device.displayName == "Mouse" || _pi.devices[0].device.displayName == "Keyboard";
-        print(device);
     }
 
     // Update is called once per frame
@@ -151,7 +150,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 
     public void OnSwitchWeapons(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        print("batata");
     }
 
     public void OnAim(InputAction.CallbackContext context)
