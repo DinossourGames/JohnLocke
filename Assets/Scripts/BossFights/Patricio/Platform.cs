@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
+#pragma warning disable 414
 
 // ReSharper disable Unity.PerformanceCriticalCodeNullComparison
 
@@ -20,25 +18,20 @@ public enum State
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField, Header("Fill Atributes")]
+    [SerializeField, Header("Platform Configuration")]
     private GameObject fillPlatform;
 
+    [SerializeField] private State state;
+    [SerializeField, Space] private bool isTop;
     [SerializeField] private GameObject basePlatform;
-
-    [SerializeField] private State _state;
-
-    public State State
-    {
-        get => _state;
-    }
-
     [SerializeField, Range(0f, 1f)] private float fillRatio;
     [SerializeField, Range(0f, 3f)] private float fillDelay;
-    private Vector3 localScale;
-
+    [SerializeField, Range(1, 15)] private float upSpeed;
+    private Vector3 _localScale;
     private float _fillAmmount;
     private bool _hasCollision;
-    public bool _movementLocker;
+
+    public bool movementLocker;
 
     // Screen bounds
     [SerializeField, Header("Boundaries"), Space]
@@ -46,30 +39,20 @@ public class Platform : MonoBehaviour
 
     [SerializeField] private Vector2 screenBounds;
 
-
     // Sprite Bounds
     private BoxCollider2D _collider2D;
+
     [SerializeField] private Vector2 platformBounds;
-    [SerializeField, Range(1, 15)] private float upSpeed;
 
     //references
     private Transform _player;
     private SpriteRenderer _baseSpriteRenderer;
     private Rigidbody2D _rb;
-    [SerializeField, Space] private bool isTop;
 
-    [Header("Position Check"), Space] [SerializeField]
-    private Transform leftChecker;
+    private Coroutine _decrease;
+    private Coroutine _increase;
 
-    [SerializeField] private Transform rightChecker;
-    [SerializeField] private bool right;
-    [SerializeField] private bool left;
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private PlatformManager _pManager;
-    private Coroutine decrease;
-    private Coroutine increase;
-    [SerializeField] private float offset;
-    private bool shake;
+    private bool _shake;
 
 
     private void Start()
@@ -77,14 +60,12 @@ public class Platform : MonoBehaviour
         mainCamera = FindObjectOfType<Camera>();
         screenBounds =
             mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
-        _state = State.IdleDown;
+        state = State.IdleDown;
         _collider2D = GetComponent<BoxCollider2D>();
-        localScale = fillPlatform.transform.localScale;
+        _localScale = fillPlatform.transform.localScale;
         _baseSpriteRenderer = basePlatform.GetComponent<SpriteRenderer>();
         platformBounds = _baseSpriteRenderer.size;
         _rb = GetComponent<Rigidbody2D>();
-        left = right = true;
-        _pManager = FindObjectOfType<PlatformManager>();
     }
 
     private void Update()
@@ -97,12 +78,13 @@ public class Platform : MonoBehaviour
 
     public void UpdateState(PlatformPosition update)
     {
-        var distance = Vector3.Distance(transform.position, update.Position.center);
-        var direction = transform.position.x - update.Position.center.x > 0; //  > 0 - right | < 0 -left
+        var position = transform.position;
+        var distance = Vector3.Distance(position, update.Position.center);
+        var direction = position.x - update.Position.center.x > 0; //  > 0 - right | < 0 -left
 
-        if (_state == State.Rising || _state == State.Falling || _state == State.IdleUp ||
-            _state == State.MovingLeft ||
-            _state == State.MovingRight || _movementLocker)
+        if (state == State.Rising || state == State.Falling || state == State.IdleUp ||
+            state == State.MovingLeft ||
+            state == State.MovingRight || movementLocker)
             return;
 
         var yDiff = Mathf.Abs(transform.position.y - update.Position.center.y);
@@ -113,7 +95,7 @@ public class Platform : MonoBehaviour
             {
                 if (direction)
                 {
-                    _movementLocker = true;
+                    movementLocker = true;
                     StartCoroutine(Move(update.Position.center, true));
                 }
             }
@@ -122,7 +104,7 @@ public class Platform : MonoBehaviour
             {
                 if (!direction)
                 {
-                    _movementLocker = true;
+                    movementLocker = true;
                     StartCoroutine(Move(update.Position.center, false));
                 }
             }
@@ -130,14 +112,14 @@ public class Platform : MonoBehaviour
     }
 
 
-    public IEnumerator Move(Vector2 endpoint, bool movingLeft)
+    private IEnumerator Move(Vector2 endpoint, bool movingLeft)
     {
-        if (increase != null)
-            StopCoroutine(increase);
-        if (decrease != null)
-            StopCoroutine(decrease);
+        if (_increase != null)
+            StopCoroutine(_increase);
+        if (_decrease != null)
+            StopCoroutine(_decrease);
 
-        _state = movingLeft ? State.MovingLeft : State.MovingRight;
+        state = movingLeft ? State.MovingLeft : State.MovingRight;
         yield return StartCoroutine(ShakePlatform());
 
         while (Vector2.Distance(transform.position, endpoint) > .1f)
@@ -146,11 +128,11 @@ public class Platform : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
-        _state = isTop ? State.IdleUp : State.IdleDown;
+        state = isTop ? State.IdleUp : State.IdleDown;
         if (_hasCollision)
-            increase = StartCoroutine(Increase());
+            _increase = StartCoroutine(Increase());
         yield return new WaitForSeconds(2f);
-        _movementLocker = false;
+        movementLocker = false;
     }
 
     private IEnumerator RiseCycle()
@@ -182,7 +164,7 @@ public class Platform : MonoBehaviour
     private IEnumerator GoRight()
     {
         yield return StartCoroutine(ShakePlatform());
-        _state = State.MovingRight;
+        state = State.MovingRight;
 
         var bound = new Vector2(screenBounds.x - _baseSpriteRenderer.bounds.extents.x, transform.position.y);
         while (Vector2.Distance(transform.position, bound) > 0)
@@ -197,28 +179,29 @@ public class Platform : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
-        _state = isTop ? State.IdleUp : State.IdleDown;
+        state = isTop ? State.IdleUp : State.IdleDown;
     }
 
     private IEnumerator GoLeft()
     {
         yield return StartCoroutine(ShakePlatform());
-        _state = State.MovingLeft;
-        var bound = new Vector2(screenBounds.x * -1 + _baseSpriteRenderer.bounds.extents.x, transform.position.y);
+        state = State.MovingLeft;
+        var bounds = _baseSpriteRenderer.bounds;
+        var bound = new Vector2(screenBounds.x * -1 + bounds.extents.x, transform.position.y);
 
         while (Vector2.Distance(transform.position, bound) > 0)
         {
             var position = transform.position;
             position += Time.deltaTime * upSpeed * Vector3.left;
 
-            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + _baseSpriteRenderer.bounds.extents.x,
-                screenBounds.x - _baseSpriteRenderer.bounds.extents.x);
+            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + bounds.extents.x,
+                screenBounds.x - bounds.extents.x);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
-        _state = isTop ? State.IdleUp : State.IdleDown;
+        state = isTop ? State.IdleUp : State.IdleDown;
     }
 
     private IEnumerator Fall()
@@ -228,7 +211,7 @@ public class Platform : MonoBehaviour
         yield return StartCoroutine(ShakePlatform());
         yield return new WaitForSeconds(.2f);
         yield return StartCoroutine(ShakePlatform());
-        _state = State.Falling;
+        state = State.Falling;
 
         while (transform.position.y > screenBounds.y * -1 + platformBounds.y / 2)
         {
@@ -242,14 +225,14 @@ public class Platform : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
-        _state = State.IdleDown;
-        _movementLocker = false;
+        state = State.IdleDown;
+        movementLocker = false;
     }
 
     private IEnumerator Rise()
     {
         yield return StartCoroutine(ShakePlatform());
-        _state = State.Rising;
+        state = State.Rising;
 
         while (transform.position.y < screenBounds.y - platformBounds.y / 2)
         {
@@ -266,12 +249,12 @@ public class Platform : MonoBehaviour
             yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
 
-        _state = State.IdleUp;
+        state = State.IdleUp;
     }
 
     private IEnumerator Shinee()
     {
-        _state = State.Falling;
+        state = State.Falling;
         yield return StartCoroutine(ShakePlatform());
         _rb.isKinematic = false;
         _rb.gravityScale = 5;
@@ -288,16 +271,17 @@ public class Platform : MonoBehaviour
             _player.parent = null;
         _collider2D.enabled = false;
         yield return new WaitForSeconds(.4f);
+        // ReSharper disable once Unity.InefficientPropertyAccess
         _collider2D.enabled = true;
         _baseSpriteRenderer.color = new Color(atualColor.r, atualColor.g, atualColor.b, 1f);
     }
 
     private IEnumerator ShakePlatform()
     {
-        shake = true;
+        _shake = true;
         yield return new WaitForSeconds(.4f);
         _fillAmmount = 0;
-        fillPlatform.transform.localScale = new Vector3(localScale.x, _fillAmmount, localScale.z);
+        fillPlatform.transform.localScale = new Vector3(_localScale.x, _fillAmmount, _localScale.z);
         var counter = 0f;
         const float maxX = .2f;
         const float maxY = .4f;
@@ -313,31 +297,31 @@ public class Platform : MonoBehaviour
 
         transform.position = pos;
         yield return new WaitForSeconds(.4f);
-        shake = false;
+        _shake = false;
     }
 
     private IEnumerator Increase()
     {
         yield return new WaitForSeconds(fillDelay);
         var peak = false;
-        _state = State.Increasing;
+        state = State.Increasing;
         while (_fillAmmount <= 1.0f && _hasCollision)
         {
             _fillAmmount += fillRatio * 3 * Time.fixedDeltaTime;
             if (_fillAmmount > 1f)
             {
                 peak = true;
-                _state = State.Rising;
+                state = State.Rising;
                 continue;
             }
 
-            fillPlatform.transform.localScale = new Vector3(localScale.x, _fillAmmount, localScale.z);
+            fillPlatform.transform.localScale = new Vector3(_localScale.x, _fillAmmount, _localScale.z);
             yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
 
         if (!peak) yield break;
         _fillAmmount = 0f;
-        fillPlatform.transform.localScale = new Vector3(localScale.x, _fillAmmount, localScale.z);
+        fillPlatform.transform.localScale = new Vector3(_localScale.x, _fillAmmount, _localScale.z);
 
         StartCoroutine(RiseCycle());
     }
@@ -345,44 +329,44 @@ public class Platform : MonoBehaviour
     private IEnumerator Decrease()
     {
         yield return new WaitForSeconds(fillDelay);
-        _state = State.Decreasing;
+        state = State.Decreasing;
         while (_fillAmmount > 0f && !_hasCollision)
         {
-            _fillAmmount -=  fillRatio * 3 * Time.fixedDeltaTime;
+            _fillAmmount -= fillRatio * 3 * Time.fixedDeltaTime;
             if (_fillAmmount < 0)
                 _fillAmmount = 0;
 
-            fillPlatform.transform.localScale = new Vector3(localScale.x, _fillAmmount, localScale.z);
+            fillPlatform.transform.localScale = new Vector3(_localScale.x, _fillAmmount, _localScale.z);
             yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player") || _state == State.MovingLeft || _state == State.MovingRight ||
-            _state == State.Rising || _state == State.Falling) return;
+        if (!other.CompareTag("Player") || state == State.MovingLeft || state == State.MovingRight ||
+            state == State.Rising || state == State.Falling) return;
         _player = other.transform;
         _player.SetParent(transform);
         _hasCollision = true;
-        if (increase != null)
-            StopCoroutine(increase);
-        if (decrease != null)
-            StopCoroutine(decrease);
+        if (_increase != null)
+            StopCoroutine(_increase);
+        if (_decrease != null)
+            StopCoroutine(_decrease);
 
-        increase = StartCoroutine(Increase());
+        _increase = StartCoroutine(Increase());
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player") || _state == State.Rising || _state == State.Falling) return;
+        if (!other.CompareTag("Player") || state == State.Rising || state == State.Falling) return;
         _player = other.transform;
         _player.SetParent(null);
         _hasCollision = false;
 
-        if (increase != null)
-            StopCoroutine(increase);
-        if (decrease != null)
-            StopCoroutine(decrease);
-        decrease = StartCoroutine(Decrease());
+        if (_increase != null)
+            StopCoroutine(_increase);
+        if (_decrease != null)
+            StopCoroutine(_decrease);
+        _decrease = StartCoroutine(Decrease());
     }
 }
