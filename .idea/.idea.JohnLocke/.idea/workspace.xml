@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Images/BossGun.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/BossGun.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AltasCoisas/BossFastMissel.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossFastMissel.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AltasCoisas/BossIdle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossIdle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AltasCoisas/BossMissel.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossMissel.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AltasCoisas/BossWalk.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossWalk.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AltasCoisas/Boss_OKAY.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AltasCoisas/Boss_OKAY.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bossonaro.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bossonaro.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Boss.cs" afterDir="false" />
@@ -125,7 +122,7 @@
       <workItem from="1566793722552" duration="6792000" />
       <workItem from="1566928974334" duration="8162000" />
       <workItem from="1566955268766" duration="1625000" />
-      <workItem from="1566967851700" duration="7686000" />
+      <workItem from="1566967851700" duration="8956000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>

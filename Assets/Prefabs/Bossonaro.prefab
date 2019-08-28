@@ -146,6 +146,36 @@ MonoBehaviour:
   m_Bounds:
     m_Center: {x: 1.6595899, y: -0.06352103, z: 0}
     m_Extent: {x: 0.6821941, y: 0.33416316, z: 0}
+--- !u!1 &794320630768795078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7447648684435221020}
+  m_Layer: 0
+  m_Name: ShootPointMissil
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7447648684435221020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794320630768795078}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.41, y: 0.8, z: -16.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5773913860382675677}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &869946293985295604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,7 +1076,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2914090665602634083}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.47, y: 5.87, z: 16.75}
+  m_LocalPosition: {x: -0.47, y: 5.87, z: 0}
   m_LocalScale: {x: 1.6050591, y: 1.6050591, z: 1.6050591}
   m_Children:
   - {fileID: 3099265022165408932}
@@ -1131,7 +1161,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.1900005, y: 7.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7447648684435221020}
   m_Father: {fileID: 450673253116366543}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3082,4 +3113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578127e45ed6e634ea9337ad7f3258eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossAnimator: {fileID: 0}
+  bossAnimator: {fileID: 30107772994319299}
+  shootPoint: {fileID: 3099265022165408932}
+  missilShootPoint: {fileID: 7447648684435221020}
+  armGun: {fileID: 2914090665602634083}
+  bulletPrefab: {fileID: 3269484786543324692, guid: c730376410f8c51428331f9614cc7ab0,
+    type: 3}
+  missilPrefab: {fileID: 0}
+  missilParryPrefab: {fileID: 0}
