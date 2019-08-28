@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3740421655990685998}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01206034, y: -0.29045692, z: -216.694}
+  m_LocalPosition: {x: 0.5, y: 0.02, z: -216.694}
   m_LocalScale: {x: 1.0050412, y: 1.0050412, z: 1.0050412}
   m_Children:
   - {fileID: 2039028429}
@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 4010960416773019779}
   - component: {fileID: 1097385214}
   - component: {fileID: 1097385212}
+  - component: {fileID: 7557927560085681511}
   m_Layer: 0
   m_Name: Mittens
   m_TagString: Player
@@ -253,7 +254,7 @@ Transform:
   m_GameObject: {fileID: 8077721261171073830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.712, y: -1.212, z: 0}
-  m_LocalScale: {x: 0.63181484, y: 0.63181484, z: 0.63181484}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6597498089763562601}
   - {fileID: 426474878}
@@ -298,8 +299,9 @@ SpriteRenderer:
   m_SortingLayerID: 803710713
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 94d9c4bea79a5f84d9ebf44d79c56cca, type: 3}
-  m_Color: {r: 0.3520332, g: 0.07115523, b: 0.38679248, a: 1}
+  m_Sprite: {fileID: -7644600726639896024, guid: 0605c340c4a641d47bc5cb7b4082db3d,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -622,6 +624,25 @@ MonoBehaviour:
   m_DefaultActionMap: de5c8eb9-cadf-448e-884d-2c482889df24
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &7557927560085681511
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077721261171073830}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1117193167370641510
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="" />
+    <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gui/Mittens_Walk_Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gui/Mittens_Walk_Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gui/Mittens_Walk_Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gui/Mittens_Walk_Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Mittens/Mittens_Idle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/Mittens/Mittens_Idle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +145,7 @@
       <workItem from="1566926784290" duration="9252000" />
       <workItem from="1566960299423" duration="17596000" />
       <workItem from="1567012100964" duration="2386000" />
-      <workItem from="1567021187125" duration="2095000" />
+      <workItem from="1567021187125" duration="3196000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>

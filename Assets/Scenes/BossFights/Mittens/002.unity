@@ -567,12 +567,12 @@ PrefabInstance:
     - target: {fileID: 8077721261171073834, guid: 66891cfd91d618348b55bb5fc28e939b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.903
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: 8077721261171073834, guid: 66891cfd91d618348b55bb5fc28e939b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.337
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 8077721261171073834, guid: 66891cfd91d618348b55bb5fc28e939b,
         type: 3}
@@ -867,5 +867,10 @@ PrefabInstance:
       propertyPath: m_PointLightOuterRadius
       value: 18.76
       objectReference: {fileID: 0}
+    - target: {fileID: 7557927560085681511, guid: 66891cfd91d618348b55bb5fc28e939b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b6934e2159e605e429347f93c8c7d052, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66891cfd91d618348b55bb5fc28e939b, type: 3}
