@@ -2,21 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Missile.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Missile.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Particle System.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Particle System.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossMissile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossMissile.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Boss.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Boss.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossFastMissel.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossFastMissel.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossGun.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossGun.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossIdle.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossIdle.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossMissel.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossMissel.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossWalk.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/BossWalk.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Boss_OKAY.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Boss_OKAY.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Boss_OKAY.psb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Boss_OKAY.psb.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/GIdle_Patricio_OKAY.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/GIdle_Patricio_OKAY.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/GIdle_Patricio_OKAY_0.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/GIdle_Patricio_OKAY_0.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Mittens_Walk_Left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Mittens_Walk_Left.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Mittens_Walk_Right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/Mittens_Walk_Right.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/PatricioIdle.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gui/PatricioIdle.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/Missil_Boss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Mittens/Missil_Boss.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boss.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Missile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Missile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensGameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,12 +91,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/WeaponSwitching.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossMissile.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" />
       </list>
     </option>
   </component>
@@ -147,7 +171,7 @@
       <workItem from="1566874064628" duration="108000" />
       <workItem from="1566874490713" duration="5842000" />
       <workItem from="1566926784290" duration="9252000" />
-      <workItem from="1566960299423" duration="6379000" />
+      <workItem from="1566960299423" duration="12106000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>

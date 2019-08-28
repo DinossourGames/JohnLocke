@@ -9,12 +9,14 @@ public enum BossState{Waiting, One, Two, Three}
 
 public class MittensGameManager : MonoBehaviour
 {
-   [SerializeField] private BossState _bossState;
+   public static BossState _bossState;
+   public static int difficulty;
    [SerializeField] private GameObject boss;
    [SerializeField] private Boss dinoBoss;
 
    private void Start()
    {
+      _bossState = BossState.Waiting;
       var dinoBos = Instantiate(boss, transform.position, Quaternion.identity);
       dinoBos.transform.SetParent(transform);
       dinoBoss = dinoBos.GetComponent<Boss>();
@@ -22,8 +24,20 @@ public class MittensGameManager : MonoBehaviour
 
    private void Update()
    {
-      if (dinoBoss.Health < dinoBoss.TotalHealth)
+      if (dinoBoss.Health < dinoBoss.TotalHealth/5)
       {
+         _bossState = BossState.Three;
+         difficulty = 3;
+      }
+      else if (dinoBoss.Health < dinoBoss.TotalHealth / 2)
+      {
+         _bossState = BossState.Two;
+         difficulty = 2;
+      }
+      else if (dinoBoss.Health < dinoBoss.TotalHealth)
+      {
+         _bossState = BossState.One;
+         difficulty = 1;
       }
    }
 
