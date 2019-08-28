@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/Missil_Boss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/Missil_Boss.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/Parry_Missil_Boss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/Parry_Missil_Boss.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Missil.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Missil.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/ParryMissil.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/ParryMissil.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Common/StoppedCameraParalax.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/StoppedCameraParalax.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/BossGun.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/BossGun.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bossonaro.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bossonaro.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AltasCoisas/BossFastMissel.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossFastMissel.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Boss.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +127,7 @@
       <workItem from="1566793722552" duration="6792000" />
       <workItem from="1566928974334" duration="8162000" />
       <workItem from="1566955268766" duration="1625000" />
-      <workItem from="1566967851700" duration="18357000" />
+      <workItem from="1566967851700" duration="21750000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>
