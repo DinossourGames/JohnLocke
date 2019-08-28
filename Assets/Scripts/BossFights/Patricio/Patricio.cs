@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+#pragma warning disable 414
 
 public class Patricio : MonoBehaviour
 {

@@ -26,8 +26,6 @@ public class StoppedCameraParalax : MonoBehaviour
     {
         var direction = playerPosition.position.x - lastPosition;
 
-        print(direction);
-
         foreach (Transform layer in layers)
         {
             var parallaxSpeed = 1 - Mathf.Clamp01(Mathf.Abs(transform.position.z / layer.position.z));
