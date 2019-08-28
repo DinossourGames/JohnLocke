@@ -19,11 +19,11 @@ public class Boundaries : MonoBehaviour
         _objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y; //extents = size of height / 2
     }
 
-    private void Update()
-    {
-        screenBounds =
-            mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
-    }
+//    private void Update()
+//    {
+//        screenBounds =
+//            mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
+//    }
 
     // Update is called once per frame
     private void LateUpdate()

@@ -2,61 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossFastMissel.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossFastMissel.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossGun.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossGun.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossIdle.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossIdle.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossMissel.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossMissel.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossWalk.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/BossWalk.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/Boss_OKAY.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/Boss_OKAY.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/Boss_OKAY.psb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/Boss_OKAY.psb.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/GIdle_Patricio_OKAY.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/GIdle_Patricio_OKAY.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/GIdle_Patricio_OKAY_0.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/GIdle_Patricio_OKAY_0.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/Mittens_Walk_Left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/Mittens_Walk_Left.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/Mittens_Walk_Right.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/Mittens_Walk_Right.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/PatricioIdle.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AltasCoisas/PatricioIdle.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Common/StoppedCameraParalax.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Common/StoppedCameraParalax.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/1.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/2.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/3.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/4.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/BG_Patricio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/BG_Patricio.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/Sol.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Patricio/BG/Sol.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Boss.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Boss.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Anim/Patricio.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Anim/Patricio.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Patricio/BG_Patricio.psb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Patricio/BG_Patricio.psb.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Common/Boundaries.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/Boundaries.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,16 +34,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Common/Boundaries.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/SceneManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/GamepadManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/Restart.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/PlatformManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/StoppedCameraParalax.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" />
+        <option value="$PROJECT_DIR$/Assets/Common/Boundaries.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
       </list>
     </option>
   </component>
@@ -167,7 +115,7 @@
       <workItem from="1566793722552" duration="6792000" />
       <workItem from="1566928974334" duration="8162000" />
       <workItem from="1566955268766" duration="1625000" />
-      <workItem from="1566967851700" duration="4490000" />
+      <workItem from="1566967851700" duration="6268000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>

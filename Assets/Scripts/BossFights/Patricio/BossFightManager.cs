@@ -28,12 +28,12 @@ public class BossFightManager : MonoBehaviour
     {
         FightState = BossFightState.Stage1;
         BossSide = BossSide.Right;
-//        QualitySettings.vSyncCount = 0;
-//        Application.targetFrameRate = 75;
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 75;
     }
 
     private void Update()
     {
-        BossSide = bossSide;
+        BossSide = bossSide; // for static field - this is the worst way  to do it.
     }
 }
