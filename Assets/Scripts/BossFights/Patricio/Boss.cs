@@ -44,7 +44,6 @@ public class Boss : MonoBehaviour
     {
         _patricio = FindObjectOfType<Patricio>();
         canFollow = true;
-        StartCoroutine(ParrySequence());
     }
 
 
@@ -70,13 +69,20 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         yield return StartCoroutine(ShootMissil(false));
-        yield return new WaitForSeconds(1.2f);
-        yield return StartCoroutine(ShootMissil(true));
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
         yield return StartCoroutine(ShootMissil(true));
         yield return new WaitForSeconds(1.2f);
         yield return StartCoroutine(ShootMissil(false));
         yield return new WaitForSeconds(1.2f);
+        yield return StartCoroutine(ShootMissil(true));
+        yield return new WaitForSeconds(.12f);
+        yield return StartCoroutine(ShootMissil(true));
+        yield return new WaitForSeconds(.07f);
+        yield return StartCoroutine(ShootMissil(true));
+        yield return new WaitForSeconds(.3f);
+        yield return StartCoroutine(ShootMissil(false));
+        yield return new WaitForSeconds(.4f);
+        yield return StartCoroutine(ShootMissil(true));
     }
 
     private IEnumerator TargetShoot()
@@ -84,7 +90,7 @@ public class Boss : MonoBehaviour
         bulletPrefab.Parent = gameObject;
         bulletPrefab.Direction = isFacingRight ? Vector2.right : Vector2.left;
         canFollow = false;
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(.12f);
         Instantiate(bulletPrefab, shootPoint.position, armGun.transform.rotation);
         canFollow = true;
     }
@@ -93,6 +99,7 @@ public class Boss : MonoBehaviour
     {
         canFollow = false;
         yield return StartCoroutine(PreparePosition(Positions.Missil));
+        bossAnimator.SetBool("isMissil", true);
         Bullet tiro;
         if (parry)
         {
@@ -108,6 +115,8 @@ public class Boss : MonoBehaviour
         }
 
         Instantiate(tiro, shootPoint.position, quaternion.identity);
+        bossAnimator.SetBool("isMissil", false);
+
         canFollow = true;
     }
 
@@ -233,5 +242,20 @@ public class Boss : MonoBehaviour
         isFacingRight = false;
         var scale = transform.localScale;
         transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            print("AI");
+          
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        print(other.collider.tag);
     }
 }

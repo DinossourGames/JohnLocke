@@ -624,6 +624,63 @@ MonoBehaviour:
     m_Bits: 512
   platformsPositions: []
   _platforms: []
+--- !u!1 &937634865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 937634867}
+  - component: {fileID: 937634866}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Finish
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &937634866
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937634865}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.39963865}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.3321295}
+  m_EdgeRadius: 0
+--- !u!4 &937634867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937634865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.08, y: -4.17, z: -2.606558}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &991558098
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,11 +773,11 @@ GameObject:
   - component: {fileID: 1040708617}
   m_Layer: 0
   m_Name: BossFightManager
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1040708617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,7 +799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040708616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.15, y: 3.1, z: 0}
+  m_LocalPosition: {x: 7.13, y: -3.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5921001567714824108}
@@ -1153,7 +1210,7 @@ PrefabInstance:
     - target: {fileID: 1267749422763071770, guid: c24289bc428a6054b875208a0a6eca4c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.26
+      value: -3.37
       objectReference: {fileID: 0}
     - target: {fileID: 1267749422763071770, guid: c24289bc428a6054b875208a0a6eca4c,
         type: 3}
@@ -1250,10 +1307,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1267749422763071780, guid: c24289bc428a6054b875208a0a6eca4c,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4078972305473518548, guid: 7291f5e35063a2148a15b7cff2858f56,
+        type: 3}
     - target: {fileID: 1267749422763071783, guid: c24289bc428a6054b875208a0a6eca4c,
         type: 3}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267749422763071771, guid: c24289bc428a6054b875208a0a6eca4c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c24289bc428a6054b875208a0a6eca4c, type: 3}
@@ -1274,6 +1342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bossonaro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801506947581520346, guid: 83566a423eae0fa48a6e8a021ee45e7a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 450673253116366543, guid: 83566a423eae0fa48a6e8a021ee45e7a,
         type: 3}
@@ -1337,20 +1410,13 @@ PrefabInstance:
       objectReference: {fileID: 1763980756}
     - target: {fileID: 5067084602180429475, guid: 83566a423eae0fa48a6e8a021ee45e7a,
         type: 3}
-      propertyPath: missilPrefab
-      value: 
-      objectReference: {fileID: 200004949902572988, guid: 23ebd9ea0db381f4787ffee33828dd21,
-        type: 3}
-    - target: {fileID: 5067084602180429475, guid: 83566a423eae0fa48a6e8a021ee45e7a,
-        type: 3}
-      propertyPath: missilParryPrefab
-      value: 
-      objectReference: {fileID: 6146832073385922823, guid: 7c144e194aa81744b87e46aa02b12f0e,
-        type: 3}
-    - target: {fileID: 5067084602180429475, guid: 83566a423eae0fa48a6e8a021ee45e7a,
-        type: 3}
       propertyPath: missilPoint
       value: 
       objectReference: {fileID: 1369683102}
+    - target: {fileID: 5067084602180429475, guid: 83566a423eae0fa48a6e8a021ee45e7a,
+        type: 3}
+      propertyPath: inicialPoint
+      value: 
+      objectReference: {fileID: 291884261}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83566a423eae0fa48a6e8a021ee45e7a, type: 3}

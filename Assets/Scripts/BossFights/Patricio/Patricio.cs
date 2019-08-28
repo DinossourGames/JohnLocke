@@ -51,7 +51,7 @@ public class Patricio : MonoBehaviour
     [SerializeField] private bool shoot;
     [SerializeField] private float shootTime;
     [SerializeField] private float shootDelay;
-    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform shootOrigin;
     [SerializeField] private SpriteRenderer armSprite;
     [SerializeField] private Vector2 vectorOffset;
@@ -90,9 +90,9 @@ public class Patricio : MonoBehaviour
         Aim();
         if (!shoot || !(Time.time > shootTime)) return;
         shootTime = Time.time + shootDelay;
-        bulletPrefab.Parent = gameObject;
-        bulletPrefab.Direction = movementNormalized;
-        Instantiate(bulletPrefab, shootOrigin.position, Quaternion.identity);
+//        bulletPrefab.Parent = gameObject;
+//        bulletPrefab.Direction = movementNormalized;
+        Instantiate(bulletPrefab, shootOrigin.position, shootOrigin.rotation);
     }
 
     private void Aim()
@@ -155,6 +155,7 @@ public class Patricio : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+//        print(other.tag);
         if (other.CompareTag("ParryObject")) parry = jump && !isGrounded && framCount <= 12;
     }
 

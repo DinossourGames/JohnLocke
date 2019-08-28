@@ -21,7 +21,7 @@ public class Platform : MonoBehaviour
     [SerializeField, Header("Platform Configuration")]
     private GameObject fillPlatform;
 
-    [SerializeField] private State state;
+    public State state;
     [SerializeField, Space] private bool isTop;
     [SerializeField] private GameObject basePlatform;
     [SerializeField, Range(0f, 1f)] private float fillRatio;

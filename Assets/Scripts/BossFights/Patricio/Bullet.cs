@@ -12,8 +12,6 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    private Rigidbody2D rbd;
-
     public GameObject Parent;
     public Vector2 Direction;
 
@@ -33,10 +31,8 @@ public class Bullet : MonoBehaviour
         transform.Translate(Time.deltaTime * speed * Direction);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.Equals(Parent))
-            return;
-
+      print(other.tag);
     }
 }

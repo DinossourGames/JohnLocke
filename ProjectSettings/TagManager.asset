@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - ParryObject
+  - Platform
+  - Boss
+  - Bullet
   layers:
   - Default
   - TransparentFX
