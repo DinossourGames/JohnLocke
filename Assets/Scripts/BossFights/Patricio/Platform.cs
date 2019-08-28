@@ -138,7 +138,6 @@ public class Platform : MonoBehaviour
             StopCoroutine(increase);
         if (decrease != null)
             StopCoroutine(decrease);
-        decrease = StartCoroutine(Decrease());
 
         _state = movingLeft ? State.MovingLeft : State.MovingRight;
         yield return StartCoroutine(ShakePlatform());
@@ -284,6 +283,7 @@ public class Platform : MonoBehaviour
 
     private IEnumerator DropPlayer()
     {
+        _hasCollision = false;
         var atualColor = _baseSpriteRenderer.color;
         _baseSpriteRenderer.color = new Color(atualColor.r, atualColor.g, atualColor.b, .25f);
         if (_player != null)
@@ -356,11 +356,11 @@ public class Platform : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.collider.CompareTag("Player") || _state == State.MovingLeft || _state == State.MovingRight ||
+        if (!other.CompareTag("Player") || _state == State.MovingLeft || _state == State.MovingRight ||
             _state == State.Rising || _state == State.Falling) return;
-        _player = other.collider.transform;
+        _player = other.transform;
         _player.SetParent(transform);
         _hasCollision = true;
         if (increase != null)
@@ -371,10 +371,10 @@ public class Platform : MonoBehaviour
         increase = StartCoroutine(Increase());
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.collider.CompareTag("Player") || _state == State.Rising || _state == State.Falling) return;
-        _player = other.collider.transform;
+        if (!other.CompareTag("Player") || _state == State.Rising || _state == State.Falling) return;
+        _player = other.transform;
         _player.SetParent(null);
         _hasCollision = false;
 
