@@ -109,7 +109,7 @@ public class Patricio : MonoBehaviour
         if (movementNormalized != Vector2.zero && isGrounded) invunerableLocker = false;
 
         movementNormalized = movementNormalized == Vector2.zero
-            ? (!shoot ? Vector2.down : Vector2.right)
+            ? (!shoot ? Vector2.down : (isFacingRight ? Vector2.right : Vector2.left))
             : (!shoot ? Vector2.down : movementNormalized);
 
 

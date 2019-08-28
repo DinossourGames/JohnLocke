@@ -56,7 +56,7 @@ public class PlatformManager : MonoBehaviour
         platformsPositions = new List<PlatformPosition>();
         _platforms = new List<Platform>();
         var sizeX = (screenBounds.x * 2 / 6);
-        var sizeY = 1;
+        var sizeY = .6f;
 
         for (var i = 0; i < 6; i++)
         {

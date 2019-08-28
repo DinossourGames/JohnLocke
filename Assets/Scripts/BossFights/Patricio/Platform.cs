@@ -53,6 +53,8 @@ public class Platform : MonoBehaviour
     private Coroutine _increase;
 
     private bool _shake;
+    [SerializeField] private float scaleY;
+    [SerializeField] private float safeOffset;
 
 
     private void Start()
@@ -64,7 +66,9 @@ public class Platform : MonoBehaviour
         _collider2D = GetComponent<BoxCollider2D>();
         _localScale = fillPlatform.transform.localScale;
         _baseSpriteRenderer = basePlatform.GetComponent<SpriteRenderer>();
-        platformBounds = _baseSpriteRenderer.size;
+        platformBounds = new Vector2(_baseSpriteRenderer.size.x,_baseSpriteRenderer.size.y);
+        scaleY = transform.localScale.y;
+        safeOffset = 0.01f;
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -213,13 +217,14 @@ public class Platform : MonoBehaviour
         yield return StartCoroutine(ShakePlatform());
         state = State.Falling;
 
-        while (transform.position.y > screenBounds.y * -1 + platformBounds.y / 2)
+        while (transform.position.y > screenBounds.y * -1 + (platformBounds.y - scaleY) / 2)
         {
             var position = transform.position;
             position += Time.deltaTime * 25 * Vector3.down;
 
-            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + platformBounds.y / 2,
-                screenBounds.y - platformBounds.y / 2);
+            
+            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + (platformBounds.y - scaleY + safeOffset) / 2,
+                screenBounds.y -(platformBounds.y - scaleY + safeOffset) / 2);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.deltaTime);
@@ -234,7 +239,7 @@ public class Platform : MonoBehaviour
         yield return StartCoroutine(ShakePlatform());
         state = State.Rising;
 
-        while (transform.position.y < screenBounds.y - platformBounds.y / 2)
+        while (transform.position.y < screenBounds.y - (platformBounds.y - scaleY + safeOffset) / 2)
         {
             var position = transform.position;
             position += Time.fixedDeltaTime * upSpeed * Vector3.up;
@@ -242,8 +247,8 @@ public class Platform : MonoBehaviour
             if (position.y > screenBounds.y - platformBounds.y)
                 StartCoroutine(DropPlayer());
 
-            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + platformBounds.y / 2,
-                screenBounds.y - platformBounds.y / 2);
+            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 +  (platformBounds.y - scaleY + safeOffset) / 2,
+                screenBounds.y -  (platformBounds.y - scaleY + safeOffset) / 2);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.fixedDeltaTime);
