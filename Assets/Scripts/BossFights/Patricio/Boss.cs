@@ -58,7 +58,7 @@ public class Boss : MonoBehaviour
     }
 
 
-    private IEnumerator ShootAt()
+    public IEnumerator ShootAt()
     {
         for (int i = 0; i < 15; i++)
         {
@@ -69,7 +69,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private IEnumerator ParrySequence()
+    public IEnumerator ParrySequence()
     {
         yield return new WaitForSeconds(1.2f);
         yield return StartCoroutine(ShootMissil(false));
@@ -89,7 +89,7 @@ public class Boss : MonoBehaviour
         yield return StartCoroutine(ShootMissil(true));
     }
 
-    private IEnumerator TargetShoot()
+    public IEnumerator TargetShoot()
     {
         bulletPrefab.Parent = gameObject;
         bulletPrefab.Direction = isFacingRight ? Vector2.right : Vector2.left;
@@ -99,7 +99,7 @@ public class Boss : MonoBehaviour
         canFollow = true;
     }
 
-    private IEnumerator ShootMissil(bool parry)
+    public IEnumerator ShootMissil(bool parry)
     {
         canFollow = false;
         yield return StartCoroutine(PreparePosition(Positions.Missil));
@@ -124,7 +124,7 @@ public class Boss : MonoBehaviour
         canFollow = true;
     }
 
-    private IEnumerator BurstShoot()
+    public IEnumerator BurstShoot()
     {
         canFollow = false;
         yield return StartCoroutine(PreparePosition(Positions.Burst));
@@ -161,7 +161,7 @@ public class Boss : MonoBehaviour
         canFollow = true;
     }
 
-    private IEnumerator PreparePosition(Positions p)
+    public IEnumerator PreparePosition(Positions p)
     {
         yield return new WaitForSeconds(1.4f);
 
@@ -258,11 +258,12 @@ public class Boss : MonoBehaviour
                 life -= bull.damage * 20;
             }
         }
+
+        if (other.CompareTag("Platform"))
+        {
+            print("YAAAAAAAAY");
+        }
     }
 
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        print(other.collider.tag);
-    }
 }
