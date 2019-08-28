@@ -35,6 +35,7 @@ public class MittensBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         MittensGameManager.DealDamage(gameObject, collision.gameObject, damage);
+        if (collision.CompareTag("Player")) return;
         if (piercing <= 0)
             DestroyProjectile();
         else

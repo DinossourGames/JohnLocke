@@ -117,10 +117,12 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         hitbox.enabled = false;
         trail.enabled = true;
         dashTime = Time.time + dashDelay;
+        sprite.enabled = false;
         yield return new WaitForSeconds(dashDuration);
         speed /= dashSpeedMod;
         hitbox.enabled = true;
         trail.enabled = false;
+        sprite.enabled = true;
     }
 
     public void TakeDamage(int damageAmount)

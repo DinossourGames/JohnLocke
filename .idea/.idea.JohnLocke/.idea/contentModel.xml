@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\TonyStark\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\TonyStark\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_JohnLocke.-1057941309.00" t="ExcludeRecursive" />
-    <e p="C:\Users\TonyStark\Documents\GitHub\JohnLocke" t="IncludeRecursive">
+    <e p="C:\Users\guilh\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\guilh\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_JohnLocke.2002960095.00" t="ExcludeRecursive" />
+    <e p="C:\Users\guilh\Documents\GitHub\JohnLocke" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -21,6 +21,7 @@
           <e p="BossFights" t="Include">
             <e p="Mittens" t="Include">
               <e p="Boss.cs" t="Include" />
+              <e p="BossMissile.cs" t="Include" />
               <e p="cameraFollow.cs" t="Include" />
               <e p="MittensBullet.cs" t="Include" />
               <e p="MittensGameManager.cs" t="Include" />

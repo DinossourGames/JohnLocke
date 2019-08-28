@@ -24,6 +24,8 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     [SerializeField] private float reloadTime;
     [SerializeField] private bool reloading;
     [SerializeField] private float spread;
+    [SerializeField] private float reverseScale;
+    [SerializeField] private float scale;
 
 
     private void Awake()
@@ -49,6 +51,8 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     {
         sprite = GetComponent<SpriteRenderer>();
         ammo = totalAmmo;
+        scale = transform.localScale.y;
+        reverseScale = -scale;
     }
 
     // Update is called once per frame
@@ -57,14 +61,22 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
         GetMouseInput();
         rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = rotation;
-        sprite.flipY = direction.x < 0;
-        
+        //sprite.flipY = direction.x < 0;
+        if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, reverseScale, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x, scale, transform.localScale.z);
+        }
         if(trigger && !reloading)
             Shoot();
         
         
     }
-
+    
+    
     private void Shoot()
     {
         if (Time.time >= shotTime)
@@ -81,12 +93,13 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
             }
         }
     }
-
     private IEnumerator Reload()
     {
         reloading = true;
+        sprite.color = new Color32(130, 13, 0, 255);
         yield return new WaitForSeconds(reloadTime);
         ammo = totalAmmo;
+        sprite.color = Color.white;
         reloading = false;
 
     }
