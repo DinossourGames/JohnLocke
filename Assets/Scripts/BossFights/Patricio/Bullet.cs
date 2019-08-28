@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    private float lifeSpan;
-    [SerializeField]
-    private float damage;
-    [SerializeField]
-    private float speed;
+    [SerializeField] private float lifeSpan;
+    public float damage;
+    [SerializeField] private float speed;
 
     public GameObject Parent;
     public Vector2 Direction;
@@ -31,8 +28,4 @@ public class Bullet : MonoBehaviour
         transform.Translate(Time.deltaTime * speed * Direction);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-      print(other.tag);
-    }
 }

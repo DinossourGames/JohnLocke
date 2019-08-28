@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
@@ -22,6 +23,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private Vector2 lastPosition;
     [SerializeField] private bool isFacingRight;
     [SerializeField] private bool canFollow;
+    public float life = 100;
 
     [SerializeField, Header("Prefabs"), Space]
     private Bullet bulletPrefab;
@@ -49,6 +51,8 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
+        if(life <= 0)
+            Destroy(gameObject);
         if (canFollow)
             Follow();
     }
@@ -248,8 +252,11 @@ public class Boss : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            print("AI");
-          
+            var bull = other.GetComponent<Bullet>();
+            if (bull.Parent != transform)
+            {
+                life -= bull.damage * 20;
+            }
         }
     }
 

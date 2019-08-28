@@ -51,7 +51,7 @@ public class Patricio : MonoBehaviour
     [SerializeField] private bool shoot;
     [SerializeField] private float shootTime;
     [SerializeField] private float shootDelay;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform shootOrigin;
     [SerializeField] private SpriteRenderer armSprite;
     [SerializeField] private Vector2 vectorOffset;
@@ -90,7 +90,7 @@ public class Patricio : MonoBehaviour
         Aim();
         if (!shoot || !(Time.time > shootTime)) return;
         shootTime = Time.time + shootDelay;
-//        bulletPrefab.Parent = gameObject;
+        bulletPrefab.Parent = gameObject;
 //        bulletPrefab.Direction = movementNormalized;
         Instantiate(bulletPrefab, shootOrigin.position, shootOrigin.rotation);
     }
