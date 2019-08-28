@@ -217,14 +217,14 @@ public class Platform : MonoBehaviour
         yield return StartCoroutine(ShakePlatform());
         state = State.Falling;
 
-        while (transform.position.y > screenBounds.y * -1 + (platformBounds.y - scaleY) / 2)
+        while (transform.position.y > screenBounds.y * -1 +  (scaleY + 0.01f) / 2)
         {
             var position = transform.position;
             position += Time.deltaTime * 25 * Vector3.down;
 
             
-            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + (platformBounds.y - scaleY + safeOffset) / 2,
-                screenBounds.y -(platformBounds.y - scaleY + safeOffset) / 2);
+            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + (scaleY + 0.01f) / 2,
+                screenBounds.y -(platformBounds.y - scaleY + 0.01f) / 2);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.deltaTime);

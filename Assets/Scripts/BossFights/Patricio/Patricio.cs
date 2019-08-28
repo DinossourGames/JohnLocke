@@ -223,7 +223,10 @@ public class Patricio : MonoBehaviour
         Flip();
         if (!freezeMovement) rbd.velocity = new Vector2(movement.x * speed, rbd.velocity.y);
         
-        animator.SetBool("isWalking", rbd.velocity != Vector2.zero && isGrounded );
+        
+        distance = transform.position.y - lastPostition.y;
+
+        animator.SetBool("isWalking", isGrounded && rbd.velocity.x != 0 && distance < .5f);
     }
 
     private void Flip()

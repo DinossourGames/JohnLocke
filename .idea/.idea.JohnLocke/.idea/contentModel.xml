@@ -13,6 +13,7 @@
           <e p="InputActions.cs" t="Include" />
           <e p="Restart.cs" t="Include" />
           <e p="SceneManager.cs" t="Include" />
+          <e p="StoppedCameraParalax.cs" t="Include" />
         </e>
         <e p="Editor" t="Include">
           <e p="DeletePrefs.cs" t="Include" />
@@ -20,6 +21,7 @@
         <e p="Scripts" t="Include">
           <e p="BossFights" t="Include">
             <e p="Patricio" t="Include">
+              <e p="Boss.cs" t="Include" />
               <e p="BossFightManager.cs" t="Include" />
               <e p="Bullet.cs" t="Include" />
               <e p="Patricio.cs" t="Include" />
