@@ -74,7 +74,6 @@ public class Platform : MonoBehaviour
 
     private void Start()
     {
-        
         mainCamera = FindObjectOfType<Camera>();
         screenBounds =
             mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
@@ -90,9 +89,8 @@ public class Platform : MonoBehaviour
 
     private void Update()
     {
-
         _collider2D.size = _baseSpriteRenderer.size * _baseSpriteRenderer.transform.localScale;
-        
+
         var position = transform.position;
         isTop = position.y > screenBounds.y / 2;
     }
@@ -350,9 +348,12 @@ public class Platform : MonoBehaviour
         _state = State.Decreasing;
         while (_fillAmmount > 0f && !_hasCollision)
         {
-            _fillAmmount -= fillRatio;
+            _fillAmmount -=  fillRatio * 3 * Time.fixedDeltaTime;
+            if (_fillAmmount < 0)
+                _fillAmmount = 0;
+
             fillPlatform.transform.localScale = new Vector3(localScale.x, _fillAmmount, localScale.z);
-            yield return new WaitForSeconds(fillDelay);
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
     }
 

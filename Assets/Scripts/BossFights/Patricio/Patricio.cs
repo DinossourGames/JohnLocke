@@ -109,8 +109,8 @@ public class Patricio : MonoBehaviour
         if (movementNormalized != Vector2.zero && isGrounded) invunerableLocker = false;
 
         movementNormalized = movementNormalized == Vector2.zero
-            ? Vector2.down
-            : movementNormalized;
+            ? (!shoot ? Vector2.down : Vector2.right)
+            : (!shoot ? Vector2.down : movementNormalized);
 
 
         vectorOffset.x = movementNormalized.x * (offset - .03f);
