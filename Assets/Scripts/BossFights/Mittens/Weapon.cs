@@ -26,10 +26,12 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     [SerializeField] private float spread;
     [SerializeField] private float reverseScale;
     [SerializeField] private float scale;
+    [SerializeField] private bool isFacingRight;
 
 
     private void Awake()
     {
+        isFacingRight = true;
         actions = new InputActions();
         actions.MittensBossFight.Aim.performed += ctx => OnAim(ctx);
         actions.MittensBossFight.Shoot.performed += ctx => trigger = true;
@@ -58,24 +60,35 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     // Update is called once per frame
     void Update()
     {
+        Flip();
         GetMouseInput();
-        rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        rotation = Quaternion.AngleAxis( angle, Vector3.forward);
         transform.rotation = rotation;
-        //sprite.flipY = direction.x < 0;
-        if (direction.x < 0)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, reverseScale, transform.localScale.z);
-        }
-        else
-        {
-            transform.localScale = new Vector3(transform.localScale.x, scale, transform.localScale.z);
-        }
+        sprite.flipY = direction.x < 0;
+        
         if(trigger && !reloading)
             Shoot();
         
         
     }
     
+    private void Flip()
+    {
+        if (transform.position.x - direction.x < 0 && !isFacingRight)
+        {
+            isFacingRight = true;
+            var localScale = transform.localScale;
+            transform.localScale = new Vector3(localScale.x , localScale.y, localScale.z);
+            sprite.flipY = true;
+        }
+
+        if (!(transform.position.x - direction.x > 0) || !isFacingRight) return;
+        isFacingRight = false;
+        var scale = transform.localScale;
+        transform.localScale = new Vector3(scale.x , scale.y, scale.z);
+        sprite.flipY = false;
+
+    }
     
     private void Shoot()
     {

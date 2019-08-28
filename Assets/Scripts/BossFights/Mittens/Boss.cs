@@ -26,6 +26,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private bool canMove;
     private int countShot;
     [SerializeField] private float basicShotDelay;
+    [SerializeField] private bool isFacingRight;
 
 
     public int Health
@@ -54,19 +55,29 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
-        if (direction.x > 0)
-        {
-            transform.localScale = new Vector3(reverseScale, transform.localScale.y, transform.localScale.z);
-        }
-        else
-        {
-            transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
-        }
+        
+        Flip();
 
         if (MittensGameManager._bossState != BossState.Waiting) return;
         
     }
 
+    
+    private void Flip()
+    {
+        if (transform.position.x - player.transform.position.x < 0 && !isFacingRight)
+        {
+            isFacingRight = true;
+            var localScale = transform.localScale;
+            transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
+        }
+
+        if (!(transform.position.x - player.transform.position.x > 0) || !isFacingRight) return;
+        isFacingRight = false;
+        var scale = transform.localScale;
+        transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
+    }
+    
     private IEnumerator Shoot()
     {
         if (countShot < 3 + MittensGameManager.difficulty)
@@ -94,14 +105,14 @@ public class Boss : MonoBehaviour
                 y = p.y - transform.position.y
             };
             angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            rotation = Quaternion.AngleAxis(isFacingRight ? angle  - 168: angle , Vector3.forward);
             arm.transform.rotation = rotation;
             transform.position =
                 Vector2.MoveTowards(transform.position, player.position,
                     speed * MittensGameManager.difficulty * Time.deltaTime);
+            yield return null;
         }
 
-        yield return null;
     }
 
     public void TakeDamage(int damageAmount)

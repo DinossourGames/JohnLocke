@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 5436064192561679299}
   - component: {fileID: 5415638193434980316}
   - component: {fileID: 1678222344824290839}
+  - component: {fileID: 4896765410028211459}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -190,10 +191,17 @@ MonoBehaviour:
   _health: 0
   _totalHealth: 500
   bossBones: {fileID: 8373119553977222002}
+  basicShot: {fileID: 0}
+  missile: {fileID: 0}
+  basicShotPoint: {fileID: 0}
+  missileLauncher: {fileID: 0}
   arm: {fileID: 1545386424877996400}
   player: {fileID: 0}
   animator: {fileID: 2436201879322002646}
   speed: 2
+  canMove: 0
+  basicShotDelay: 0
+  isFacingRight: 0
 --- !u!50 &5415638193434980316
 Rigidbody2D:
   serializedVersion: 4
@@ -202,11 +210,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6839064302123565763}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -226,6 +234,47 @@ PolygonCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.44701317, y: 1.4246635}
+      - {x: 1.4592794, y: 2.0053616}
+      - {x: 4.4872217, y: 2.8324249}
+      - {x: 6.141198, y: 4.998436}
+      - {x: 3.9664612, y: 3.6016958}
+      - {x: 0.57949144, y: 4.516735}
+      - {x: -1.721829, y: 4.348021}
+      - {x: -2.6699712, y: 6.049816}
+      - {x: -6.0494676, y: 5.411088}
+      - {x: -5.6808486, y: 3.711655}
+      - {x: -2.8610876, y: 3.3171988}
+      - {x: -0.9861778, y: 1.461418}
+      - {x: -0.4509505, y: 0.1913452}
+      - {x: -1.8903288, y: -0.41522458}
+      - {x: 0.6324867, y: -0.5606417}
+      - {x: 0.9510565, y: 0.30901712}
+--- !u!60 &4896765410028211459
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839064302123565763}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
