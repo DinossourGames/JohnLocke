@@ -53,7 +53,6 @@ public class MittensGameManager : MonoBehaviour
          }
          if (target.CompareTag("Missile"))
          {
-            print("yay");
             target.GetComponent<BossMissile>().TakeDamage();
          }
       } 
@@ -70,6 +69,15 @@ public class MittensGameManager : MonoBehaviour
          {
             target.GetComponent<Player>().TakeDamage(damage);
             sender.GetComponent<BossMissile>().DestroyMissile();
+         }
+      }
+
+      if (sender.CompareTag(("EnemyShot")))
+      {
+         if (target.CompareTag("Player"))
+         {
+            target.GetComponent<Player>().TakeDamage(damage);
+            Destroy(sender);
          }
       }
    }
