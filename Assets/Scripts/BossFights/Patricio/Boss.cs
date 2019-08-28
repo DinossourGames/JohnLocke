@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+
+    [SerializeField] private Animator bossAnimator;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +18,8 @@ public class Boss : MonoBehaviour
     {
         
     }
+    
+    
+    
+    
 }
