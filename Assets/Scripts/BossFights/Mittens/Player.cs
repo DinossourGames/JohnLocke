@@ -29,6 +29,10 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     [SerializeField] private int health;
     private PlayerInput _pi;
     public static bool device;
+    private bool isFacingRight;
+    private float angle;
+    private Vector2 direction1;
+    private Animator anim;
 
     // Start is called before the first frame update
     private void Start()
@@ -43,10 +47,15 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         playerSize = sprite.bounds.extents;
         health = totalHealth;
         _pi = GetComponent<PlayerInput>();
+        isFacingRight = true;
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        GetMouseInput();
+        Flip();
+        print(angle);
         device = _pi.devices[0].device.displayName == "Mouse" || _pi.devices[0].device.displayName == "Keyboard";
         if (Time.time > dashTime)
             trail.enabled = true;
@@ -126,6 +135,43 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         sprite.enabled = true;
     }
 
+    private void GetMouseInput()
+    {
+        if (!Player.device) return;
+
+        var dir = Mouse.current.position.ReadValue();
+
+        var mouse = Camera.main.ScreenToWorldPoint(dir);
+        direction1 = new Vector2
+        {
+            x = mouse.x - transform.position.x,
+            y = mouse.y - transform.position.y
+        };
+
+        angle = Mathf.Atan2(direction1.y, direction1.x) * Mathf.Rad2Deg;
+    }
+
+    private void Flip()
+    {
+        anim.SetBool("isWalking", moveInput != Vector2.zero);
+        
+        if (angle > -90 && angle <= 90 && !isFacingRight)
+        {
+            isFacingRight = true;
+            var localScale = transform.localScale;
+            transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
+            
+        }
+         if( (angle > 90 || angle <= 180 ) && (angle <= -90) &&
+                 isFacingRight)
+        {
+            isFacingRight = false;
+            var scale = transform.localScale;
+            transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
+        }
+         anim.SetBool("isFacingRight", isFacingRight);
+    }
+
     public void TakeDamage(int damageAmount)
     {
         if (!invulnerable)
@@ -153,11 +199,16 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 
     public void OnSwitchWeapons(InputAction.CallbackContext context)
     {
-        print("batata");
     }
 
     public void OnAim(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        AimPerformed(context);
+    }
+
+    private void AimPerformed(InputAction.CallbackContext context)
+    {
+        direction1 = context.ReadValue<Vector2>();
+        angle = Mathf.Atan2(direction1.y, direction1.x) * Mathf.Rad2Deg;
     }
 }

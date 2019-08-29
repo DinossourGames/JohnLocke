@@ -8,6 +8,7 @@ public class BossBullet : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float Lifetime;
+    [SerializeField, Range(0f,1f)] private float intensity; 
     private float timeToDie;
     
 
@@ -22,7 +23,7 @@ public class BossBullet : MonoBehaviour
     {
         if(Time.time >= timeToDie)
             Destroy(gameObject);
-        transform.Translate(Vector2.right * speed * MittensGameManager.difficulty * Time.deltaTime);
+        transform.Translate(Vector2.right * speed * MittensGameManager.difficulty * intensity * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
