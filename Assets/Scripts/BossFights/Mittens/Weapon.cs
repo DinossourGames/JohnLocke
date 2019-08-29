@@ -52,7 +52,6 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        light = GetComponent<Light2D>();
         ammo = totalAmmo;
         sprite.color = Color.white;
         

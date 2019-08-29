@@ -4,8 +4,8 @@
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boss.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Mittens/002.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Missile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Missile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossMissile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossMissile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,7 +58,6 @@
         <option value="$PROJECT_DIR$/Assets/Common/Restart.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossMissile.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossBullet.cs" />
@@ -66,6 +65,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/WeaponSwitching.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossMissile.cs" />
       </list>
     </option>
   </component>
@@ -143,7 +143,7 @@
       <workItem from="1566960299423" duration="17596000" />
       <workItem from="1567012100964" duration="2386000" />
       <workItem from="1567021187125" duration="3196000" />
-      <workItem from="1567056953553" duration="16189000" />
+      <workItem from="1567056953553" duration="16685000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>

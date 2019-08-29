@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
-  _totalHealth: 60
+  _totalHealth: 600
   bossBones: {fileID: 8373119553977222002}
   basicShot: {fileID: 8241515136081101218, guid: 1c3e7329e23026649b56982dc8215a5f,
     type: 3}

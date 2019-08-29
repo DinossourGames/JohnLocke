@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Lifetime;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
 
@@ -17,17 +18,22 @@ public class BossMissile : MonoBehaviour
 
     [SerializeField] private bool canStart;
     [SerializeField] private float delay;
+    private float timeToDie;
+    [SerializeField] private float lifetime;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         sprite = GetComponent<SpriteRenderer>();
+        timeToDie = Time.time + lifetime;
         StartCoroutine(Delay(delay));
     }
 
     private void Update()
     {
+        if(Time.time >= timeToDie)
+            DestroyMissile();
         if (player != null && canStart)
         {
             var p = player.position;

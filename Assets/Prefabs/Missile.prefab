@@ -123,12 +123,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   health: 2
-  speed: 3
+  speed: 5
   sprite: {fileID: 0}
   explosion: {fileID: 1299379489907021866, guid: 2c60f465814257048a8b22fb63223fff,
     type: 3}
   canStart: 0
   delay: 0.5
+  lifetime: 5
 --- !u!50 &8213163348278123072
 Rigidbody2D:
   serializedVersion: 4
