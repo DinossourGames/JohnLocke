@@ -32,6 +32,8 @@ public class Boss : MonoBehaviour
     private int countMissile;
     [SerializeField] private float MissileDelay;
     private bool playerExists;
+    [SerializeField] private float timeBetweenSpecials;
+    private int countSpecial;
 
 
     public int Health
@@ -58,6 +60,66 @@ public class Boss : MonoBehaviour
         StartCoroutine(Movement());
         StartCoroutine(Shoot());
         StartCoroutine(ShootMissile());
+        StartCoroutine(Special());
+    }
+
+    private IEnumerator Special()
+    {
+        
+        while (playerExists)
+        {
+            yield return new WaitForSeconds(timeBetweenSpecials);
+            canMove = false;
+            var r = Random.Range(1, 3);
+            print(r);
+            switch (r)
+            {
+                case 1:
+                    StartCoroutine(Charge());
+                    break;
+                case 2:
+                    StartCoroutine(Spiral());
+                    break;
+            }
+        }
+    }
+
+    private void ResetShooting()
+    {
+        StopCoroutine(Shoot());
+        StartCoroutine(Shoot());
+        StopCoroutine(ShootMissile());
+        StartCoroutine(ShootMissile());
+    }
+    private IEnumerator Spiral()
+    {
+        print("sda");
+        while (countSpecial < 20 * MittensGameManager.difficulty)
+        {
+            Instantiate(basicShot, basicShotPoint.position, Quaternion.AngleAxis(angle - (countSpecial*(50 / MittensGameManager.difficulty)), Vector3.forward) );
+            countSpecial++;
+            yield return null;
+        }
+
+        canMove = true;
+        countSpecial = 0;
+        //ResetShooting();
+        yield return null;
+    }
+
+    private IEnumerator Charge()
+    {
+        yield return new WaitForSeconds(1);
+        TrueFlip();
+        Vector3 specialTarget = player.position;
+        while (transform.position != specialTarget)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, specialTarget, speed * 5 *MittensGameManager.difficulty * Time.deltaTime);
+            yield return null;
+        }
+        canMove=true;
+        //ResetShooting();
+        yield return null;
     }
 
     private IEnumerator ShootMissile()
@@ -86,6 +148,8 @@ public class Boss : MonoBehaviour
     private void Update()
     {
         playerExists = player != null;
+        if(!playerExists)
+            StopAllCoroutines();
         Flip();
 
         if (MittensGameManager._bossState != BossState.Waiting) return;
@@ -94,20 +158,25 @@ public class Boss : MonoBehaviour
 
     private void Flip()
     {
-        if (playerExists)
+        if (playerExists && canMove)
         {
-            if (transform.position.x - player.transform.position.x < 0 && !isFacingRight)
-            {
-                isFacingRight = true;
-                var localScale = transform.localScale;
-                transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
-            }
-
-            if (!(transform.position.x - player.transform.position.x > 0) || !isFacingRight) return;
-            isFacingRight = false;
-            var scale = transform.localScale;
-            transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
+            TrueFlip();
         }
+    }
+
+    private void TrueFlip()
+    {
+        if (transform.position.x - player.transform.position.x < 0 && !isFacingRight)
+        {
+            isFacingRight = true;
+            var localScale = transform.localScale;
+            transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
+        }
+        
+        if (!(transform.position.x - player.transform.position.x > 0) || !isFacingRight) return;
+        isFacingRight = false;
+        var scale = transform.localScale;
+        transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
     }
 
     private IEnumerator Shoot()

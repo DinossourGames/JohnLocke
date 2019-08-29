@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using Object = UnityEngine.Object;
@@ -18,14 +19,12 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     private float shotTime;
     [SerializeField] private int ammo;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform shotPoint;
+    [SerializeField] private GameObject shotPoint;
     [SerializeField] private float cadence;
     [SerializeField] private int totalAmmo;
     [SerializeField] private float reloadTime;
     [SerializeField] private bool reloading;
     [SerializeField] private float spread;
-    [SerializeField] private float reverseScale;
-    [SerializeField] private float scale;
     [SerializeField] private bool isFacingRight;
 
 
@@ -40,9 +39,10 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
 
     private void OnEnable()
     {
+        reloading = false;
         actions.MittensBossFight.Enable();
     }
-
+    
     private void OnDisable()
     {
         actions.MittensBossFight.Disable();
@@ -52,9 +52,10 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+        light = GetComponent<Light2D>();
         ammo = totalAmmo;
-        scale = transform.localScale.y;
-        reverseScale = -scale;
+        sprite.color = Color.white;
+        
     }
 
     // Update is called once per frame
@@ -96,7 +97,7 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
         {
             if (ammo > 0)
             {
-                Instantiate(bullet, shotPoint.position, transform.rotation);
+                Instantiate(bullet, shotPoint.transform.position, transform.rotation);
                 shotTime = Time.time + cadence;
                 ammo--;
             }
@@ -110,8 +111,8 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     {
         reloading = true;
         sprite.color = new Color32(130, 13, 0, 255);
-        yield return new WaitForSeconds(reloadTime);
         ammo = totalAmmo;
+        yield return new WaitForSeconds(reloadTime);
         sprite.color = Color.white;
         reloading = false;
 
