@@ -342,7 +342,7 @@ public class Boss : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             var bull = other.GetComponent<Bullet>();
-            if (bull.Parent != transform)
+            if (bull.Parent != gameObject)
             {
                 life -= bull.damage * 20;
             }

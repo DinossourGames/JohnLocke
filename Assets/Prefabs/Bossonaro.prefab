@@ -3152,6 +3152,7 @@ MonoBehaviour:
   isFacingRight: 0
   canFollow: 0
   life: 100
+  NextAction: 0
   bulletPrefab: {fileID: 3269484786543324699, guid: c730376410f8c51428331f9614cc7ab0,
     type: 3}
   missilPrefab: {fileID: 200004949902572988, guid: 23ebd9ea0db381f4787ffee33828dd21,
@@ -3162,6 +3163,7 @@ MonoBehaviour:
   burstPoint: {fileID: 0}
   missilPoint: {fileID: 0}
   inicialPoint: {fileID: 0}
+  positions: []
 --- !u!61 &2858912181188616760
 BoxCollider2D:
   m_ObjectHideFlags: 0
