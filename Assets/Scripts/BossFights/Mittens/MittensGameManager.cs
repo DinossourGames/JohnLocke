@@ -77,7 +77,6 @@ public class MittensGameManager : MonoBehaviour
          if (target.CompareTag("Player"))
          {
             target.GetComponent<Player>().TakeDamage(damage);
-            Destroy(sender);
          }
       }
    }

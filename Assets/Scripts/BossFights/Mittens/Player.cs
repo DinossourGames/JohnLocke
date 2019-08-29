@@ -48,6 +48,8 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     private void Update()
     {
         device = _pi.devices[0].device.displayName == "Mouse" || _pi.devices[0].device.displayName == "Keyboard";
+        if (Time.time > dashTime)
+            trail.enabled = true;
     }
 
     // Update is called once per frame
@@ -115,7 +117,6 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         endDash = Time.time + dashDuration;
         speed *= dashSpeedMod;
         hitbox.enabled = false;
-        trail.enabled = true;
         dashTime = Time.time + dashDelay;
         sprite.enabled = false;
         yield return new WaitForSeconds(dashDuration);
@@ -141,7 +142,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         invulnerable = true;
         sprite.color = new Color32(254, 39, 90, 192);
         yield return new WaitForSeconds(time);
-        sprite.color = new Color32(90, 18, 99, 255);
+        sprite.color = Color.white;
         invulnerable = false;
     }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
+using Random = UnityEngine.Random;
 
 public class Boss : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Boss : MonoBehaviour
     private int countShot;
     [SerializeField] private float basicShotDelay;
     [SerializeField] private bool isFacingRight;
+    private Quaternion shotRotation;
 
 
     public int Health
@@ -80,16 +82,20 @@ public class Boss : MonoBehaviour
     
     private IEnumerator Shoot()
     {
-        if (countShot < 3 + MittensGameManager.difficulty)
+        while (canMove)
         {
-            Instantiate(basicShot, basicShotPoint.position, rotation);
-            countShot++;
-            yield return new WaitForSeconds(1f - (MittensGameManager.difficulty * 0.2f));
-        }
-        else
-        {
-            yield return new WaitForSeconds(basicShotDelay - ((MittensGameManager.difficulty - 1) * basicShotDelay) / 4);
-            countShot = 0;
+            if (countShot < 3 + MittensGameManager.difficulty)
+            {
+                Instantiate(basicShot, basicShotPoint.position, shotRotation);
+                countShot++;
+                yield return new WaitForSeconds(1f - (MittensGameManager.difficulty * 0.2f));
+            }
+            else
+            {
+                yield return new WaitForSeconds(basicShotDelay -
+                                                ((MittensGameManager.difficulty - 1) * basicShotDelay) / 4);
+                countShot = 0;
+            }
         }
     }
 
@@ -101,11 +107,13 @@ public class Boss : MonoBehaviour
             var p = player.position;
             direction = new Vector2
             {
-                x = p.x - transform.position.x,
-                y = p.y - transform.position.y
+                x = p.x - basicShotPoint.position.x,
+                y = p.y - basicShotPoint.position.y
             };
             angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             rotation = Quaternion.AngleAxis(isFacingRight ? angle  - 168: angle , Vector3.forward);
+            //shotRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            shotRotation = Quaternion.AngleAxis(angle-Random.Range(-10, 10) , Vector3.forward);
             arm.transform.rotation = rotation;
             transform.position =
                 Vector2.MoveTowards(transform.position, player.position,

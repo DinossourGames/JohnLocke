@@ -25,8 +25,10 @@ public class BossBullet : MonoBehaviour
         transform.Translate(Vector2.right * speed * MittensGameManager.difficulty * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        print("eeeeh");
         MittensGameManager.DealDamage(gameObject, other.gameObject, 1);
+        Destroy(gameObject);
     }
 }
