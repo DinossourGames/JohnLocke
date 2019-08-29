@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.AccessControl;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
+using UnityEngine.Experimental.Rendering.LWRP;
 using Object = UnityEngine.Object;
 
 public enum BossState{Waiting, One, Two, Three}
@@ -10,9 +12,10 @@ public enum BossState{Waiting, One, Two, Three}
 public class MittensGameManager : MonoBehaviour
 {
    public static BossState _bossState;
-   public static int difficulty;
+   [SerializeField]public static int difficulty;
    [SerializeField] private GameObject boss;
    [SerializeField] private Boss dinoBoss;
+   [SerializeField] private Light2D globalLight;
 
    private void Start()
    {
@@ -28,16 +31,19 @@ public class MittensGameManager : MonoBehaviour
       {
          _bossState = BossState.Three;
          difficulty = 3;
+         globalLight.intensity = 0.005f;
       }
       else if (dinoBoss.Health < dinoBoss.TotalHealth / 2)
       {
          _bossState = BossState.Two;
          difficulty = 2;
+         globalLight.intensity = 0.05f;
       }
       else if (dinoBoss.Health < dinoBoss.TotalHealth)
       {
          _bossState = BossState.One;
          difficulty = 1;
+         globalLight.intensity = 0.5f;
       }
    }
 

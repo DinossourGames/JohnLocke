@@ -31,6 +31,7 @@ public class Boss : MonoBehaviour
     private Quaternion shotRotation;
     private int countMissile;
     [SerializeField] private float MissileDelay;
+    private bool playerExists;
 
 
     public int Health
@@ -49,6 +50,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerExists = true;
         animator = GetComponent<Animator>();
         Health = TotalHealth;
         scale = transform.localScale.x;
@@ -60,7 +62,7 @@ public class Boss : MonoBehaviour
 
     private IEnumerator ShootMissile()
     {
-        while (player != null)
+        while (playerExists)
         {
             if (canMove)
             {
@@ -83,6 +85,7 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
+        playerExists = player != null;
         Flip();
 
         if (MittensGameManager._bossState != BossState.Waiting) return;
@@ -91,22 +94,25 @@ public class Boss : MonoBehaviour
 
     private void Flip()
     {
-        if (transform.position.x - player.transform.position.x < 0 && !isFacingRight)
+        if (playerExists)
         {
-            isFacingRight = true;
-            var localScale = transform.localScale;
-            transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
-        }
+            if (transform.position.x - player.transform.position.x < 0 && !isFacingRight)
+            {
+                isFacingRight = true;
+                var localScale = transform.localScale;
+                transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
+            }
 
-        if (!(transform.position.x - player.transform.position.x > 0) || !isFacingRight) return;
-        isFacingRight = false;
-        var scale = transform.localScale;
-        transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
+            if (!(transform.position.x - player.transform.position.x > 0) || !isFacingRight) return;
+            isFacingRight = false;
+            var scale = transform.localScale;
+            transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
+        }
     }
 
     private IEnumerator Shoot()
     {
-        while (player != null)
+        while (playerExists)
         {
             if (canMove)
             {
@@ -130,7 +136,7 @@ public class Boss : MonoBehaviour
 
     private IEnumerator Movement()
     {
-        while (player != null)
+        while (playerExists)
         {
             if (canMove)
             {
