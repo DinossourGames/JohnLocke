@@ -163,16 +163,17 @@ MonoBehaviour:
   bossBones: {fileID: 8373119553977222002}
   basicShot: {fileID: 8241515136081101218, guid: 1c3e7329e23026649b56982dc8215a5f,
     type: 3}
-  missile: {fileID: 0}
+  missile: {fileID: 5687328695926736659, guid: 3bbec275d3c37f946bc032a40f89ef5d, type: 3}
   basicShotPoint: {fileID: 761040141}
-  missileLauncher: {fileID: 0}
+  missileLauncher: {fileID: 8095663882136719047}
   arm: {fileID: 1545386424877996400}
   player: {fileID: 0}
   animator: {fileID: 2436201879322002646}
-  speed: 2
+  speed: 1
   canMove: 0
   basicShotDelay: 3
   isFacingRight: 0
+  MissileDelay: 5
 --- !u!50 &5415638193434980316
 Rigidbody2D:
   serializedVersion: 4
@@ -276,6 +277,36 @@ PolygonCollider2D:
       - {x: -1.8903288, y: -0.41522458}
       - {x: 0.6324867, y: -0.5606417}
       - {x: 0.9510565, y: 0.30901712}
+--- !u!1 &7005009625994709354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8095663882136719047}
+  m_Layer: 0
+  m_Name: MissileLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8095663882136719047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005009625994709354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.16, y: 7.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 601068780441789543}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2436201879322002646
 Animator:
   serializedVersion: 3

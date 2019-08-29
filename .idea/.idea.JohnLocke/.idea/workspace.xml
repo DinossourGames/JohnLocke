@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boss.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BossBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BossBullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mittens.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/sniperShot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/sniperShot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Missile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Missile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/BossBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensGameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +144,7 @@
       <workItem from="1566960299423" duration="17596000" />
       <workItem from="1567012100964" duration="2386000" />
       <workItem from="1567021187125" duration="3196000" />
-      <workItem from="1567056953553" duration="4233000" />
+      <workItem from="1567056953553" duration="7026000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>

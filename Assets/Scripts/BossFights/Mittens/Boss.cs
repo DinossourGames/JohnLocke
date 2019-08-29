@@ -29,6 +29,8 @@ public class Boss : MonoBehaviour
     [SerializeField] private float basicShotDelay;
     [SerializeField] private bool isFacingRight;
     private Quaternion shotRotation;
+    private int countMissile;
+    [SerializeField] private float MissileDelay;
 
 
     public int Health
@@ -36,6 +38,7 @@ public class Boss : MonoBehaviour
         get => _health;
         set => _health = value;
     }
+
     public int TotalHealth
     {
         get => _totalHealth;
@@ -50,21 +53,42 @@ public class Boss : MonoBehaviour
         Health = TotalHealth;
         scale = transform.localScale.x;
         reverseScale = -scale;
-        canMove = true;
         StartCoroutine(Movement());
         StartCoroutine(Shoot());
+        StartCoroutine(ShootMissile());
+    }
+
+    private IEnumerator ShootMissile()
+    {
+        while (player != null)
+        {
+            if (canMove)
+            {
+                if (countMissile < 1 + MittensGameManager.difficulty)
+                {
+                    Instantiate(missile, missileLauncher.position, Quaternion.AngleAxis(90*countMissile, Vector3.forward));
+                    countMissile++;
+                    yield return null;
+                }
+                else
+                {
+                    yield return new WaitForSeconds(MissileDelay);
+                    countMissile = 0;
+                }
+            }
+
+            yield return null;
+        }
     }
 
     private void Update()
     {
-        
         Flip();
 
         if (MittensGameManager._bossState != BossState.Waiting) return;
-        
     }
 
-    
+
     private void Flip()
     {
         if (transform.position.x - player.transform.position.x < 0 && !isFacingRight)
@@ -79,60 +103,70 @@ public class Boss : MonoBehaviour
         var scale = transform.localScale;
         transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
     }
-    
+
     private IEnumerator Shoot()
     {
-        while (canMove)
+        while (player != null)
         {
-            if (countShot < 3 + MittensGameManager.difficulty)
+            if (canMove)
             {
-                Instantiate(basicShot, basicShotPoint.position, shotRotation);
-                countShot++;
-                yield return new WaitForSeconds(1f - (MittensGameManager.difficulty * 0.2f));
+                if (countShot < 3 + MittensGameManager.difficulty)
+                {
+                    Instantiate(basicShot, basicShotPoint.position, shotRotation);
+                    countShot++;
+                    yield return new WaitForSeconds(1f - (MittensGameManager.difficulty * 0.2f));
+                }
+                else
+                {
+                    yield return new WaitForSeconds(basicShotDelay -
+                                                    ((MittensGameManager.difficulty - 1) * basicShotDelay) / 4);
+                    countShot = 0;
+                }
             }
-            else
-            {
-                yield return new WaitForSeconds(basicShotDelay -
-                                                ((MittensGameManager.difficulty - 1) * basicShotDelay) / 4);
-                countShot = 0;
-            }
+
+            yield return null;
         }
     }
 
     private IEnumerator Movement()
     {
-        while (canMove)
+        while (player != null)
         {
-            // animator.SetBool("IsWalking", true);
-            var p = player.position;
-            direction = new Vector2
+            if (canMove)
             {
-                x = p.x - basicShotPoint.position.x,
-                y = p.y - basicShotPoint.position.y
-            };
-            angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rotation = Quaternion.AngleAxis(isFacingRight ? angle  - 168: angle , Vector3.forward);
-            //shotRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            shotRotation = Quaternion.AngleAxis(angle-Random.Range(-10, 10) , Vector3.forward);
-            arm.transform.rotation = rotation;
-            transform.position =
-                Vector2.MoveTowards(transform.position, player.position,
-                    speed * MittensGameManager.difficulty * Time.deltaTime);
+                // animator.SetBool("IsWalking", true);
+                var p = player.position;
+                direction = new Vector2
+                {
+                    x = p.x - basicShotPoint.position.x,
+                    y = p.y - basicShotPoint.position.y
+                };
+                angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                rotation = Quaternion.AngleAxis(isFacingRight ? angle - 168 : angle, Vector3.forward);
+                //shotRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                shotRotation = Quaternion.AngleAxis(angle - Random.Range(-10, 10), Vector3.forward);
+                arm.transform.rotation = rotation;
+                transform.position =
+                    Vector2.MoveTowards(transform.position, player.position,
+                        speed * MittensGameManager.difficulty * Time.deltaTime);
+            }
+
             yield return null;
         }
-
     }
 
     public void TakeDamage(int damageAmount)
     {
+        if (_health == _totalHealth)
+            canMove = true;
         _health -= damageAmount;
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         MittensGameManager.DealDamage(gameObject, other.gameObject, 1);
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         MittensGameManager.DealDamage(gameObject, other.gameObject, 1);

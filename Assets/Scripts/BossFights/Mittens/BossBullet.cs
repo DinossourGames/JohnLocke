@@ -27,7 +27,7 @@ public class BossBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("eeeeh");
+        if (other.CompareTag("Boss") || other.CompareTag("Missile")) return;
         MittensGameManager.DealDamage(gameObject, other.gameObject, 1);
         Destroy(gameObject);
     }
