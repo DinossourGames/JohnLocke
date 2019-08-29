@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
-  _totalHealth: 60
+  _totalHealth: 700
   bossBones: {fileID: 8373119553977222002}
   basicShot: {fileID: 8241515136081101218, guid: 1c3e7329e23026649b56982dc8215a5f,
     type: 3}
@@ -334,6 +334,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6839064302123565761}
     m_Modifications:
+    - target: {fileID: -5886283267212881757, guid: 7227677697d3e994d9b4e403f84b049c,
+        type: 3}
+      propertyPath: m_Name
+      value: Boss_OKAY
+      objectReference: {fileID: 0}
     - target: {fileID: -3302370469360126026, guid: 7227677697d3e994d9b4e403f84b049c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -403,11 +408,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.79208
-      objectReference: {fileID: 0}
-    - target: {fileID: -5886283267212881757, guid: 7227677697d3e994d9b4e403f84b049c,
-        type: 3}
-      propertyPath: m_Name
-      value: Boss_OKAY
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 3794102002175238337, guid: 7227677697d3e994d9b4e403f84b049c,
