@@ -11,7 +11,19 @@ public enum Positions
 {
     Burst,
     Missil,
-    Initial
+    Initial,
+    Random
+}
+
+public enum Actions
+{
+    NONE,
+    Shoot,
+    FollowShoot,
+    ParrySequence,
+    ParryShoot,
+    BurstShoot,
+    Move
 }
 
 public class Boss : MonoBehaviour
@@ -25,6 +37,9 @@ public class Boss : MonoBehaviour
     [SerializeField] private bool canFollow;
     public float life = 100;
 
+    [SerializeField, Header("Actions")] private Actions NextAction = Actions.NONE;
+
+
     [SerializeField, Header("Prefabs"), Space]
     private Bullet bulletPrefab;
 
@@ -36,6 +51,7 @@ public class Boss : MonoBehaviour
     [SerializeField, Header("Pointers")] private Transform burstPoint;
     [SerializeField] private Transform missilPoint;
     [SerializeField] private Transform inicialPoint;
+    [SerializeField] private Transform[] positions;
 
 
     private bool canShoot;
@@ -46,12 +62,51 @@ public class Boss : MonoBehaviour
     {
         _patricio = FindObjectOfType<Patricio>();
         canFollow = true;
+        StartCoroutine(UpdateCorroutine());
+    }
+
+    private IEnumerator UpdateCorroutine()
+    {
+        while (true)
+        {
+            if (NextAction == Actions.NONE) yield return null;
+
+            switch (NextAction)
+            {
+                case Actions.NONE:
+                    yield return new WaitForEndOfFrame();
+                    break;
+                case Actions.Shoot:
+                    yield return StartCoroutine(ShootAt());
+                    break;
+                case Actions.FollowShoot:
+                    yield return StartCoroutine(TargetShoot());
+                    break;
+                case Actions.ParrySequence:
+                    yield return StartCoroutine(ParrySequence());
+                    break;
+                case Actions.ParryShoot:
+                    yield return StartCoroutine(ShootMissil(true));
+                    break;
+                case Actions.BurstShoot:
+                    yield return StartCoroutine(BurstShoot());
+                    break;
+                case Actions.Move:
+                    yield return StartCoroutine(PreparePosition(Positions.Random));
+                    break;
+                default:
+                    yield return null;
+                    break;
+            }
+
+            yield return null;
+        }
     }
 
 
     private void Update()
     {
-        if(life <= 0)
+        if (life <= 0)
             Destroy(gameObject);
         if (canFollow)
             Follow();
@@ -60,6 +115,8 @@ public class Boss : MonoBehaviour
 
     public IEnumerator ShootAt()
     {
+        NextAction = Actions.NONE;
+
         for (int i = 0; i < 15; i++)
         {
             yield return new WaitForSeconds(2f);
@@ -71,6 +128,8 @@ public class Boss : MonoBehaviour
 
     public IEnumerator ParrySequence()
     {
+        NextAction = Actions.NONE;
+
         yield return new WaitForSeconds(1.2f);
         yield return StartCoroutine(ShootMissil(false));
         yield return new WaitForSeconds(1f);
@@ -79,9 +138,7 @@ public class Boss : MonoBehaviour
         yield return StartCoroutine(ShootMissil(false));
         yield return new WaitForSeconds(1.2f);
         yield return StartCoroutine(ShootMissil(true));
-        yield return new WaitForSeconds(.12f);
         yield return StartCoroutine(ShootMissil(true));
-        yield return new WaitForSeconds(.07f);
         yield return StartCoroutine(ShootMissil(true));
         yield return new WaitForSeconds(.3f);
         yield return StartCoroutine(ShootMissil(false));
@@ -91,6 +148,8 @@ public class Boss : MonoBehaviour
 
     public IEnumerator TargetShoot()
     {
+        NextAction = Actions.NONE;
+
         bulletPrefab.Parent = gameObject;
         bulletPrefab.Direction = isFacingRight ? Vector2.right : Vector2.left;
         canFollow = false;
@@ -101,9 +160,11 @@ public class Boss : MonoBehaviour
 
     public IEnumerator ShootMissil(bool parry)
     {
+        NextAction = Actions.NONE;
+
         canFollow = false;
-        yield return StartCoroutine(PreparePosition(Positions.Missil));
-        bossAnimator.SetBool("isMissil", true);
+        if (Vector2.Distance(missilPoint.transform.position, transform.position) > .5f)
+            yield return StartCoroutine(PreparePosition(Positions.Missil));
         Bullet tiro;
         if (parry)
         {
@@ -118,10 +179,15 @@ public class Boss : MonoBehaviour
             tiro.Parent = gameObject;
         }
 
-        Instantiate(tiro, shootPoint.position, quaternion.identity);
+        bossAnimator.SetBool("isMissil", true);
+        yield return new WaitForSeconds(.8f);
+
+        Instantiate(tiro, missilShootPoint.position, missilShootPoint.rotation);
+        yield return new WaitForSeconds(.2f);
         bossAnimator.SetBool("isMissil", false);
 
         canFollow = true;
+        NextAction = Actions.NONE;
     }
 
     public IEnumerator BurstShoot()
@@ -163,6 +229,8 @@ public class Boss : MonoBehaviour
 
     public IEnumerator PreparePosition(Positions p)
     {
+        NextAction = Actions.NONE;
+
         yield return new WaitForSeconds(1.4f);
 
         bossAnimator.SetBool(IsWalking, true);
@@ -180,6 +248,9 @@ public class Boss : MonoBehaviour
                 break;
             case Positions.Initial:
                 ponto = (Vector2) inicialPoint.transform.position;
+                break;
+            default:
+                ponto = positions[Random.Range(0, positions.Length)].position;
                 break;
         }
 
@@ -213,7 +284,25 @@ public class Boss : MonoBehaviour
         var localScale1 = transform.localScale;
         transform.localScale = new Vector3(Mathf.Abs(localScale1.x), localScale1.y, localScale1.z);
     }
+    private IEnumerator ShakeIt()
+    {
+        yield return new WaitForSeconds(.4f);
+        var counter = 0f;
+        const float maxX = .2f;
+        const float maxY = .4f;
+        const float shakeTime = .3f;
+        var pos = transform.position;
+        while (counter <= shakeTime)
+        {
+            counter += Time.deltaTime;
+            transform.position = pos + new Vector3((shakeTime - counter) * Random.Range(-maxX, maxX),
+                                     (shakeTime - counter) * Random.Range(-maxY, maxY));
+            yield return new WaitForEndOfFrame();
+        }
 
+        transform.position = pos;
+        yield return new WaitForSeconds(.4f);
+    }
 
     private void Follow()
     {
@@ -230,7 +319,7 @@ public class Boss : MonoBehaviour
         };
 
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        armGun.transform.rotation = Quaternion.AngleAxis(isFacingRight ? angle - 13 : angle - 168, Vector3.forward);
+        armGun.transform.rotation = Quaternion.AngleAxis(isFacingRight ? angle : angle - 180, Vector3.forward);
     }
 
     private void Flip()
@@ -261,9 +350,11 @@ public class Boss : MonoBehaviour
 
         if (other.CompareTag("Platform"))
         {
-            print("YAAAAAAAAY");
+            var platform = other.transform.GetComponent<Platform>();
+            if (platform.state == State.Falling)
+            {
+                print("damage");
+            }
         }
     }
-
-
 }

@@ -174,7 +174,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""c5c9f8f0-063c-41fc-b327-096e455f81a3"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -295,7 +295,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""87fd7dd9-b6ce-4b9c-847a-bbbaa80521d4"",
-                    ""path"": ""<Keyboard>/rightShift"",
+                    ""path"": ""<Keyboard>/OEM2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
