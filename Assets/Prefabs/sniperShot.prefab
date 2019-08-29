@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
-  speed: 100
+  speed: 80
   explosion: {fileID: 0}
   damage: 10
   piercing: 1
