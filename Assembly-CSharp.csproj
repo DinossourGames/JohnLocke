@@ -58,9 +58,19 @@
   <ItemGroup>
      <Compile Include="Assets\Common\Boundaries.cs" />
      <Compile Include="Assets\Common\GamepadManager.cs" />
+     <Compile Include="Assets\Common\InputActions.cs" />
      <Compile Include="Assets\Common\Restart.cs" />
      <Compile Include="Assets\Common\SceneManager.cs" />
      <Compile Include="Assets\Common\StoppedCameraParalax.cs" />
+     <Compile Include="Assets\Scripts\BossFights\Mittens\Boss.cs" />
+     <Compile Include="Assets\Scripts\BossFights\Mittens\BossBullet.cs" />
+     <Compile Include="Assets\Scripts\BossFights\Mittens\BossMissile.cs" />
+     <Compile Include="Assets\Scripts\BossFights\Mittens\cameraFollow.cs" />
+     <Compile Include="Assets\Scripts\BossFights\Mittens\MittensBullet.cs" />
+     <Compile Include="Assets\Scripts\BossFights\Mittens\MittensGameManager.cs" />
+     <Compile Include="Assets\Scripts\BossFights\Mittens\Player.cs" />
+     <Compile Include="Assets\Scripts\BossFights\Mittens\Weapon.cs" />
+     <Compile Include="Assets\Scripts\BossFights\Mittens\WeaponSwitching.cs" />
      <Compile Include="Assets\Scripts\BossFights\Patricio\BossFightManager.cs" />
      <Compile Include="Assets\Scripts\BossFights\Patricio\Bossonauro.cs" />
      <Compile Include="Assets\Scripts\BossFights\Patricio\Bullet.cs" />
