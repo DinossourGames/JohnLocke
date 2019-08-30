@@ -60,11 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Common\Boundaries.cs" />
-    <Compile Include="Assets\Common\GamepadManager.cs" />
     <Compile Include="Assets\Common\InputActions.cs" />
-    <Compile Include="Assets\Common\Restart.cs" />
-    <Compile Include="Assets\Common\SceneManager.cs" />
     <Compile Include="Assets\Scripts\BossFights\Mittens\Boss.cs" />
     <Compile Include="Assets\Scripts\BossFights\Mittens\BossBullet.cs" />
     <Compile Include="Assets\Scripts\BossFights\Mittens\BossMissile.cs" />
@@ -355,9 +351,6 @@
     </Reference>
     <Reference Include="FacebookNamedPipeClient">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/PlaybackEngines/Facebook/SDK/7.9.4/FacebookNamedPipeClient.dll</HintPath>
-    </Reference>
-    <Reference Include="DS4 Wrapper Dinossour">
-      <HintPath>C:/Users/TonyStark/Documents/GitHub/JohnLocke/Assets/Plugins/DS4 Wrapper Dinossour.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
