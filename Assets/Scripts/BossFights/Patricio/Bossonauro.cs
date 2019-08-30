@@ -26,7 +26,7 @@ public enum Actions
     Move
 }
 
-public class Boss : MonoBehaviour
+public class Bossonauro : MonoBehaviour
 {
     [SerializeField] private Animator bossAnimator;
     [SerializeField] private Transform shootPoint;

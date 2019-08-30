@@ -24,7 +24,7 @@ public class BossFightManager : MonoBehaviour
     [Header("BOSS MANAGER STATS")] public static BossFightState FightState;
     public static BossSide BossSide;
     [SerializeField] private BossSide bossSide;
-    [SerializeField] private Boss boss;
+    [SerializeField] private Bossonauro boss;
 
 
     private void Start()
