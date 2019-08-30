@@ -235,6 +235,8 @@ public class Boss : MonoBehaviour
         if (_health == _totalHealth)
             canMove = true;
         _health -= damageAmount;
+        if(_health <= 0)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

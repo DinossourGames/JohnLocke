@@ -55,7 +55,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     {
         GetMouseInput();
         Flip();
-        print(angle);
+        //print(angle);
         device = _pi.devices[0].device.displayName == "Mouse" || _pi.devices[0].device.displayName == "Keyboard";
         if (Time.time > dashTime)
             trail.enabled = true;
@@ -154,6 +154,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
     private void Flip()
     {
         anim.SetBool("isWalking", moveInput != Vector2.zero);
+        print(anim.GetBool("isWalking"));
         
         if (angle > -90 && angle <= 90 && !isFacingRight)
         {
@@ -162,14 +163,14 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
             transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
             
         }
-         if( (angle > 90 || angle <= 180 ) && (angle <= -90) &&
-                 isFacingRight)
+        if( (angle > 90 || angle <= 180 ) && (angle <= -90) &&
+            isFacingRight)
         {
             isFacingRight = false;
             var scale = transform.localScale;
             transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
         }
-         anim.SetBool("isFacingRight", isFacingRight);
+        anim.SetBool("isFacingRight", isFacingRight);
     }
 
     public void TakeDamage(int damageAmount)
