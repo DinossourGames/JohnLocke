@@ -35,9 +35,9 @@ public class Bossonauro : MonoBehaviour
     [SerializeField] private Vector2 lastPosition;
     [SerializeField] private bool isFacingRight;
     [SerializeField] private bool canFollow;
-    public float life = 100;
+    public float life = 1000;
 
-    [SerializeField, Header("Actions")] private Actions NextAction = Actions.NONE;
+    [Header("Actions")] public Actions NextAction = Actions.NONE;
 
 
     [SerializeField, Header("Prefabs"), Space]
@@ -56,20 +56,56 @@ public class Bossonauro : MonoBehaviour
 
     private bool canShoot;
     private static readonly int IsWalking = Animator.StringToHash("isWalking");
+    public bool isDoing;
 
     // Start is called before the first frame update
     void Start()
     {
+        NextAction = Actions.NONE;
         _patricio = FindObjectOfType<Patricio>();
         canFollow = true;
         StartCoroutine(UpdateCorroutine());
+        StartCoroutine(BossFight());
     }
 
-    private IEnumerator UpdateCorroutine()
+    private IEnumerator BossFight()
     {
         while (true)
         {
-            if (NextAction == Actions.NONE) yield return null;
+            if (!isDoing)
+                NextAction = RandomAction();
+            yield return null;
+        }
+    }
+
+
+    Actions RandomAction()
+    {
+        var action = Random.Range(0, 5);
+        switch (action)
+        {
+            case 0:
+                return NextAction = Actions.Move;
+            case 1:
+                return NextAction = Actions.Shoot;
+            case 2:
+                return NextAction = Actions.FollowShoot;
+            case 3:
+                return NextAction = Actions.BurstShoot;
+            case 4:
+                return NextAction = Actions.ParrySequence;
+            case 5:
+                return NextAction = Actions.ParryShoot;
+            default:
+                return Actions.Move;
+        }
+    }
+
+    public IEnumerator UpdateCorroutine()
+    {
+        while (true)
+        {
+            if (NextAction == Actions.NONE || isDoing) yield return null;
 
             switch (NextAction)
             {
@@ -77,22 +113,44 @@ public class Bossonauro : MonoBehaviour
                     yield return new WaitForEndOfFrame();
                     break;
                 case Actions.Shoot:
+                    isDoing = true;
                     yield return StartCoroutine(ShootAt());
+                    isDoing = false;
                     break;
                 case Actions.FollowShoot:
+                    isDoing = true;
+
                     yield return StartCoroutine(TargetShoot());
+                    isDoing = false;
+
                     break;
                 case Actions.ParrySequence:
+                    isDoing = true;
+
                     yield return StartCoroutine(ParrySequence());
+                    isDoing = false;
+
                     break;
                 case Actions.ParryShoot:
+                    isDoing = true;
+
                     yield return StartCoroutine(ShootMissil(true));
+                    isDoing = false;
+
                     break;
                 case Actions.BurstShoot:
+                    isDoing = true;
+
                     yield return StartCoroutine(BurstShoot());
+                    isDoing = false;
+
                     break;
                 case Actions.Move:
+                    isDoing = true;
+
                     yield return StartCoroutine(PreparePosition(Positions.Random));
+                    isDoing = false;
+
                     break;
                 default:
                     yield return null;
@@ -108,8 +166,8 @@ public class Bossonauro : MonoBehaviour
     {
         if (life <= 0)
             Destroy(gameObject);
-        if (canFollow)
-            Follow();
+
+        Follow();
     }
 
 
@@ -162,6 +220,7 @@ public class Bossonauro : MonoBehaviour
     {
         NextAction = Actions.NONE;
 
+
         canFollow = false;
         if (Vector2.Distance(missilPoint.transform.position, transform.position) > .5f)
             yield return StartCoroutine(PreparePosition(Positions.Missil));
@@ -180,10 +239,10 @@ public class Bossonauro : MonoBehaviour
         }
 
         bossAnimator.SetBool("isMissil", true);
-        yield return new WaitForSeconds(.8f);
+        yield return new WaitForSeconds(.3f);
 
         Instantiate(tiro, missilShootPoint.position, missilShootPoint.rotation);
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.1f);
         bossAnimator.SetBool("isMissil", false);
 
         canFollow = true;
@@ -193,6 +252,8 @@ public class Bossonauro : MonoBehaviour
     public IEnumerator BurstShoot()
     {
         canFollow = false;
+
+
         yield return StartCoroutine(PreparePosition(Positions.Burst));
 
         bulletPrefab.Parent = gameObject;
@@ -230,6 +291,7 @@ public class Bossonauro : MonoBehaviour
     public IEnumerator PreparePosition(Positions p)
     {
         NextAction = Actions.NONE;
+
 
         yield return new WaitForSeconds(1.4f);
 
@@ -284,6 +346,7 @@ public class Bossonauro : MonoBehaviour
         var localScale1 = transform.localScale;
         transform.localScale = new Vector3(Mathf.Abs(localScale1.x), localScale1.y, localScale1.z);
     }
+
     private IEnumerator ShakeIt()
     {
         yield return new WaitForSeconds(.4f);
@@ -344,7 +407,7 @@ public class Bossonauro : MonoBehaviour
             var bull = other.GetComponent<Bullet>();
             if (bull.Parent != gameObject)
             {
-                life -= bull.damage * 20;
+                life -= 5;
             }
         }
 
@@ -353,7 +416,7 @@ public class Bossonauro : MonoBehaviour
             var platform = other.transform.GetComponent<Platform>();
             if (platform.state == State.Falling)
             {
-                print("damage");
+                life -= 25;
             }
         }
     }

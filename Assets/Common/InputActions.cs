@@ -80,6 +80,14 @@ public class InputActions : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""eebf2414-a5b3-4aa3-94cf-da5a299b04fc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -97,7 +105,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": ""up"",
                     ""id"": ""d3bd3e9d-2f7e-495f-8e43-1f57549e48a7"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -108,7 +116,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": ""down"",
                     ""id"": ""0a0ff9c0-0c19-47df-b44e-00ef7edb8520"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -119,7 +127,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": ""left"",
                     ""id"": ""7b7f5f57-88cb-40ff-a55b-c060f8a03fe3"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -130,7 +138,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": ""right"",
                     ""id"": ""a88b309d-c9e3-4fe8-a052-df954e04717f"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -145,17 +153,6 @@ public class InputActions : IInputActionCollection
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bd9bf6a2-858b-4062-909d-7d176acaa167"",
-                    ""path"": ""<DualShockGamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad;Keyboard"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -185,7 +182,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""c5c9f8f0-063c-41fc-b327-096e455f81a3"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -196,7 +193,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""73a5e856-88bd-4ff8-bca6-947e55cd961a"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -218,7 +215,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""a8eb2db9-779d-43d3-b9de-2d64d16c5dd3"",
-                    ""path"": ""<XInputController>/start"",
+                    ""path"": ""<XInputController>/select"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -295,7 +292,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""01cc6ddb-b165-4cb5-94f9-fdc8821c64cf"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -306,7 +303,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""87fd7dd9-b6ce-4b9c-847a-bbbaa80521d4"",
-                    ""path"": ""<Keyboard>/rightShift"",
+                    ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
@@ -316,12 +313,45 @@ public class InputActions : IInputActionCollection
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2e89cd98-4737-4cea-bdc3-9083d64320d3"",
-                    ""path"": ""<DualShockGamepad>/leftTrigger"",
+                    ""id"": ""9333e798-2d4b-4794-b018-b37831162633"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Freeze"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdfad1e0-4446-4d28-ba94-6656138419c3"",
+                    ""path"": ""<Keyboard>/f5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25656e98-b7fa-4faf-a798-31994a3154d9"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4f545af-3568-45cb-bcb7-47ca02f1c16b"",
+                    ""path"": ""<XInputController>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -376,6 +406,22 @@ public class InputActions : IInputActionCollection
                     ""type"": ""Value"",
                     ""id"": ""158c7864-f178-42cd-b447-fe89852723bd"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""16f4504c-81c7-4862-9be6-b18f6b6a7f5a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""182d2c3c-5ced-4220-82f7-c933c0e26c31"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -545,6 +591,72 @@ public class InputActions : IInputActionCollection
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5a9ec73-36a4-4471-aa72-ab3d3af7537d"",
+                    ""path"": ""<Keyboard>/f5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e798bedc-4dd2-4ef5-a64a-0e5128b3c5c4"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cab5f4be-4cfc-4738-ab70-8862af78152b"",
+                    ""path"": ""<XInputController>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea87f1b3-a51e-4a34-8faa-1d6922dc7e4c"",
+                    ""path"": ""<DualShockGamepad>/touchpadButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""146bab48-007b-4e7a-ae86-04ad260e38f9"",
+                    ""path"": ""<XInputController>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70f24bcf-5928-4ca9-9a11-406f2a19a036"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -596,6 +708,7 @@ public class InputActions : IInputActionCollection
         m_PatricioBossFight_Stare = m_PatricioBossFight.GetAction("Stare");
         m_PatricioBossFight_Special = m_PatricioBossFight.GetAction("Special");
         m_PatricioBossFight_Freeze = m_PatricioBossFight.GetAction("Freeze");
+        m_PatricioBossFight_Restart = m_PatricioBossFight.GetAction("Restart");
         // MittensBossFight
         m_MittensBossFight = asset.GetActionMap("MittensBossFight");
         m_MittensBossFight_Move = m_MittensBossFight.GetAction("Move");
@@ -604,6 +717,8 @@ public class InputActions : IInputActionCollection
         m_MittensBossFight_Reload = m_MittensBossFight.GetAction("Reload");
         m_MittensBossFight_SwitchWeapons = m_MittensBossFight.GetAction("SwitchWeapons");
         m_MittensBossFight_Aim = m_MittensBossFight.GetAction("Aim");
+        m_MittensBossFight_Restart = m_MittensBossFight.GetAction("Restart");
+        m_MittensBossFight_Start = m_MittensBossFight.GetAction("Start");
     }
 
     ~InputActions()
@@ -661,6 +776,7 @@ public class InputActions : IInputActionCollection
     private readonly InputAction m_PatricioBossFight_Stare;
     private readonly InputAction m_PatricioBossFight_Special;
     private readonly InputAction m_PatricioBossFight_Freeze;
+    private readonly InputAction m_PatricioBossFight_Restart;
     public struct PatricioBossFightActions
     {
         private InputActions m_Wrapper;
@@ -673,6 +789,7 @@ public class InputActions : IInputActionCollection
         public InputAction @Stare => m_Wrapper.m_PatricioBossFight_Stare;
         public InputAction @Special => m_Wrapper.m_PatricioBossFight_Special;
         public InputAction @Freeze => m_Wrapper.m_PatricioBossFight_Freeze;
+        public InputAction @Restart => m_Wrapper.m_PatricioBossFight_Restart;
         public InputActionMap Get() { return m_Wrapper.m_PatricioBossFight; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -706,6 +823,9 @@ public class InputActions : IInputActionCollection
                 Freeze.started -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnFreeze;
                 Freeze.performed -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnFreeze;
                 Freeze.canceled -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnFreeze;
+                Restart.started -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnRestart;
+                Restart.performed -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnRestart;
+                Restart.canceled -= m_Wrapper.m_PatricioBossFightActionsCallbackInterface.OnRestart;
             }
             m_Wrapper.m_PatricioBossFightActionsCallbackInterface = instance;
             if (instance != null)
@@ -734,6 +854,9 @@ public class InputActions : IInputActionCollection
                 Freeze.started += instance.OnFreeze;
                 Freeze.performed += instance.OnFreeze;
                 Freeze.canceled += instance.OnFreeze;
+                Restart.started += instance.OnRestart;
+                Restart.performed += instance.OnRestart;
+                Restart.canceled += instance.OnRestart;
             }
         }
     }
@@ -748,6 +871,8 @@ public class InputActions : IInputActionCollection
     private readonly InputAction m_MittensBossFight_Reload;
     private readonly InputAction m_MittensBossFight_SwitchWeapons;
     private readonly InputAction m_MittensBossFight_Aim;
+    private readonly InputAction m_MittensBossFight_Restart;
+    private readonly InputAction m_MittensBossFight_Start;
     public struct MittensBossFightActions
     {
         private InputActions m_Wrapper;
@@ -758,6 +883,8 @@ public class InputActions : IInputActionCollection
         public InputAction @Reload => m_Wrapper.m_MittensBossFight_Reload;
         public InputAction @SwitchWeapons => m_Wrapper.m_MittensBossFight_SwitchWeapons;
         public InputAction @Aim => m_Wrapper.m_MittensBossFight_Aim;
+        public InputAction @Restart => m_Wrapper.m_MittensBossFight_Restart;
+        public InputAction @Start => m_Wrapper.m_MittensBossFight_Start;
         public InputActionMap Get() { return m_Wrapper.m_MittensBossFight; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -785,6 +912,12 @@ public class InputActions : IInputActionCollection
                 Aim.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnAim;
                 Aim.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnAim;
                 Aim.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnAim;
+                Restart.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnRestart;
+                Restart.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnRestart;
+                Restart.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnRestart;
+                Start.started -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnStart;
+                Start.performed -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnStart;
+                Start.canceled -= m_Wrapper.m_MittensBossFightActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_MittensBossFightActionsCallbackInterface = instance;
             if (instance != null)
@@ -807,6 +940,12 @@ public class InputActions : IInputActionCollection
                 Aim.started += instance.OnAim;
                 Aim.performed += instance.OnAim;
                 Aim.canceled += instance.OnAim;
+                Restart.started += instance.OnRestart;
+                Restart.performed += instance.OnRestart;
+                Restart.canceled += instance.OnRestart;
+                Start.started += instance.OnStart;
+                Start.performed += instance.OnStart;
+                Start.canceled += instance.OnStart;
             }
         }
     }
@@ -839,6 +978,7 @@ public class InputActions : IInputActionCollection
         void OnStare(InputAction.CallbackContext context);
         void OnSpecial(InputAction.CallbackContext context);
         void OnFreeze(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
     public interface IMittensBossFightActions
     {
@@ -848,5 +988,7 @@ public class InputActions : IInputActionCollection
         void OnReload(InputAction.CallbackContext context);
         void OnSwitchWeapons(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
 }

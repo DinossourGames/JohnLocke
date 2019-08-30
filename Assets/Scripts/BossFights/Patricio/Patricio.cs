@@ -59,6 +59,8 @@ public class Patricio : MonoBehaviour
     [SerializeField] [Range(0f, .24f)] private float deadZone;
 
     public Text text;
+    [SerializeField] private int life;
+    [SerializeField] private Image[] hearts;
 
     private void Start()
     {
@@ -74,7 +76,22 @@ public class Patricio : MonoBehaviour
         Jump();
         Invulnerable();
         Shoot();
+        Vida();
         lastPostition = transform.position;
+    }
+    
+    private void Vida()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+            if (i >= (int)life/2)
+            {
+                hearts[i].color = Color.black;
+                
+            }
+            else
+            {
+                hearts[i].color = Color.white;
+            }
     }
 
     private void FixedUpdate()
@@ -157,6 +174,14 @@ public class Patricio : MonoBehaviour
     {
 //        print(other.tag);
         if (other.CompareTag("ParryObject")) parry = jump && !isGrounded && framCount <= 12;
+        if(other.CompareTag("Bullet"))
+        {
+            var bull = other.GetComponent<Bullet>();
+            if (bull.Parent != gameObject)
+            {
+                life --;
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -366,5 +391,16 @@ public class Patricio : MonoBehaviour
         }
     }
 
+    public void OnRestart(InputAction.CallbackContext context)
+    {
+        SceneManager.Restart();
+    }
+
+    public void OnStart(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    
     #endregion
 }

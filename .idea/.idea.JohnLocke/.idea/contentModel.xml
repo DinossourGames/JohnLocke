@@ -11,7 +11,6 @@
           <e p="Boundaries.cs" t="Include" />
           <e p="GamepadManager.cs" t="Include" />
           <e p="InputActions.cs" t="Include" />
-          <e p="Restart.cs" t="Include" />
           <e p="SceneManager.cs" t="Include" />
           <e p="StoppedCameraParalax.cs" t="Include" />
         </e>

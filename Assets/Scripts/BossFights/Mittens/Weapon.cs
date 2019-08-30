@@ -163,6 +163,16 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
         AimPerformed(context);
     }
 
+    public void OnRestart(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnStart(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void AimPerformed(InputAction.CallbackContext context)
     {
         direction = context.ReadValue<Vector2>();

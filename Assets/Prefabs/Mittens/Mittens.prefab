@@ -560,6 +560,46 @@ MonoBehaviour:
       Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
     m_ActionId: 158c7864-f178-42cd-b447-fe89852723bd
     m_ActionName: MittensBossFight/Aim[/Mouse/position,/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
+      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
+    m_ActionId: eebf2414-a5b3-4aa3-94cf-da5a299b04fc
+    m_ActionName: PatricioBossFight/Restart[/Keyboard/f5]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4010960416773019779}
+        m_MethodName: OnRestart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
+      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
+    m_ActionId: 16f4504c-81c7-4862-9be6-b18f6b6a7f5a
+    m_ActionName: MittensBossFight/Restart[/Keyboard/f5]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4010960416773019779}
+        m_MethodName: OnStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
+      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
+    m_ActionId: 182d2c3c-5ced-4220-82f7-c933c0e26c31
+    m_ActionName: MittensBossFight/Start[/Keyboard/escape]
   m_AutoSwitchControlScheme: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: de5c8eb9-cadf-448e-884d-2c482889df24
@@ -798,20 +838,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8860270863458501283, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
         type: 3}
-      propertyPath: shotPoint
-      value: 
-      objectReference: {fileID: 627132872947115706}
-    - target: {fileID: 8860270863458501283, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
-        type: 3}
-      propertyPath: reloadTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860270863458501283, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
-        type: 3}
       propertyPath: bullet
       value: 
       objectReference: {fileID: 1597119226855905295, guid: 9fe4f87364b0979439a15b23ae10a498,
         type: 3}
+    - target: {fileID: 8860270863458501283, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
+        type: 3}
+      propertyPath: shotPoint
+      value: 
+      objectReference: {fileID: 627132872947115706}
     - target: {fileID: 8860270863458501283, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
         type: 3}
       propertyPath: cadence
@@ -821,6 +856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: totalAmmo
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860270863458501283, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62,
+        type: 3}
+      propertyPath: reloadTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0387fd9cbbcc2ee46a8a5a610ac04f62, type: 3}

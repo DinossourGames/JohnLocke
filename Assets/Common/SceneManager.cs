@@ -22,6 +22,16 @@ public class SceneManager : MonoBehaviour
         }
     }
 
+    public static void Restart()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene()
+            .buildIndex);
+    }
+    
+    public static void LoadScene(string sceneName)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
     public static void LoadScene(string sceneName, int bgIndex)
     {
         sceneToLoad = sceneName;
@@ -47,4 +57,5 @@ public class SceneManager : MonoBehaviour
 
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
     }
+    
  }

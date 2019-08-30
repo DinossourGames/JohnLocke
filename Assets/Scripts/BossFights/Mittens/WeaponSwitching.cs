@@ -79,4 +79,14 @@ public class WeaponSwitching : MonoBehaviour, InputActions.IMittensBossFightActi
     {
         throw new System.NotImplementedException();
     }
+
+    public void OnRestart(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnStart(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
 }

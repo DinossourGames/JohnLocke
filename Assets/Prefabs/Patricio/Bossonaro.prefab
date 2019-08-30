@@ -3160,10 +3160,11 @@ MonoBehaviour:
   missilParryPrefab: {fileID: 6146832073385922823, guid: 7c144e194aa81744b87e46aa02b12f0e,
     type: 3}
   _patricio: {fileID: 0}
-  burstPoint: {fileID: 0}
-  missilPoint: {fileID: 0}
+  burstPoint: {fileID: 6128378757322855869}
+  missilPoint: {fileID: 7447648684435221020}
   inicialPoint: {fileID: 0}
   positions: []
+  isDoing: 0
 --- !u!61 &2858912181188616760
 BoxCollider2D:
   m_ObjectHideFlags: 0

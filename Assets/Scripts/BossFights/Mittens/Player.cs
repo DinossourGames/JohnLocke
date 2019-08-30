@@ -225,6 +225,16 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         AimPerformed(context);
     }
 
+    public void OnRestart(InputAction.CallbackContext context)
+    {
+        SceneManager.Restart();
+    }
+
+    public void OnStart(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     private void AimPerformed(InputAction.CallbackContext context)
     {
         direction1 = context.ReadValue<Vector2>();
