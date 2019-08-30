@@ -73,19 +73,21 @@ public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
     }
         private void Flip()
     {
-        if (angle >= -90 && angle <= 90 && !isFacingRight)
+        if (angle >= -90 && angle < 90 && !isFacingRight)
         {
             isFacingRight = true;
             var localScale = transform.localScale;
             transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
         }
-        if( (angle >= 90 || angle <= 180 ) && (angle < -90) &&
+        if( ((angle >= 90 && angle <= 180 ) || (angle < -90 && angle>=-180)) &&
             isFacingRight)
         {
+            print("a");
             isFacingRight = false;
             var scale = transform.localScale;
             transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
         }
+       
 
     }
     private void Shoot()

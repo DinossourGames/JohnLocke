@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 {
+    [SerializeField] private Image[] hearts;
+    
     private InputActions Controls;
     private Vector2 moveInput;
     private CircleCollider2D hitbox;
@@ -53,14 +56,28 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 
     private void Update()
     {
-        GetMouseInput();
         Flip();
+        GetMouseInput();
+        Vida();
         //print(angle);
         device = _pi.devices[0].device.displayName == "Mouse" || _pi.devices[0].device.displayName == "Keyboard";
         if (Time.time > dashTime)
             trail.enabled = true;
     }
 
+    private void Vida()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+            if (i >= health)
+            {
+                hearts[i].color = Color.black;
+                
+            }
+            else
+            {
+                hearts[i].color = Color.white;
+            }
+    }
     // Update is called once per frame
 
     private void FixedUpdate()
@@ -153,8 +170,9 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 
     private void Flip()
     {
+        print(device);
         anim.SetBool("isWalking", moveInput != Vector2.zero);
-        print(anim.GetBool("isWalking"));
+        //print(anim.GetBool("isWalking"));
         
         if (angle > -90 && angle <= 90 && !isFacingRight)
         {
@@ -163,7 +181,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
             transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
             
         }
-        if( (angle > 90 || angle <= 180 ) && (angle <= -90) &&
+        if( ((angle >= 90 && angle <= 180 ) || (angle < -90 && angle>=-180)) &&
             isFacingRight)
         {
             isFacingRight = false;
@@ -212,4 +230,6 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
         direction1 = context.ReadValue<Vector2>();
         angle = Mathf.Atan2(direction1.y, direction1.x) * Mathf.Rad2Deg;
     }
+    
+    
 }

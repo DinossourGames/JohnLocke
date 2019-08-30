@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.Net.Http;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Boss : MonoBehaviour
 {
+    public Canvas canvas;
+    public Slider healthBar;
+
     [SerializeField] private int _health;
     [SerializeField] private int _totalHealth;
     [SerializeField] private GameObject bossBones;
@@ -51,21 +55,19 @@ public class Boss : MonoBehaviour
 
     private void Start()
     {
+        canvas = FindObjectOfType<Canvas>();
+        healthBar = FindObjectOfType<Slider>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerExists = true;
         animator = GetComponent<Animator>();
         Health = TotalHealth;
-        scale = transform.localScale.x;
-        reverseScale = -scale;
-        StartCoroutine(Movement());
-        StartCoroutine(Shoot());
-        StartCoroutine(ShootMissile());
-        StartCoroutine(Special());
+        healthBar.maxValue = TotalHealth;
+        healthBar.value = 0;
+        
     }
 
     private IEnumerator Special()
     {
-        
         while (playerExists)
         {
             yield return new WaitForSeconds(timeBetweenSpecials);
@@ -83,17 +85,8 @@ public class Boss : MonoBehaviour
             }
         }
     }
-
-    private void ResetShooting()
-    {
-        StopCoroutine(Shoot());
-        StartCoroutine(Shoot());
-        StopCoroutine(ShootMissile());
-        StartCoroutine(ShootMissile());
-    }
     private IEnumerator Spiral()
     {
-        print("sda");
         while (countSpecial < 20 * MittensGameManager.difficulty)
         {
             Instantiate(basicShot, basicShotPoint.position, Quaternion.AngleAxis(angle - (countSpecial*(50 / MittensGameManager.difficulty)), Vector3.forward) );
@@ -147,6 +140,7 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
+        healthBar.value = healthBar.maxValue - _health;
         playerExists = player != null;
         if(!playerExists)
             StopAllCoroutines();
@@ -233,7 +227,13 @@ public class Boss : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         if (_health == _totalHealth)
+        {
             canMove = true;
+            StartCoroutine(Movement());
+            StartCoroutine(Shoot());
+            StartCoroutine(ShootMissile());
+            StartCoroutine(Special());
+        }
         _health -= damageAmount;
         if(_health <= 0)
             Destroy(gameObject);
