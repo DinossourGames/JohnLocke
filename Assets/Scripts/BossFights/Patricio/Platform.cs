@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
-using Random = UnityEngine.Random;
+#pragma warning disable 414
 
-enum State
+// ReSharper disable Unity.PerformanceCriticalCodeNullComparison
+
+public enum State
 {
     Rising,
     Falling,
@@ -18,19 +18,20 @@ enum State
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField, Header("Fill Atributes")]
+    [SerializeField, Header("Platform Configuration")]
     private GameObject fillPlatform;
 
+    public State state;
+    [SerializeField, Space] private bool isTop;
     [SerializeField] private GameObject basePlatform;
-
-    [SerializeField] private State state;
     [SerializeField, Range(0f, 1f)] private float fillRatio;
     [SerializeField, Range(0f, 3f)] private float fillDelay;
-    private Vector3 localScale;
-
-    private float fillAmmount;
+    [SerializeField, Range(1, 15)] private float upSpeed;
+    private Vector3 _localScale;
+    private float _fillAmmount;
     private bool _hasCollision;
-    private bool _canCheck = true;
+
+    public bool movementLocker;
 
     // Screen bounds
     [SerializeField, Header("Boundaries"), Space]
@@ -38,22 +39,23 @@ public class Platform : MonoBehaviour
 
     [SerializeField] private Vector2 screenBounds;
 
-    [SerializeField] private Transform leftChecker;
-
-    [SerializeField] private Transform RightChecker;
-
     // Sprite Bounds
     private BoxCollider2D _collider2D;
-    [SerializeField] private Vector2 platformBounds;
-    [SerializeField, Range(0f, .5f)] private float riseDelay;
 
-    [SerializeField, Range(0f, .5f)] private float upAmmount;
+    [SerializeField] private Vector2 platformBounds;
 
     //references
-    private Transform player;
-    private SpriteRenderer baseSpriteRenderer;
-    private Rigidbody2D rb;
-    [SerializeField, Space] private bool isTop;
+    private Transform _player;
+    private SpriteRenderer _baseSpriteRenderer;
+    private Rigidbody2D _rb;
+
+    private Coroutine _decrease;
+    private Coroutine _increase;
+
+    private bool _shake;
+    [SerializeField] private float scaleY;
+    [SerializeField] private float safeOffset;
+
 
     private void Start()
     {
@@ -62,83 +64,105 @@ public class Platform : MonoBehaviour
             mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
         state = State.IdleDown;
         _collider2D = GetComponent<BoxCollider2D>();
-        localScale = fillPlatform.transform.localScale;
-        platformBounds = _collider2D.size;
-        baseSpriteRenderer = basePlatform.GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(Teste());
+        _localScale = fillPlatform.transform.localScale;
+        _baseSpriteRenderer = basePlatform.GetComponent<SpriteRenderer>();
+        platformBounds = new Vector2(_baseSpriteRenderer.size.x,_baseSpriteRenderer.size.y);
+        scaleY = transform.localScale.y;
+        safeOffset = 0.01f;
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        isTop = transform.position.y > screenBounds.y / 2;
+        _collider2D.size = _baseSpriteRenderer.size * _baseSpriteRenderer.transform.localScale;
+
+        var position = transform.position;
+        isTop = position.y > screenBounds.y / 2;
     }
 
-    private IEnumerator Teste()
+    public void UpdateState(PlatformPosition update)
     {
-        yield return new WaitForSeconds(2);
-        yield return StartCoroutine(OneLeft());
+        var position = transform.position;
+        var distance = Vector3.Distance(position, update.Position.center);
+        var direction = position.x - update.Position.center.x > 0; //  > 0 - right | < 0 -left
 
-        yield return StartCoroutine(GoLeft());
-        yield return new WaitForSeconds(2);
-        yield return StartCoroutine(Rise());
-        yield return new WaitForSeconds(2);
+        if (state == State.Rising || state == State.Falling || state == State.IdleUp ||
+            state == State.MovingLeft ||
+            state == State.MovingRight || movementLocker)
+            return;
 
-        yield return StartCoroutine(OneRight());
-        yield return new WaitForSeconds(2);
+        var yDiff = Mathf.Abs(transform.position.y - update.Position.center.y);
 
-        yield return StartCoroutine(GoRight());
-        yield return new WaitForSeconds(2);
-
-        yield return StartCoroutine(Fall());
-        yield return new WaitForSeconds(2);
-
-        yield return StartCoroutine(OneLeft());
-        yield return new WaitForSeconds(2);
-
-        yield return StartCoroutine(Die());
-    }
-
-    private IEnumerator OneLeft()
-    {
-        state = State.MovingLeft;
-        yield return StartCoroutine(ShakePlatform());
-        var next = transform.position.x - platformBounds.x;
-
-        while (transform.position.x > next)
+        if (distance < 3.4f && distance > 2.5f && yDiff < .4f)
         {
-            var position = transform.position;
-            position += Time.deltaTime * 5 * Vector3.left;
+            if (BossFightManager.BossSide == BossSide.Right)
+            {
+                if (direction)
+                {
+                    movementLocker = true;
+                    StartCoroutine(Move(update.Position.center, true));
+                }
+            }
 
-            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
-                screenBounds.x - platformBounds.x / 2);
+            if (BossFightManager.BossSide == BossSide.Left)
+            {
+                if (!direction)
+                {
+                    movementLocker = true;
+                    StartCoroutine(Move(update.Position.center, false));
+                }
+            }
+        }
+    }
 
-            transform.position = position;
+
+    private IEnumerator Move(Vector2 endpoint, bool movingLeft)
+    {
+        if (_increase != null)
+            StopCoroutine(_increase);
+        if (_decrease != null)
+            StopCoroutine(_decrease);
+
+        state = movingLeft ? State.MovingLeft : State.MovingRight;
+        yield return StartCoroutine(ShakePlatform());
+
+        while (Vector2.Distance(transform.position, endpoint) > .1f)
+        {
+            transform.position += Time.deltaTime * upSpeed * (movingLeft ? Vector3.left : Vector3.right);
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
         state = isTop ? State.IdleUp : State.IdleDown;
+        if (_hasCollision)
+            _increase = StartCoroutine(Increase());
+        yield return new WaitForSeconds(2f);
+        movementLocker = false;
     }
 
-    private IEnumerator OneRight()
+    private IEnumerator RiseCycle()
     {
-        state = State.MovingRight;
-        yield return StartCoroutine(ShakePlatform());
-        var next = transform.position.x - platformBounds.x;
+        var direction = BossFightManager.BossSide == BossSide.Left;
 
-        while (transform.position.x < next)
+        switch (BossFightManager.FightState)
         {
-            var position = transform.position;
-            position += Time.deltaTime * 5 * Vector3.right;
-
-            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
-                screenBounds.x - platformBounds.x / 2);
-
-            transform.position = position;
-            yield return new WaitForSeconds(Time.deltaTime);
+            case BossFightState.Stage1:
+                yield return StartCoroutine(Rise());
+                yield return StartCoroutine(direction ? GoLeft() : GoRight());
+                yield return StartCoroutine(Fall());
+                break;
+            case BossFightState.Stage2:
+                yield return StartCoroutine(Rise());
+                yield return StartCoroutine(direction ? GoLeft() : GoRight());
+                yield return StartCoroutine(Fall());
+                break;
+            case BossFightState.Stage3:
+                yield return StartCoroutine(Shinee());
+                break;
+            case BossFightState.Starting:
+                break;
+            case BossFightState.Finishing:
+                break;
         }
-
-        state = isTop ? State.IdleUp : State.IdleDown;
     }
 
     private IEnumerator GoRight()
@@ -146,13 +170,14 @@ public class Platform : MonoBehaviour
         yield return StartCoroutine(ShakePlatform());
         state = State.MovingRight;
 
-        while (transform.position.x < screenBounds.x - platformBounds.x / 2)
+        var bound = new Vector2(screenBounds.x - _baseSpriteRenderer.bounds.extents.x, transform.position.y);
+        while (Vector2.Distance(transform.position, bound) > 0)
         {
             var position = transform.position;
-            position += Time.deltaTime * 5 * Vector3.right;
+            position += Time.deltaTime * upSpeed * Vector3.right;
 
             position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
-                screenBounds.x - platformBounds.x / 2);
+                screenBounds.x - _baseSpriteRenderer.bounds.extents.x);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.deltaTime);
@@ -165,13 +190,16 @@ public class Platform : MonoBehaviour
     {
         yield return StartCoroutine(ShakePlatform());
         state = State.MovingLeft;
-        while (transform.position.x > screenBounds.x * -1 + platformBounds.x / 2)
+        var bounds = _baseSpriteRenderer.bounds;
+        var bound = new Vector2(screenBounds.x * -1 + bounds.extents.x, transform.position.y);
+
+        while (Vector2.Distance(transform.position, bound) > 0)
         {
             var position = transform.position;
-            position += Time.deltaTime * 5 * Vector3.left;
+            position += Time.deltaTime * upSpeed * Vector3.left;
 
-            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + platformBounds.x / 2,
-                screenBounds.x - platformBounds.x / 2);
+            position.x = Mathf.Clamp(position.x, screenBounds.x * -1 + bounds.extents.x,
+                screenBounds.x - bounds.extents.x);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.deltaTime);
@@ -183,41 +211,44 @@ public class Platform : MonoBehaviour
     private IEnumerator Fall()
     {
         yield return StartCoroutine(ShakePlatform());
+        yield return new WaitForSeconds(.2f);
         yield return StartCoroutine(ShakePlatform());
+        yield return new WaitForSeconds(.2f);
         yield return StartCoroutine(ShakePlatform());
         state = State.Falling;
 
-        while (transform.position.y > screenBounds.y * -1 + platformBounds.y / 2)
+        while (transform.position.y > screenBounds.y * -1 +  (scaleY + 0.01f) / 2)
         {
             var position = transform.position;
-            position += Time.deltaTime * 20 * Vector3.down;
+            position += Time.deltaTime * 25 * Vector3.down;
 
-            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + platformBounds.y / 2,
-                screenBounds.y - platformBounds.y / 2);
+            
+            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + (scaleY + 0.01f) / 2,
+                screenBounds.y -(platformBounds.y - scaleY + 0.01f) / 2);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
         state = State.IdleDown;
+        movementLocker = false;
     }
 
     private IEnumerator Rise()
     {
-        state = State.Rising;
         yield return StartCoroutine(ShakePlatform());
+        state = State.Rising;
 
-        while (transform.position.y < screenBounds.y - platformBounds.y / 2)
+        while (transform.position.y < screenBounds.y - (platformBounds.y - scaleY + safeOffset) / 2)
         {
             var position = transform.position;
-            position += Time.fixedDeltaTime * 5 * Vector3.up;
+            position += Time.fixedDeltaTime * upSpeed * Vector3.up;
 
-            if (player != null)
-                if (position.y > screenBounds.y - platformBounds.y && player.parent != null)
-                    StartCoroutine(DropPlayer());
+            if (position.y > screenBounds.y - platformBounds.y)
+                StartCoroutine(DropPlayer());
 
-            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 + platformBounds.y / 2,
-                screenBounds.y - platformBounds.y / 2);
+            position.y = Mathf.Clamp(position.y, screenBounds.y * -1 +  (platformBounds.y - scaleY + safeOffset) / 2,
+                screenBounds.y -  (platformBounds.y - scaleY + safeOffset) / 2);
 
             transform.position = position;
             yield return new WaitForSeconds(Time.fixedDeltaTime);
@@ -226,32 +257,36 @@ public class Platform : MonoBehaviour
         state = State.IdleUp;
     }
 
-    private IEnumerator Die()
+    private IEnumerator Shinee()
     {
         state = State.Falling;
         yield return StartCoroutine(ShakePlatform());
-        rb.isKinematic = false;
-        rb.gravityScale = 5;
+        _rb.isKinematic = false;
+        _rb.gravityScale = 5;
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 
     private IEnumerator DropPlayer()
     {
-        var atualColor = baseSpriteRenderer.color;
-        baseSpriteRenderer.color = new Color(atualColor.r, atualColor.g, atualColor.b, .25f);
-        player.parent = null;
+        _hasCollision = false;
+        var atualColor = _baseSpriteRenderer.color;
+        _baseSpriteRenderer.color = new Color(atualColor.r, atualColor.g, atualColor.b, .25f);
+        if (_player != null)
+            _player.parent = null;
         _collider2D.enabled = false;
         yield return new WaitForSeconds(.4f);
+        // ReSharper disable once Unity.InefficientPropertyAccess
         _collider2D.enabled = true;
-        baseSpriteRenderer.color = new Color(atualColor.r, atualColor.g, atualColor.b, 1f);
+        _baseSpriteRenderer.color = new Color(atualColor.r, atualColor.g, atualColor.b, 1f);
     }
 
     private IEnumerator ShakePlatform()
     {
+        _shake = true;
         yield return new WaitForSeconds(.4f);
-        fillAmmount = 0;
-        fillPlatform.transform.localScale = new Vector3(localScale.x, fillAmmount, localScale.z);
+        _fillAmmount = 0;
+        fillPlatform.transform.localScale = new Vector3(_localScale.x, _fillAmmount, _localScale.z);
         var counter = 0f;
         const float maxX = .2f;
         const float maxY = .4f;
@@ -265,7 +300,9 @@ public class Platform : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        transform.position = pos;
         yield return new WaitForSeconds(.4f);
+        _shake = false;
     }
 
     private IEnumerator Increase()
@@ -273,56 +310,68 @@ public class Platform : MonoBehaviour
         yield return new WaitForSeconds(fillDelay);
         var peak = false;
         state = State.Increasing;
-        while (fillAmmount <= 1.0f && _hasCollision)
+        while (_fillAmmount <= 1.0f && _hasCollision)
         {
-            fillAmmount += fillRatio;
-            if (fillAmmount > 1f)
+            _fillAmmount += fillRatio * 3 * Time.fixedDeltaTime;
+            if (_fillAmmount > 1f)
             {
                 peak = true;
-                _canCheck = false;
                 state = State.Rising;
                 continue;
             }
 
-            fillPlatform.transform.localScale = new Vector3(localScale.x, fillAmmount, localScale.z);
-            yield return new WaitForSeconds(fillDelay);
+            fillPlatform.transform.localScale = new Vector3(_localScale.x, _fillAmmount, _localScale.z);
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
 
         if (!peak) yield break;
-        fillAmmount = 0f;
-        fillPlatform.transform.localScale = new Vector3(localScale.x, fillAmmount, localScale.z);
-        StartCoroutine(Rise());
+        _fillAmmount = 0f;
+        fillPlatform.transform.localScale = new Vector3(_localScale.x, _fillAmmount, _localScale.z);
+
+        StartCoroutine(RiseCycle());
     }
 
     private IEnumerator Decrease()
     {
         yield return new WaitForSeconds(fillDelay);
         state = State.Decreasing;
-        while (fillAmmount > 0f && !_hasCollision)
+        while (_fillAmmount > 0f && !_hasCollision)
         {
-            fillAmmount -= fillRatio;
-            fillPlatform.transform.localScale = new Vector3(localScale.x, fillAmmount, localScale.z);
-            yield return new WaitForSeconds(fillDelay);
+            _fillAmmount -= fillRatio * 3 * Time.fixedDeltaTime;
+            if (_fillAmmount < 0)
+                _fillAmmount = 0;
+
+            fillPlatform.transform.localScale = new Vector3(_localScale.x, _fillAmmount, _localScale.z);
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.collider.CompareTag("Player") || !_canCheck || state == State.IdleUp) return;
-        player = other.collider.transform;
-        player.SetParent(transform);
+        if (!other.CompareTag("Player") || state == State.MovingLeft || state == State.MovingRight ||
+            state == State.Rising || state == State.Falling) return;
+        _player = other.transform;
+        _player.SetParent(transform);
         _hasCollision = true;
-        StopAllCoroutines();
-        StartCoroutine(Increase());
+        if (_increase != null)
+            StopCoroutine(_increase);
+        if (_decrease != null)
+            StopCoroutine(_decrease);
+
+        _increase = StartCoroutine(Increase());
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.collider.CompareTag("Player") || !_canCheck) return;
-        player = other.collider.transform;
-        player.SetParent(null);
+        if (!other.CompareTag("Player") || state == State.Rising || state == State.Falling) return;
+        _player = other.transform;
+        _player.SetParent(null);
         _hasCollision = false;
-        StopAllCoroutines();
-        StartCoroutine(Decrease());
+
+        if (_increase != null)
+            StopCoroutine(_increase);
+        if (_decrease != null)
+            StopCoroutine(_decrease);
+        _decrease = StartCoroutine(Decrease());
     }
 }

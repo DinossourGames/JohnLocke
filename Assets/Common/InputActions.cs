@@ -144,18 +144,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bd9bf6a2-858b-4062-909d-7d176acaa167"",
-                    ""path"": ""<DualShockGamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -185,7 +174,7 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""c5c9f8f0-063c-41fc-b327-096e455f81a3"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -199,7 +188,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -243,7 +232,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Invulnerability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -265,7 +254,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Stare"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -276,7 +265,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Stare"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -287,7 +276,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Special"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -306,10 +295,10 @@ public class InputActions : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""87fd7dd9-b6ce-4b9c-847a-bbbaa80521d4"",
-                    ""path"": ""<Keyboard>/rightShift"",
+                    ""path"": ""<Keyboard>/OEM2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Freeze"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -320,7 +309,7 @@ public class InputActions : IInputActionCollection
                     ""path"": ""<DualShockGamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Freeze"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

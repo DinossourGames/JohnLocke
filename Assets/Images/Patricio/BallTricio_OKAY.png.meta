@@ -1,0 +1,415 @@
+fileFormatVersion: 2
+guid: 88ab0886b90db2243ad333597e7e11ef
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6647570397912299065
+    second: BallTricio_OKAY_0
+  - first:
+      213: 3134243140182532375
+    second: BallTricio_OKAY_1
+  - first:
+      213: 4514246859612092127
+    second: BallTricio_OKAY_2
+  - first:
+      213: -6294573702947607718
+    second: BallTricio_OKAY_3
+  - first:
+      213: -3489604457974120009
+    second: BallTricio_OKAY_4
+  - first:
+      213: -9034489291006648714
+    second: BallTricio_OKAY_5
+  - first:
+      213: -5272447116007162055
+    second: BallTricio_OKAY_6
+  - first:
+      213: 7302221416600360897
+    second: BallTricio_OKAY_7
+  - first:
+      213: -1118565196192304149
+    second: BallTricio_OKAY_8
+  - first:
+      213: -8425294189466680352
+    second: BallTricio_OKAY_9
+  - first:
+      213: 7535589678101508264
+    second: BallTricio_OKAY_10
+  - first:
+      213: -7206263787714744918
+    second: BallTricio_OKAY_11
+  - first:
+      213: -5728723909450097423
+    second: BallTricio_OKAY_12
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BallTricio_OKAY_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 740
+        width: 143
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c2c2e4f0f36c6943a9a83eed406f396
+      internalID: -6647570397912299065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 815
+        width: 156
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00fba20762b2d16468c515299573405e
+      internalID: 3134243140182532375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_2
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 867
+        width: 158
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 457623c4a7fc9c54d97dbb7195d3da3d
+      internalID: 4514246859612092127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 601
+        width: 135
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c23e7c05bb532449ae31e1033f3768d
+      internalID: -6294573702947607718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_4
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 604
+        width: 130
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49845a0fb89a1804bbd98a3440425ad6
+      internalID: -3489604457974120009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_5
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 605
+        width: 138
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51eb86516e5474c4db8f203a61be7462
+      internalID: -9034489291006648714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 456
+        width: 135
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b26fbe04dce6ce3409f76d91f177d3e6
+      internalID: -5272447116007162055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_7
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 457
+        width: 138
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cdb768e2efa32045a5cb525f4138eb5
+      internalID: 7302221416600360897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_8
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 439
+        width: 131
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7e09062b316cc4d83d817020a64eda
+      internalID: -1118565196192304149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 283
+        width: 138
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 731da7194fa826145891a13a5a1cb9a9
+      internalID: -8425294189466680352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_10
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 292
+        width: 136
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d52f26fff9c9acc4eadd6ac7ad0074ca
+      internalID: 7535589678101508264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_11
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 294
+        width: 133
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed79a124cac20084684e11d188df4aad
+      internalID: -7206263787714744918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BallTricio_OKAY_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 133
+        width: 133
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f055ee62d2c0dc94d824f77ec0aca6ce
+      internalID: -5728723909450097423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

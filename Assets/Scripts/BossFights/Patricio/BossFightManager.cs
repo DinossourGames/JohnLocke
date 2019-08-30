@@ -4,30 +4,48 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public enum BossFightState { Starting, Stage1, Stage2, Stage3, Finishing }
+public enum BossFightState
+{
+    Starting,
+    Stage1,
+    Stage2,
+    Stage3,
+    Finishing
+}
 
+public enum BossSide
+{
+    Left,
+    Right
+}
 
 public class BossFightManager : MonoBehaviour
 {
+    [Header("BOSS MANAGER STATS")] public static BossFightState FightState;
+    public static BossSide BossSide;
+    [SerializeField] private BossSide bossSide;
+    [SerializeField] private Boss boss;
 
-    [Header("BOSS MANAGER STATS")]
-    [SerializeField]
-    private BossFightState fightState;
 
     private void Start()
     {
+        FightState = BossFightState.Stage1;
+        BossSide = BossSide.Right;
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 75;
+//        StartCoroutine(BossFightStages());
     }
-
-//    private void OnApplicationQuit()
+//
+//    private IEnumerator BossFightStages()
 //    {
-//        //TODO: REMOVE THIS
-//        foreach (var item in Process.GetProcessesByName("HIDHandler"))
+//        while (FightState == BossFightState.Stage1)
 //        {
-//            item.Kill();
+//            
 //        }
 //    }
 
-   
+    private void Update()
+    {
+        BossSide = bossSide; // for static field - this is the worst way  to do it.
+    }
 }

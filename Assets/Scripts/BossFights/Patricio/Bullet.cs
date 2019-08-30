@@ -1,28 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    private float lifeSpan;
-    [SerializeField]
-    private float damage;
-    [SerializeField]
-    private float speed;
-
-    private Rigidbody2D rbd;
+    [SerializeField] private float lifeSpan;
+    public float damage;
+    [SerializeField] private float speed;
 
     public GameObject Parent;
     public Vector2 Direction;
 
     private void Start()
     {
-        rbd = GetComponent<Rigidbody2D>();
-        rbd.mass = 0;
-        rbd.gravityScale = 0;
-        rbd.velocity = Direction * speed;
-        Invoke("DestroyProjectile", lifeSpan);
+        Invoke(nameof(DestroyProjectile), lifeSpan);
     }
 
     private void DestroyProjectile()
@@ -31,10 +23,9 @@ public class Bullet : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.gameObject.Equals(Parent))
-            return;
-
+        transform.Translate(Time.deltaTime * speed * Direction);
     }
+    
 }
