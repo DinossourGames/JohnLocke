@@ -92,6 +92,11 @@ public class Patricio : MonoBehaviour
             {
                 hearts[i].color = Color.white;
             }
+
+        if (life <= 0)
+        {
+            SceneManager.LoadScene("GameOverPatricio");
+        }
     }
 
     private void FixedUpdate()
