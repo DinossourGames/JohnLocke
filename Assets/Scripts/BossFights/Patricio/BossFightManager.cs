@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem.DualShock;
 
 public enum BossFightState
 {
@@ -39,8 +36,22 @@ public class BossFightManager : MonoBehaviour
     {
         BossSide = bossSide; // for static field - this is the worst way  to do it.
 
-        if (boss.life > 600) FightState = BossFightState.Stage1;
-        if (boss.life < 600 && boss.life > 300) FightState = BossFightState.Stage2;
-        if (boss.life < 300) FightState = BossFightState.Stage3;
+        if (boss.life > 600)
+        {
+            FightState = BossFightState.Stage1;
+            try{Patricio.ds4.SetLightBarColor(Color.green);}catch{}
+        }
+
+        if (boss.life < 600 && boss.life > 300)
+        {
+            FightState = BossFightState.Stage2;
+            try{DualShockGamepad.current.SetLightBarColor(Color.blue);}catch{}
+        }
+
+        if (boss.life < 300)
+        {
+            FightState = BossFightState.Stage3;
+            try{DualShockGamepad.current.SetLightBarColor(Color.red);}catch{}
+        }
     }
 }

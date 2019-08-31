@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.AccessControl;
-using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
+﻿using UnityEngine;
 using UnityEngine.Experimental.Rendering.LWRP;
-using Object = UnityEngine.Object;
 
 public enum BossState{Waiting, One, Two, Three}
 

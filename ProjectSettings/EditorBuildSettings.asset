@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BossFights/Patricio/001.unity
     guid: 9bef890257f55114999a634e9ae00668
   - enabled: 1
+    path: Assets/Scenes/Menus/VitoriaPatricio.unity
+    guid: f130bc24360f5174c9bd79f6963e4ec5
+  - enabled: 1
     path: Assets/Scenes/Menus/VitoriaMittens.unity
     guid: 7576dd361ccd26d488a0c7088ed7ad0b
   - enabled: 1

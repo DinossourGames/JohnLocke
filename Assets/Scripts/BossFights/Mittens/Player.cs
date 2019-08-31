@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build.Content;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -77,6 +74,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
             {
                 hearts[i].color = Color.white;
             }
+        
     }
     // Update is called once per frame
 
@@ -198,10 +196,14 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
             health -= damageAmount;
             StartCoroutine(Invulnerability(3));
             if (health <= 0)
+            {
                 Destroy(gameObject);
+                SceneManager.LoadScene("GameOverMittens");
+            }
         }
     }
 
+    
     private IEnumerator Invulnerability(float time)
     {
         invulnerable = true;

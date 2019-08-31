@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DS4_Wrapper;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.PS4;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
 #pragma warning disable 414
 
 public class Patricio : MonoBehaviour
@@ -61,12 +65,15 @@ public class Patricio : MonoBehaviour
     public Text text;
     [SerializeField] private int life;
     [SerializeField] private Image[] hearts;
+    [SerializeField] private Camera cam;
+    public static DualShockGamepad ds4;
 
     private void Start()
     {
         rbd = GetComponent<Rigidbody2D>();
         armSprite = shootOrigin.GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        cam = FindObjectOfType<Camera>();
         parry = false;
     }
 
@@ -78,26 +85,62 @@ public class Patricio : MonoBehaviour
         Shoot();
         Vida();
         lastPostition = transform.position;
+        ds4 = DualShockGamepad.current;
     }
-    
+
     private void Vida()
     {
         for (int i = 0; i < hearts.Length; i++)
-            if (i >= (int)life/2)
+            if (i >= (int) life / 2)
             {
                 hearts[i].color = Color.black;
-                
             }
             else
             {
                 hearts[i].color = Color.white;
             }
 
-        if (life <= 0)
+        if (life < 1)
         {
             SceneManager.LoadScene("GameOverPatricio");
         }
     }
+
+    private IEnumerator ShakeIt()
+    {
+        try
+        {
+            ds4.SetMotorSpeeds(.25f, 60f);
+        }
+        catch
+        {
+            // ignored
+        }
+
+        var counter = 0f;
+        const float maxX = .2f;
+        const float maxY = .4f;
+        const float shakeTime = .3f;
+        var pos = cam.transform.position;
+        while (counter <= shakeTime)
+        {
+            counter += Time.deltaTime;
+            cam.transform.position = pos + new Vector3((shakeTime - counter) * Random.Range(-maxX, maxX),
+                                         (shakeTime - counter) * Random.Range(-maxY, maxY));
+            yield return new WaitForEndOfFrame();
+        }
+
+        cam.transform.position = pos;
+
+        try
+        {
+            ds4.SetMotorSpeeds(0f, 0f);
+        }
+        catch
+        {
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -179,12 +222,15 @@ public class Patricio : MonoBehaviour
     {
 //        print(other.tag);
         if (other.CompareTag("ParryObject")) parry = jump && !isGrounded && framCount <= 12;
-        if(other.CompareTag("Bullet"))
+
+
+        if (other.CompareTag("Bullet"))
         {
             var bull = other.GetComponent<Bullet>();
             if (bull.Parent != gameObject)
             {
-                life --;
+                life--;
+                StartCoroutine(ShakeIt());
             }
         }
     }
@@ -201,8 +247,8 @@ public class Patricio : MonoBehaviour
     private void Jump()
     {
         armSprite.enabled = isGrounded && !parry;
-        animator.SetBool("isJumping",!isGrounded && !parry);
-        
+        animator.SetBool("isJumping", !isGrounded && !parry);
+
         if (jump) framCount++;
 
         if (isGrounded && jump)
@@ -226,7 +272,6 @@ public class Patricio : MonoBehaviour
                     isJumping = false;
                 }
             }
-
         }
 
         if (isGrounded) invunerableLocker = false;
@@ -243,7 +288,7 @@ public class Patricio : MonoBehaviour
             invunerableLocker = false;
         }
 
-        animator.SetBool("isParrying",parry);
+        animator.SetBool("isParrying", parry);
         if (!parry || !jump) return;
 
         rbd.velocity = 1.4f * jumpForce * Vector2.up;
@@ -254,8 +299,8 @@ public class Patricio : MonoBehaviour
     {
         Flip();
         if (!freezeMovement) rbd.velocity = new Vector2(movement.x * speed, rbd.velocity.y);
-        
-        
+
+
         distance = transform.position.y - lastPostition.y;
 
         animator.SetBool("isWalking", isGrounded && rbd.velocity.x != 0 && distance < .5f);
@@ -406,6 +451,5 @@ public class Patricio : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    
     #endregion
 }

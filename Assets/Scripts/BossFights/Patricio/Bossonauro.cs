@@ -5,6 +5,8 @@ using JetBrains.Annotations;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.PS4;
 using Random = UnityEngine.Random;
 
 public enum Positions
@@ -165,9 +167,13 @@ public class Bossonauro : MonoBehaviour
     private void Update()
     {
         if (life <= 0)
+        {
             Destroy(gameObject);
+            SceneManager.LoadScene("VitoriaPatricio");
+        }
 
-        Follow();
+        if (canFollow)
+            Follow();
     }
 
 
@@ -175,10 +181,8 @@ public class Bossonauro : MonoBehaviour
     {
         NextAction = Actions.NONE;
 
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 8; i++)
         {
-            yield return new WaitForSeconds(2f);
-            StartCoroutine(TargetShoot());
             yield return new WaitForSeconds(2f);
             StartCoroutine(TargetShoot());
         }
@@ -188,19 +192,20 @@ public class Bossonauro : MonoBehaviour
     {
         NextAction = Actions.NONE;
 
-        yield return new WaitForSeconds(1.2f);
         yield return StartCoroutine(ShootMissil(false));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.22f);
         yield return StartCoroutine(ShootMissil(true));
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(.22f);
         yield return StartCoroutine(ShootMissil(false));
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(.22f);
         yield return StartCoroutine(ShootMissil(true));
+        yield return new WaitForSeconds(.1f);
         yield return StartCoroutine(ShootMissil(true));
+        yield return new WaitForSeconds(.1f);
         yield return StartCoroutine(ShootMissil(true));
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.1f);
         yield return StartCoroutine(ShootMissil(false));
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(.24f);
         yield return StartCoroutine(ShootMissil(true));
     }
 
@@ -219,10 +224,8 @@ public class Bossonauro : MonoBehaviour
     public IEnumerator ShootMissil(bool parry)
     {
         NextAction = Actions.NONE;
-
-
         canFollow = false;
-        if (Vector2.Distance(missilPoint.transform.position, transform.position) > .5f)
+        if (Vector2.Distance(missilPoint.transform.position, transform.position) > .05f)
             yield return StartCoroutine(PreparePosition(Positions.Missil));
         Bullet tiro;
         if (parry)
@@ -242,8 +245,8 @@ public class Bossonauro : MonoBehaviour
         yield return new WaitForSeconds(.3f);
 
         Instantiate(tiro, missilShootPoint.position, missilShootPoint.rotation);
-        yield return new WaitForSeconds(.1f);
         bossAnimator.SetBool("isMissil", false);
+        yield return new WaitForSeconds(.3f);
 
         canFollow = true;
         NextAction = Actions.NONE;
@@ -256,10 +259,20 @@ public class Bossonauro : MonoBehaviour
 
         yield return StartCoroutine(PreparePosition(Positions.Burst));
 
+
+        Patricio.ds4.SetMotorSpeeds(.5f, .80f);
+        yield return new WaitForSeconds(1f);
+        Patricio.ds4.SetMotorSpeeds(0f, 0f);
+        Patricio.ds4.SetMotorSpeeds(.5f, .80f);
+        yield return new WaitForSeconds(1f);
+        Patricio.ds4.SetMotorSpeeds(0f, 0f);
+        Patricio.ds4.SetMotorSpeeds(.5f, .80f);
+        yield return new WaitForSeconds(1f);
+        Patricio.ds4.SetMotorSpeeds(0f, 0f);
+
         bulletPrefab.Parent = gameObject;
         bulletPrefab.Direction = isFacingRight ? Vector2.right : Vector2.left;
         canShoot = false;
-        yield return new WaitForSeconds(2f);
 
         var burst = Random.Range(20, 50);
         var range = 180 / burst;
@@ -292,8 +305,6 @@ public class Bossonauro : MonoBehaviour
     {
         NextAction = Actions.NONE;
 
-
-        yield return new WaitForSeconds(1.4f);
 
         bossAnimator.SetBool(IsWalking, true);
 
@@ -349,7 +360,6 @@ public class Bossonauro : MonoBehaviour
 
     private IEnumerator ShakeIt()
     {
-        yield return new WaitForSeconds(.4f);
         var counter = 0f;
         const float maxX = .2f;
         const float maxY = .4f;
@@ -364,7 +374,6 @@ public class Bossonauro : MonoBehaviour
         }
 
         transform.position = pos;
-        yield return new WaitForSeconds(.4f);
     }
 
     private void Follow()
@@ -407,7 +416,11 @@ public class Bossonauro : MonoBehaviour
             var bull = other.GetComponent<Bullet>();
             if (bull.Parent != gameObject)
             {
-                life -= 5;
+                if (life >= 0)
+                {
+                    life -= 5;
+                    StartCoroutine(ShakeIt());
+                }
             }
         }
 
@@ -416,7 +429,11 @@ public class Bossonauro : MonoBehaviour
             var platform = other.transform.GetComponent<Platform>();
             if (platform.state == State.Falling)
             {
-                life -= 25;
+                if (life >= 0)
+                {
+                    life -= 25;
+                    StartCoroutine(ShakeIt());
+                }
             }
         }
     }

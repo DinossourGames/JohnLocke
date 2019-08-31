@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Http;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -234,9 +230,13 @@ public class Boss : MonoBehaviour
             StartCoroutine(ShootMissile());
             StartCoroutine(Special());
         }
+
         _health -= damageAmount;
-        if(_health <= 0)
+        if (_health <= 0)
+        {
             Destroy(gameObject);
+            SceneManager.LoadScene("VitoriaMittens");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

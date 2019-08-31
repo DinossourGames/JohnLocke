@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.PS4;
+
 #pragma warning disable 414
 
 // ReSharper disable Unity.PerformanceCriticalCodeNullComparison
@@ -230,10 +232,48 @@ public class Platform : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
+        StartCoroutine(ShakeIt());
+
         state = State.IdleDown;
         movementLocker = false;
     }
 
+    
+    private IEnumerator ShakeIt()
+    {
+        try
+        {
+            Patricio.ds4.SetMotorSpeeds(.25f,90f);
+        }
+        catch
+        {
+        }
+        
+        
+        var counter = 0f;
+        const float maxX = .2f;
+        const float maxY = .4f;
+        const float shakeTime = .3f;
+        var pos = mainCamera.transform.position;
+        while (counter <= shakeTime)
+        {
+            counter += Time.deltaTime;
+            mainCamera.transform.position = pos + new Vector3((shakeTime - counter) * Random.Range(-maxX, maxX),
+                                         (shakeTime - counter) * Random.Range(-maxY, maxY));
+            yield return new WaitForEndOfFrame();
+        }
+
+        mainCamera.transform.position = pos;
+     
+        try
+        {
+            Patricio.ds4.SetMotorSpeeds(0f,0f);        }
+        catch
+        {
+        }
+    }
+
+    
     private IEnumerator Rise()
     {
         yield return StartCoroutine(ShakePlatform());

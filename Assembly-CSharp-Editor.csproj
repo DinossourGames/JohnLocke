@@ -345,9 +345,6 @@
  <Reference Include="UnityEditor.Android.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.1f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="DS4 Wrapper Dinossour">
- <HintPath>C:/Users/felip/Documents/GitHub/JohnLocke/Assets/Plugins/DS4 Wrapper Dinossour.dll</HintPath>
- </Reference>
  <Reference Include="NSubstitute">
  <HintPath>C:/Users/felip/Documents/GitHub/JohnLocke/Library/PackageCache/com.unity.2d.common@1.2.0-preview.1/Tests/Editor/Lib/NSubstitute/NSubstitute.dll</HintPath>
  </Reference>

@@ -17,7 +17,7 @@ public class ImageController : MonoBehaviour
 
     public void Next()
     {
-        if (position < images.Length)
+        if (position < images.Length -1)
             position++;
         else
             position = 0;
@@ -30,7 +30,7 @@ public class ImageController : MonoBehaviour
         if (position > 0)
             position--;
         else
-            position = images.Length;
+            position = images.Length -1;
         
         target.sprite = images[position];
     }

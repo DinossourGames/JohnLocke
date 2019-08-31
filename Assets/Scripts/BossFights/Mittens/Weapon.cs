@@ -1,12 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using UnityEditor.Build.Content;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.LWRP;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
-using Object = UnityEngine.Object;
 
 public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
 {
