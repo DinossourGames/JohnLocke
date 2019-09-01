@@ -9,7 +9,6 @@
       <e p="Assets" t="Include">
         <e p="Common" t="Include">
           <e p="Boundaries.cs" t="Include" />
-          <e p="GamepadManager.cs" t="Include" />
           <e p="ImageController.cs" t="Include" />
           <e p="InputActions.cs" t="Include" />
           <e p="SceneManager.cs" t="Include" />

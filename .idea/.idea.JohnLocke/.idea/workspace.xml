@@ -2,32 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a18ffcc-9d1f-4c0f-b598-f7b9a9d15498" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Menu_Sprites/Artes/cover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Menu_Sprites/Artes/cover.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Menu_Sprites/Artes/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Menu_Sprites/Artes/icon.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Menu_Sprites/Artes/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Menu_Sprites/Artes/logo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JohnLocke/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Common/ImageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/ImageController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Common/StoppedCameraParalax.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/StoppedCameraParalax.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mittens/BossBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mittens/BossBullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Patricio/ParryMissil.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Patricio/ParryMissil.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/HIDHandler.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/HIDHandler.exe.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menus/Selection.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menus/Selection.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/MittensGameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bossonauro.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bossonauro.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Common/GamepadManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Common/GamepadManager.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +31,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Common/Boundaries.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Mittens/Boss.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/PlatformManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Common/GamepadManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/BossFights/Patricio/001.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bossonauro.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.lightweight@6.9.1/Runtime/2D/Light2D.cs" root0="SKIP_HIGHLIGHTING" />
@@ -64,7 +43,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Common/GamepadManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/PlatformManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Common/Boundaries.cs" />
         <option value="$PROJECT_DIR$/Assets/aaaaaa.cs" />
@@ -82,6 +60,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Bossonauro.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Platform.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/BossFightManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Common/GamepadManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BossFights/Patricio/Patricio.cs" />
       </list>
     </option>
@@ -159,7 +138,7 @@
       <workItem from="1567188577008" duration="898000" />
       <workItem from="1567194219491" duration="5193000" />
       <workItem from="1567225785611" duration="2514000" />
-      <workItem from="1567230608569" duration="5140000" />
+      <workItem from="1567230608569" duration="6328000" />
     </task>
     <task id="LOCAL-00001" summary="Some code clean up">
       <created>1566264010803</created>

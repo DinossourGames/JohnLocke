@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using DS4_Wrapper;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;

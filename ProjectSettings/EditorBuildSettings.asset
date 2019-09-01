@@ -39,6 +39,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/Controles/2.unity
     guid: 38440dff97d2f64459908c559593454b
   - enabled: 1
+    path: Assets/Scenes/Menus/GameOverMittens.unity
+    guid: 58e5c245a324c3d43806b0a08f6168a5
+  - enabled: 1
     path: Assets/Scenes/Menus/Creditos.unity
     guid: 74943c66735c7be4f81f028c0cf3066a
   - enabled: 1
