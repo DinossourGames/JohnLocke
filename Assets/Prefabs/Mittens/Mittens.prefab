@@ -167,10 +167,10 @@ GameObject:
   - component: {fileID: 8077721261171073835}
   - component: {fileID: 8077721261171073832}
   - component: {fileID: 8077721261171073833}
-  - component: {fileID: 4010960416773019779}
   - component: {fileID: 1097385214}
-  - component: {fileID: 1097385212}
   - component: {fileID: 7557927560085681511}
+  - component: {fileID: 4010960416773019779}
+  - component: {fileID: 1097385212}
   m_Layer: 0
   m_Name: Mittens
   m_TagString: Player
@@ -281,36 +281,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4010960416773019779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8077721261171073830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca7084c2d79ec3745b42008159a02c37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 7
-  backSprite: {fileID: 0}
-  boundsMin: {x: 0, y: 0}
-  boundsMax: {x: 0, y: 0}
-  dashTime: 0
-  dashDelay: 2
-  dashDuration: 0.2
-  dashSpeedMod: 4
-  totalHealth: 7
-  health: 0
 --- !u!96 &1097385214
 TrailRenderer:
   serializedVersion: 2
@@ -416,195 +386,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.02
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &1097385212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8077721261171073830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 09e2ab5942e3fd04184ef1403f837bc5,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+DeviceLostEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+DeviceRegainedEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 1c8549c5-fc20-4ecb-bad5-6b1f7c9f9d8b
-    m_ActionName: PatricioBossFight/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 685a804a-1502-4e90-b994-d2d2b7f6f2e4
-    m_ActionName: PatricioBossFight/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 11628f49-de06-41d6-9738-415dc06ffd4b
-    m_ActionName: PatricioBossFight/Shoot[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: f6217697-20fe-445f-a62b-c01912ee0026
-    m_ActionName: PatricioBossFight/Start[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 07ae1451-257e-4afe-ba32-8352315e2362
-    m_ActionName: PatricioBossFight/Invulnerability[/Keyboard/leftShift]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 4c4106a7-6767-4564-8152-eb82b2f339dd
-    m_ActionName: PatricioBossFight/Stare[/Keyboard/q]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 78fb56c4-081c-4b9f-9805-0e7a2f03538d
-    m_ActionName: PatricioBossFight/Special[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: fef95e2a-b084-4ba7-aacd-7815b82f14ea
-    m_ActionName: PatricioBossFight/Freeze[/Keyboard/rightShift]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4010960416773019779}
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 568a9cb8-2386-4a55-85c9-90626c02cc4c
-    m_ActionName: MittensBossFight/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: c814f345-8e36-49a8-8ac8-0675b9be5205
-    m_ActionName: MittensBossFight/Shoot[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4010960416773019779}
-        m_MethodName: OnDash
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 9341c749-1299-4518-ab1c-d83c16fdf8ec
-    m_ActionName: MittensBossFight/Dash[/Keyboard/leftShift]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: d959c598-c5cb-47b4-8d72-c12553e3e220
-    m_ActionName: MittensBossFight/Reload[/Keyboard/r]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: c3e8ae2f-43ee-496f-8a79-55f3367cce4c
-    m_ActionName: MittensBossFight/SwitchWeapons[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4010960416773019779}
-        m_MethodName: OnAim
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 158c7864-f178-42cd-b447-fe89852723bd
-    m_ActionName: MittensBossFight/Aim[/Mouse/position,/XInputControllerWindows/rightStick]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: eebf2414-a5b3-4aa3-94cf-da5a299b04fc
-    m_ActionName: PatricioBossFight/Restart[/Keyboard/f5]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4010960416773019779}
-        m_MethodName: OnRestart
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 16f4504c-81c7-4862-9be6-b18f6b6a7f5a
-    m_ActionName: MittensBossFight/Restart[/Keyboard/f5]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4010960416773019779}
-        m_MethodName: OnStart
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.4.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 182d2c3c-5ced-4220-82f7-c933c0e26c31
-    m_ActionName: MittensBossFight/Start[/Keyboard/escape]
-  m_AutoSwitchControlScheme: 0
-  m_DefaultControlScheme: Keyboard
-  m_DefaultActionMap: de5c8eb9-cadf-448e-884d-2c482889df24
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!95 &7557927560085681511
 Animator:
   serializedVersion: 3
@@ -624,6 +405,233 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4010960416773019779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077721261171073830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7084c2d79ec3745b42008159a02c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  movementSpeed: 7
+  backSprite: {fileID: 0}
+  boundsMin: {x: 0, y: 0}
+  boundsMax: {x: 0, y: 0}
+  dashDelay: 2
+  dashDuration: 0.2
+  dashSpeedMod: 4
+  totalHealth: 7
+  currentHealth: 0
+  invulnerableColor:
+    serializedVersion: 2
+    rgba: 3227133950
+--- !u!114 &1097385212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077721261171073830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 09e2ab5942e3fd04184ef1403f837bc5,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1c8549c5-fc20-4ecb-bad5-6b1f7c9f9d8b
+    m_ActionName: PatricioBossFight/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 685a804a-1502-4e90-b994-d2d2b7f6f2e4
+    m_ActionName: PatricioBossFight/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 11628f49-de06-41d6-9738-415dc06ffd4b
+    m_ActionName: PatricioBossFight/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f6217697-20fe-445f-a62b-c01912ee0026
+    m_ActionName: PatricioBossFight/Start[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 07ae1451-257e-4afe-ba32-8352315e2362
+    m_ActionName: PatricioBossFight/Invulnerability[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4c4106a7-6767-4564-8152-eb82b2f339dd
+    m_ActionName: PatricioBossFight/Stare[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 78fb56c4-081c-4b9f-9805-0e7a2f03538d
+    m_ActionName: PatricioBossFight/Special[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fef95e2a-b084-4ba7-aacd-7815b82f14ea
+    m_ActionName: PatricioBossFight/Freeze[/Keyboard/rightShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4010960416773019779}
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 568a9cb8-2386-4a55-85c9-90626c02cc4c
+    m_ActionName: MittensBossFight/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c814f345-8e36-49a8-8ac8-0675b9be5205
+    m_ActionName: MittensBossFight/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4010960416773019779}
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9341c749-1299-4518-ab1c-d83c16fdf8ec
+    m_ActionName: MittensBossFight/Dash[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d959c598-c5cb-47b4-8d72-c12553e3e220
+    m_ActionName: MittensBossFight/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c3e8ae2f-43ee-496f-8a79-55f3367cce4c
+    m_ActionName: MittensBossFight/SwitchWeapons[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4010960416773019779}
+        m_MethodName: OnAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 158c7864-f178-42cd-b447-fe89852723bd
+    m_ActionName: MittensBossFight/Aim[/Mouse/position,/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eebf2414-a5b3-4aa3-94cf-da5a299b04fc
+    m_ActionName: PatricioBossFight/Restart[/Keyboard/f5]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4010960416773019779}
+        m_MethodName: OnRestart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 16f4504c-81c7-4862-9be6-b18f6b6a7f5a
+    m_ActionName: MittensBossFight/Restart[/Keyboard/f5]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4010960416773019779}
+        m_MethodName: OnStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 182d2c3c-5ced-4220-82f7-c933c0e26c31
+    m_ActionName: MittensBossFight/Start[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f70e73d0-f456-4c6d-b3ae-bba7727a6bba
+    m_ActionName: UI/Navigate
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 76afe7bd-8d46-446d-9ddc-21f95707e302
+    m_ActionName: UI/Submit
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9fa1af71-18ec-47cb-bd27-ca837d315004
+    m_ActionName: UI/Cancel
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce618e5c-50ff-4886-a0f5-b0fb7e82921d
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a3f267e1-b2ec-41dd-a340-ddffa1c7d746
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0bf0b1f3-bfae-45c2-a4bf-a78b56a65deb
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8fddd774-656b-4c8e-8fc9-65d3829a6db3
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 88dbbaa5-6aca-4cd9-923d-5a4c45004a01
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6ab58ec0-3be3-4c15-aba6-9ff03138c4e2
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c22bf5c1-7cbc-44ea-ac02-fb6407499103
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c6eb456-d08e-4814-a218-053136be45a9
+    m_ActionName: UI/TrackedDeviceSelect
+  m_AutoSwitchControlScheme: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: de5c8eb9-cadf-448e-884d-2c482889df24
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &1117193167370641510
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,247 +1,248 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+// TODO: Implementar o cooldown de Dash
 public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 {
-    [SerializeField] private Image[] hearts;
-    
-    private InputActions Controls;
-    private Vector2 moveInput;
-    private CircleCollider2D hitbox;
-    private Rigidbody2D rb;
-    private SpriteRenderer sprite;
-    private Vector2 direction;
-    [SerializeField] private float speed;
-    [SerializeField] private SpriteRenderer backSprite;
-    [SerializeField] private Vector2 boundsMin;
-    [SerializeField] private Vector2 boundsMax;
-    private Vector2 playerSize;
-    [SerializeField] private float dashTime; //Moment the dash will be available
-    [SerializeField] private float dashDelay; //Cooldown of the dash
-    private double endDash; //Moment the dash ends
-    [SerializeField] private float dashDuration;
-    [SerializeField] private float dashSpeedMod;
-    private TrailRenderer trail;
-    private bool invulnerable;
-    [SerializeField] private int totalHealth;
-    [SerializeField] private int health;
-    private PlayerInput _pi;
-    public static bool device;
-    private bool isFacingRight;
-    private float angle;
-    private Vector2 direction1;
-    private Animator anim;
+	[SerializeField] private Image[] hearts;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        hitbox = GetComponent<CircleCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        trail = GetComponent<TrailRenderer>();
-        var bounds = backSprite.bounds;
-        boundsMin = bounds.min;
-        boundsMax = bounds.max;
-        playerSize = sprite.bounds.extents;
-        health = totalHealth;
-        _pi = GetComponent<PlayerInput>();
-        isFacingRight = true;
-        anim = GetComponent<Animator>();
-    }
+	[Header("Movement")]
+	[FormerlySerializedAs("speed")]
+	[SerializeField] private float movementSpeed;
+	[SerializeField] private SpriteRenderer backSprite;
 
-    private void Update()
-    {
-        Flip();
-        GetMouseInput();
-        Vida();
-        //print(angle);
-        device = _pi.devices[0].device.displayName == "Mouse" || _pi.devices[0].device.displayName == "Keyboard";
-        if (Time.time > dashTime)
-            trail.enabled = true;
-    }
+	[Space]
+	[SerializeField] private Vector2 boundsMin;
+	[SerializeField] private Vector2 boundsMax;
 
-    private void Vida()
-    {
-        for (int i = 0; i < hearts.Length; i++)
-            if (i >= health)
-            {
-                hearts[i].color = Color.black;
-                
-            }
-            else
-            {
-                hearts[i].color = Color.white;
-            }
-        
-    }
-    // Update is called once per frame
+	[Header("Dash")]
+	[SerializeField] private float dashDelay; //Cooldown of the dash
+	[SerializeField] private float dashDuration;
+	[SerializeField] private float dashSpeedMod;
+	
+	[Header("Health")]
+	[SerializeField] private int totalHealth;
+	[SerializeField] private int currentHealth;
+	[Space]
+	[SerializeField] Color32 invulnerableColor = new Color32(254, 39, 90, 192);
 
-    private void FixedUpdate()
-    {
-        if (Time.time > endDash)
-        {
-            direction = moveInput;
-        }
+	private Camera _camera;
+	private Animator _anim;
+	private Rigidbody2D _rigidbody;
+	private PlayerInput _playerInput;
+	private TrailRenderer _trailRenderer;
+	private SpriteRenderer _spriteRenderer;
+	private CircleCollider2D _circleCollider;
 
-        rb.velocity = direction * speed;
-    }
+	private Vector2 _dashDirection;
+	private Vector2 _moveDirection;
+	private Vector2 _playerSize;
 
-    private void LateUpdate()
-    {
-        var position = transform.position;
-        position.x = Mathf.Clamp(position.x, boundsMin.x + playerSize.x, boundsMax.x - playerSize.x);
-        position.y = Mathf.Clamp(position.y, boundsMin.y + playerSize.y, boundsMax.y - playerSize.y);
-        transform.position = position;
-    }
+	private bool _isDashing;
+	private bool _isInvulnerable;
 
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        switch (context.phase)
-        {
-            case InputActionPhase.Disabled:
-                break;
-            case InputActionPhase.Waiting:
-                break;
-            case InputActionPhase.Started:
-                break;
-            case InputActionPhase.Performed:
-                MovePerformed(context);
-                break;
-            case InputActionPhase.Canceled:
-                MoveCancelled();
-                break;
-        }
-    }
+	private float _aimAngle;
+	private int _facingDirection;
 
-    private void MoveCancelled()
-    {
-        moveInput = Vector2.zero;
-    }
+	public static bool _isInputDesktop;
+	private static readonly int k_isWalking = Animator.StringToHash("isWalking");
+	private static readonly int k_facingRight = Animator.StringToHash("isFacingRight");
 
-    private void MovePerformed(InputAction.CallbackContext obj)
-    {
-        moveInput = obj.ReadValue<Vector2>();
-    }
+	private void Awake()
+	{
+		_camera = Camera.main;
+		_anim = GetComponent<Animator>();
+		_rigidbody = GetComponent<Rigidbody2D>();
+		_playerInput = GetComponent<PlayerInput>();
+		_trailRenderer = GetComponent<TrailRenderer>();
+		_spriteRenderer = GetComponent<SpriteRenderer>();
+		_circleCollider = GetComponent<CircleCollider2D>();
+	}
 
-    public void OnShoot(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
+	private void Start()
+	{
+		currentHealth = totalHealth;
+		_facingDirection = 1;
 
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        if (Time.time > dashTime)
-            StartCoroutine(Dash());
-    }
+		Bounds bounds = backSprite.bounds;
+		boundsMin = bounds.min;
+		boundsMax = bounds.max;
+		_playerSize = _spriteRenderer.bounds.extents;
+	}
 
-    private IEnumerator Dash()
-    {
-        endDash = Time.time + dashDuration;
-        speed *= dashSpeedMod;
-        hitbox.enabled = false;
-        dashTime = Time.time + dashDelay;
-        sprite.enabled = false;
-        yield return new WaitForSeconds(dashDuration);
-        speed /= dashSpeedMod;
-        hitbox.enabled = true;
-        trail.enabled = false;
-        sprite.enabled = true;
-    }
+	private void Update()
+	{
+		UpdateHealth();
+		UpdateAimAngle();
+		UpdateFacingDirection();
 
-    private void GetMouseInput()
-    {
-        if (!Player.device) return;
+		_anim.SetBool(k_isWalking, _moveDirection.sqrMagnitude > 0);
 
-        var dir = Mouse.current.position.ReadValue();
+		string deviceDisplayName = _playerInput.devices[0].device.displayName;
+		_isInputDesktop = deviceDisplayName == "Mouse" || deviceDisplayName == "Keyboard";
+	}
 
-        var mouse = Camera.main.ScreenToWorldPoint(dir);
-        direction1 = new Vector2
-        {
-            x = mouse.x - transform.position.x,
-            y = mouse.y - transform.position.y
-        };
+	private void FixedUpdate()
+	{
+		UpdateMovement();
+	}
 
-        angle = Mathf.Atan2(direction1.y, direction1.x) * Mathf.Rad2Deg;
-    }
+	private void LateUpdate()
+	{
+		var position = transform.position;
+		position.x = Mathf.Clamp(position.x, boundsMin.x + _playerSize.x, boundsMax.x - _playerSize.x);
+		position.y = Mathf.Clamp(position.y, boundsMin.y + _playerSize.y, boundsMax.y - _playerSize.y);
+		transform.position = position;
+	}
 
-    private void Flip()
-    {
-        print(device);
-        anim.SetBool("isWalking", moveInput != Vector2.zero);
-        //print(anim.GetBool("isWalking"));
-        
-        if (angle > -90 && angle <= 90 && !isFacingRight)
-        {
-            isFacingRight = true;
-            var localScale = transform.localScale;
-            transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
-            
-        }
-        if( ((angle >= 90 && angle <= 180 ) || (angle < -90 && angle>=-180)) &&
-            isFacingRight)
-        {
-            isFacingRight = false;
-            var scale = transform.localScale;
-            transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
-        }
-        anim.SetBool("isFacingRight", isFacingRight);
-    }
+	private void UpdateHealth()
+	{
+		for (int i = 0; i < hearts.Length; i++)
+		{
+			hearts[i].color = i >= currentHealth ? Color.black : Color.white;
+		}
+	}
 
-    public void TakeDamage(int damageAmount)
-    {
-        if (!invulnerable)
-        {
-            health -= damageAmount;
-            StartCoroutine(Invulnerability(3));
-            if (health <= 0)
-            {
-                Destroy(gameObject);
-                SceneManager.LoadScene("GameOverMittens");
-            }
-        }
-    }
+	private void UpdateAimAngle()
+	{
+		if (!_isInputDesktop)
+			return;
 
-    
-    private IEnumerator Invulnerability(float time)
-    {
-        invulnerable = true;
-        sprite.color = new Color32(254, 39, 90, 192);
-        yield return new WaitForSeconds(time);
-        sprite.color = Color.white;
-        invulnerable = false;
-    }
+		Vector2 mousePos = Mouse.current.position.ReadValue();
+		Vector2 selfScreenPoint = _camera.WorldToScreenPoint(this.transform.position);
 
-    public void OnReload(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
+		Vector2 dir = (mousePos - selfScreenPoint).normalized;
+		_aimAngle = Mathf.Repeat(Mathf.Atan2(dir.x, dir.y), Mathf.PI * 2);
+	}
 
-    public void OnSwitchWeapons(InputAction.CallbackContext context)
-    {
-    }
+	private void UpdateFacingDirection()
+	{
+		float aimHorizontalDir = Mathf.Sign(Mathf.PI - _aimAngle);
 
-    public void OnAim(InputAction.CallbackContext context)
-    {
-        AimPerformed(context);
-    }
+		// Is Aiming to same direction
+		if (aimHorizontalDir == _facingDirection)
+			return;
 
-    public void OnRestart(InputAction.CallbackContext context)
-    {
-        SceneManager.Restart();
-    }
+		_facingDirection = (int) aimHorizontalDir;
+		Vector3 scale = transform.localScale;
+		scale.x *= -1;
+		transform.localScale = scale;
 
-    public void OnStart(InputAction.CallbackContext context)
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
+		_anim.SetBool(k_facingRight, _facingDirection > 0);
+	}
 
-    private void AimPerformed(InputAction.CallbackContext context)
-    {
-        direction1 = context.ReadValue<Vector2>();
-        angle = Mathf.Atan2(direction1.y, direction1.x) * Mathf.Rad2Deg;
-    }
-    
-    
+	private void UpdateMovement()
+	{
+		Vector2 dir = _isDashing ? _dashDirection : _moveDirection;
+		_rigidbody.velocity = dir * movementSpeed;
+	}
+
+	public void TakeDamage(int damageAmount)
+	{
+		if (_isInvulnerable)
+			return;
+
+		currentHealth -= damageAmount;
+		this.StartCoroutine(InvulnerabilityRoutine(3));
+		if (currentHealth <= 0)
+		{
+			Destroy(this.gameObject);
+			SceneManager.LoadScene("GameOverMittens");
+		}
+	}
+
+	private IEnumerator DashRoutine()
+	{
+		Begin();
+		yield return new WaitForSeconds(dashDuration);
+		Completed();
+
+		void Begin()
+		{
+			_isDashing = true;
+			movementSpeed *= dashSpeedMod;
+			_trailRenderer.enabled = false;
+			_circleCollider.enabled = false;
+			_spriteRenderer.enabled = false;
+		}
+
+		void Completed()
+		{
+			_isDashing = false;
+			movementSpeed /= dashSpeedMod;
+			_trailRenderer.enabled = true;
+			_circleCollider.enabled = true;
+			_spriteRenderer.enabled = true;
+		}
+	}
+
+	private IEnumerator InvulnerabilityRoutine(float time)
+	{
+		_isInvulnerable = true;
+		_spriteRenderer.color = invulnerableColor;
+		yield return new WaitForSeconds(time);
+		_spriteRenderer.color = Color.white;
+		_isInvulnerable = false;
+	}
+
+#region InputActions
+
+	public void OnMove(InputAction.CallbackContext context)
+	{
+		if (context.phase == InputActionPhase.Performed)
+			_moveDirection = context.ReadValue<Vector2>();
+		else if (context.phase == InputActionPhase.Canceled)
+			_moveDirection = Vector2.zero;
+	}
+
+	public void OnDash(InputAction.CallbackContext context)
+	{
+		if (_isDashing || Mathf.Approximately(0, _moveDirection.sqrMagnitude))
+			return;
+
+		_dashDirection = _moveDirection;
+		StartCoroutine(DashRoutine());
+	}
+
+	public void OnAim(InputAction.CallbackContext context)
+	{
+		AimPerformed(context);
+	}
+
+	public void OnRestart(InputAction.CallbackContext context)
+	{
+		SceneManager.Restart();
+	}
+
+	public void OnStart(InputAction.CallbackContext context)
+	{
+		SceneManager.LoadScene("MainMenu");
+	}
+
+	private void AimPerformed(InputAction.CallbackContext context)
+	{
+		Vector2 aimDir = context.ReadValue<Vector2>();
+		_aimAngle = Mathf.Repeat(Mathf.Atan2(aimDir.x, aimDir.y), Mathf.PI * 2);
+	}
+	
+	public void OnShoot(InputAction.CallbackContext context)
+	{
+		Debug.LogException(new NotImplementedException());
+	}
+	
+	public void OnReload(InputAction.CallbackContext context)
+	{
+		Debug.LogException(new NotImplementedException());
+	}
+
+	public void OnSwitchWeapons(InputAction.CallbackContext context)
+	{
+		Debug.LogException(new NotImplementedException());
+	}
+	
+#endregion
 }
