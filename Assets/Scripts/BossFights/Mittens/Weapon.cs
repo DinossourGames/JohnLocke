@@ -1,175 +1,157 @@
 ﻿using System.Collections;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class Weapon : MonoBehaviour, InputActions.IMittensBossFightActions
 {
-    private Vector2 direction;
-    private float angle;
-    private Quaternion rotation;
-    private SpriteRenderer sprite;
-    [SerializeField] private InputActions actions;
-    [SerializeField] private bool trigger;
-    private float shotTime;
-    [SerializeField] private int ammo;
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private GameObject shotPoint;
-    [SerializeField] private float cadence;
-    [SerializeField] private int totalAmmo;
-    [SerializeField] private float reloadTime;
-    [SerializeField] private bool reloading;
-    [SerializeField] private float spread;
-    [SerializeField] private bool isFacingRight;
+	[Header("Shooting")]
+	[SerializeField] private float cadence;
+	[SerializeField] private int totalAmmo;
+
+	[Header("Reloading")]
+	[SerializeField] private float reloadTime;
+	[SerializeField] private Color32 _reloadingColor = new Color32(130, 13, 0, 255);
+
+	[Header("Spawing")]
+	[FormerlySerializedAs("bullet")]
+	[SerializeField] private GameObject bulletPrefab;
+	[FormerlySerializedAs("shotPoint")]
+	[SerializeField] private GameObject shootSpawnPoint;
+
+	private Camera _camera;
+	private Player _player;
+	private SpriteRenderer _spriteRenderer;
+	
+	private InputActions _inputActions;
+	
+	private Vector2 _aimDirection;
+	
+	private int _currentAmmo;
+	private bool _isShooting;
+	private bool _isReloading;
+	private float _nextShootTime;
+
+	private void Awake()
+	{
+		_camera = Camera.main;
+		_player = FindObjectOfType<Player>();
+		_spriteRenderer = GetComponent<SpriteRenderer>();
+		
+		_inputActions = new InputActions();
+		_inputActions.MittensBossFight.Aim.performed += ctx => Internal_SetAimDirection(ctx.ReadValue<Vector2>());
+		_inputActions.MittensBossFight.Shoot.performed += ctx => _isShooting = true;
+		_inputActions.MittensBossFight.Shoot.canceled += ctx => _isShooting = false;
+	}
+
+	private void Start()
+	{
+		_currentAmmo = totalAmmo;
+		_spriteRenderer.color = Color.white;
+	}
+
+	private void Update()
+	{
+		UpdateAimDirection();
+		UpdateFacingDirection();
+		
+		if (_isShooting && !_isReloading)
+			Shoot();
+	}
+
+	private void OnEnable()
+	{
+		_isReloading = false;
+		_inputActions.MittensBossFight.Enable();
+	}
+
+	private void OnDisable()
+	{
+		_inputActions.MittensBossFight.Disable();
+	}
+
+	private void UpdateFacingDirection()
+	{
+		Vector2 dir = _aimDirection * _player.facingDirection;
+		float aimAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		this.transform.rotation = Quaternion.Euler(Vector3.forward * aimAngle);
+	}
+
+	private void Shoot()
+	{
+		if (_isReloading || Time.time < _nextShootTime)
+			return;
+
+		if (_currentAmmo <= 0)
+		{
+			StartCoroutine(ReloadRoutine());
+			return;
+		}
+
+		_currentAmmo--;
+		_nextShootTime = Time.time + cadence;
+
+		float aimAngle = Mathf.Atan2(_aimDirection.y, _aimDirection.x) * Mathf.Rad2Deg;
+		Quaternion rotation = Quaternion.Euler(Vector3.forward * aimAngle);
+		
+		Instantiate(bulletPrefab, shootSpawnPoint.transform.position, rotation);
+	}
+	
+	private void Reload()
+	{
+		if (!_isReloading)
+			StartCoroutine(ReloadRoutine());
+	}
+
+	private IEnumerator ReloadRoutine()
+	{
+		// Begin
+		_isReloading = true;
+		_spriteRenderer.color = _reloadingColor;
+		
+		// Wait
+		yield return new WaitForSeconds(reloadTime);
+		
+		// Complete
+		_isReloading = false;
+		_currentAmmo = totalAmmo;
+		_spriteRenderer.color = Color.white;
+	}
+
+	private void UpdateAimDirection()
+	{
+		if (!Player.isDesktopInput)
+			return;
+
+		Vector2 mousePos = Mouse.current.position.ReadValue();
+		Vector2 selfScreenPoint = _camera.WorldToScreenPoint(this.transform.position);
+		Internal_SetAimDirection((mousePos - selfScreenPoint).normalized);
+	}
+
+	private void Internal_SetAimDirection(Vector2 dir)
+	{
+		_aimDirection = dir;
+	}
 
 
-    private void Awake()
-    {
-        isFacingRight = true;
-        actions = new InputActions();
-        actions.MittensBossFight.Aim.performed += ctx => OnAim(ctx);
-        actions.MittensBossFight.Shoot.performed += ctx => trigger = true;
-        actions.MittensBossFight.Shoot.canceled += ctx => trigger = false;
-    }
+	void InputActions.IMittensBossFightActions.OnAim(InputAction.CallbackContext context) => Internal_SetAimDirection(context.ReadValue<Vector2>());
+	void InputActions.IMittensBossFightActions.OnReload(InputAction.CallbackContext context) => Reload();
 
-    private void OnEnable()
-    {
-        reloading = false;
-        actions.MittensBossFight.Enable();
-    }
-    
-    private void OnDisable()
-    {
-        actions.MittensBossFight.Disable();
-    }
+#region Useless Garbage
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-        ammo = totalAmmo;
-        sprite.color = Color.white;
-        
-    }
+	void InputActions.IMittensBossFightActions.OnMove(InputAction.CallbackContext context) => Nothing();
+	void InputActions.IMittensBossFightActions.OnShoot(InputAction.CallbackContext context) => Nothing();
+	void InputActions.IMittensBossFightActions.OnDash(InputAction.CallbackContext context) => Nothing();
+	void InputActions.IMittensBossFightActions.OnSwitchWeapons(InputAction.CallbackContext context) => Nothing();
+	void InputActions.IMittensBossFightActions.OnRestart(InputAction.CallbackContext context) => Nothing();
+	void InputActions.IMittensBossFightActions.OnStart(InputAction.CallbackContext context) => Nothing();
+	
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	private static void Nothing()
+	{
+		
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        Flip();
-        GetMouseInput();
-        rotation = Quaternion.AngleAxis( angle, Vector3.forward);
-        transform.rotation = rotation;
-        sprite.flipY = direction.x < 0;
-        
-        if(trigger && !reloading)
-            Shoot();
-        
-        
-    }
-        private void Flip()
-    {
-        if (angle >= -90 && angle < 90 && !isFacingRight)
-        {
-            isFacingRight = true;
-            var localScale = transform.localScale;
-            transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
-        }
-        if( ((angle >= 90 && angle <= 180 ) || (angle < -90 && angle>=-180)) &&
-            isFacingRight)
-        {
-            print("a");
-            isFacingRight = false;
-            var scale = transform.localScale;
-            transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
-        }
-       
-
-    }
-    private void Shoot()
-    {
-        if (Time.time >= shotTime)
-        {
-            if (ammo > 0)
-            {
-                Instantiate(bullet, shotPoint.transform.position, transform.rotation);
-                shotTime = Time.time + cadence;
-                ammo--;
-            }
-            else
-            {
-                StartCoroutine(Reload());
-            }
-        }
-    }
-    private IEnumerator Reload()
-    {
-        reloading = true;
-        sprite.color = new Color32(130, 13, 0, 255);
-        ammo = totalAmmo;
-        yield return new WaitForSeconds(reloadTime);
-        sprite.color = Color.white;
-        reloading = false;
-
-    }
-
-    private void GetMouseInput()
-    {
-        if (!Player.device) return;
-      
-       var dir = Mouse.current.position.ReadValue();
-       
-        var mouse = Camera.main.ScreenToWorldPoint(dir);
-        direction = new Vector2
-        {
-            x = mouse.x - transform.position.x,
-            y = mouse.y - transform.position.y
-        };
-
-        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    }
-
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnShoot(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnReload(InputAction.CallbackContext context)
-    {
-        StartCoroutine(Reload());
-    }
-
-    public void OnSwitchWeapons(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnAim(InputAction.CallbackContext context)
-    {
-        AimPerformed(context);
-    }
-
-    public void OnRestart(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnStart(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    private void AimPerformed(InputAction.CallbackContext context)
-    {
-        direction = context.ReadValue<Vector2>();
-        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    }
+#endregion
 }
