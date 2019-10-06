@@ -1,35 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class cameraFollow : MonoBehaviour
 {
-    public Transform PlayerTransform;
-    public float speed;
+	public Transform PlayerTransform;
 
-    public float minX, maxX, minY, maxY;
-    // Start is called before the first frame update
-    void Start()
-    {
-        transform.position = PlayerTransform.position;
-        //Debug.Log(Screen.width);
-    }
+	[Space]
+	public float speed;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
+	[Header("Boundaries")]
+	public float minX;
+	public float maxX;
+	public float minY;
+	public float maxY;
 
-        Follow();
+	private Vector2 _currentVelocity;
 
-    }
+	private void Awake() => transform.position = GetClampedPosition(PlayerTransform.position);
+	private void FixedUpdate() => Follow();
 
-    public void Follow()
-    {
-        if (PlayerTransform == null)
-            return;
+	private void Follow()
+	{
+		if (PlayerTransform == null)
+			return;
 
-        float clampedX = Mathf.Clamp(PlayerTransform.position.x, minX, maxX);
-        float clampedY = Mathf.Clamp(PlayerTransform.position.y, minY, maxY);
-        transform.position = Vector2.Lerp(transform.position, new Vector2(clampedX, clampedY), speed);
-    }
+		Vector3 selfPosition = transform.position;
+		Vector2 targetPosition = GetClampedPosition(PlayerTransform.position);
+
+		transform.position = Vector2.SmoothDamp(selfPosition, targetPosition, ref _currentVelocity, 1 / speed);
+	}
+
+	private Vector2 GetClampedPosition(Vector3 position)
+	{
+		float clampedX = Mathf.Clamp(position.x, minX, maxX);
+		float clampedY = Mathf.Clamp(position.y, minY, maxY);
+
+		return new Vector2(clampedX, clampedY);
+	}
 }
