@@ -46,9 +46,9 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 	private bool _isInvulnerable;
 
 	private float _aimAngle;
-	private int _facingDirection;
+	public int facingDirection { get; private set; }
 
-	public static bool _isInputDesktop;
+	public static bool isDesktopInput;
 	private static readonly int k_isWalking = Animator.StringToHash("isWalking");
 	private static readonly int k_facingRight = Animator.StringToHash("isFacingRight");
 
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 	private void Start()
 	{
 		currentHealth = totalHealth;
-		_facingDirection = 1;
+		facingDirection = 1;
 
 		Bounds bounds = backSprite.bounds;
 		boundsMin = bounds.min;
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 		_anim.SetBool(k_isWalking, _moveDirection.sqrMagnitude > 0);
 
 		string deviceDisplayName = _playerInput.devices[0].device.displayName;
-		_isInputDesktop = deviceDisplayName == "Mouse" || deviceDisplayName == "Keyboard";
+		isDesktopInput = deviceDisplayName == "Mouse" || deviceDisplayName == "Keyboard";
 	}
 
 	private void FixedUpdate()
@@ -109,7 +109,7 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 
 	private void UpdateAimAngle()
 	{
-		if (!_isInputDesktop)
+		if (!isDesktopInput)
 			return;
 
 		Vector2 mousePos = Mouse.current.position.ReadValue();
@@ -124,15 +124,15 @@ public class Player : MonoBehaviour, InputActions.IMittensBossFightActions
 		float aimHorizontalDir = Mathf.Sign(Mathf.PI - _aimAngle);
 
 		// Is Aiming to same direction
-		if (aimHorizontalDir == _facingDirection)
+		if (aimHorizontalDir == facingDirection)
 			return;
 
-		_facingDirection = (int) aimHorizontalDir;
+		facingDirection = (int) aimHorizontalDir;
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
 
-		_anim.SetBool(k_facingRight, _facingDirection > 0);
+		_anim.SetBool(k_facingRight, facingDirection > 0);
 	}
 
 	private void UpdateMovement()
