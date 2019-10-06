@@ -374,7 +374,7 @@ public class InputActions : IInputActionCollection
                     ""type"": ""Button"",
                     ""id"": ""c814f345-8e36-49a8-8ac8-0675b9be5205"",
                     ""expectedControlType"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone(min=0.125)"",
                     ""interactions"": """"
                 },
                 {
@@ -487,7 +487,7 @@ public class InputActions : IInputActionCollection
                     ""id"": ""7e0d814b-381b-4e85-b8dd-0f6e5306c69f"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone(min=0.125)"",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
